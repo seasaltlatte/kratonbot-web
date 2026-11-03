@@ -20,7 +20,7 @@ const RULES = [
 
 const LEVELS = { rendah: 1, sedang: 2, tinggi: 3 } as const;
 const SITE = {
-  kasunanan: { name: "Keraton Kasunanan", border: "border-t-biru" },
+  kasunanan: { name: "Keraton Kasunanan", border: "border-t-kasunanan" },
   mangkunegaran: { name: "Pura Mangkunegaran", border: "border-t-pareanom" },
 };
 
@@ -44,7 +44,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
   return (
     <article id={item.id} className={`scroll-mt-24 rounded-xl border border-garis border-t-4 bg-white p-5 sm:p-7 ${SITE[item.site].border}`}>
       <p className="text-sm text-tinta-pudar">{SITE[item.site].name}</p>
-      <h2 className="mt-1 text-2xl font-bold text-biru-tua">{item.title}</h2>
+      <h2 className="mt-1 text-2xl font-bold text-sogan-tua">{item.title}</h2>
       <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <SpeculationMeter level={item.speculation} />
         <span className="text-sm text-tinta-pudar">{item.speculationReason}</span>
@@ -52,14 +52,14 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <figure>
-          <p className="mb-2 text-sm font-bold text-biru-tua">Arsip: {a.year}</p>
+          <p className="mb-2 text-sm font-bold text-sogan-tua">Arsip: {a.year}</p>
           <Image
             src={a.src}
             alt={a.caption}
             width={a.width}
             height={a.height}
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="h-72 w-full rounded-lg bg-kapur object-contain"
+            className="h-72 w-full rounded-lg bg-gading object-contain"
           />
           <figcaption className="mt-2 text-sm leading-relaxed text-tinta-pudar">
             {a.caption} Foto: {a.author}
@@ -90,7 +90,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
                   width={item.ai.width}
                   height={item.ai.height}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="h-72 w-full rounded-lg bg-kapur object-contain"
+                  className="h-72 w-full rounded-lg bg-gading object-contain"
                 />
                 <span className="absolute top-3 left-3 rounded-md bg-tinta/80 px-2.5 py-1 text-sm font-bold text-white">
                   Ilustrasi AI, bukan foto
@@ -108,7 +108,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
               </p>
               <Link
                 href={`/chat?q=${encodeURIComponent(item.askBot)}`}
-                className="mt-4 rounded-lg bg-biru px-4 py-2 text-sm font-semibold text-white hover:bg-biru-tua"
+                className="mt-4 rounded-lg bg-sogan px-4 py-2 text-sm font-semibold text-white hover:bg-sogan-tua"
               >
                 Coba rekonstruksi teks
               </Link>
@@ -124,7 +124,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
             {cards.map((c) => (
               <li key={c.id} className="flex flex-wrap items-baseline gap-2">
                 <LabelChip index={KATEGORI_INDEX[c.kategori]} />
-                <Link href={`/jelajah#${c.id}`} className="text-biru underline underline-offset-2">
+                <Link href={`/jelajah#${c.id}`} className="text-sogan underline underline-offset-2">
                   {c.judul}
                 </Link>
               </li>
@@ -141,7 +141,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
         </section>
       </div>
 
-      <details className="mt-6 rounded-lg border border-garis bg-kapur p-4">
+      <details className="mt-6 rounded-lg border border-garis bg-gading p-4">
         <summary className="cursor-pointer font-semibold">Prompt untuk membuat ilustrasinya</summary>
         <p className="mt-3 leading-relaxed">{item.prompt}</p>
         <div className="mt-3">
@@ -155,15 +155,15 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
 export default function GaleriPage() {
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-biru-tua">Rekonstruksi AI vs arsip</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Rekonstruksi AI vs arsip</h1>
       <p className="mt-3 max-w-2xl text-lg leading-relaxed text-tinta-pudar">
         AI bisa menggambar masa lalu dengan meyakinkan, padahal sebagian besar isinya rekaan. Galeri ini memasangkan
         setiap rekonstruksi dengan bukti aslinya, supaya kamu bisa melihat sendiri mana yang tercatat dan mana yang
         dibayangkan.
       </p>
 
-      <section className="mt-8 rounded-xl bg-biru-muda/60 p-5 sm:p-6">
-        <h2 className="font-bold text-biru-tua">Aturan rekonstruksi di galeri ini</h2>
+      <section className="mt-8 rounded-xl bg-sogan-muda/60 p-5 sm:p-6">
+        <h2 className="font-bold text-sogan-tua">Aturan rekonstruksi di galeri ini</h2>
         <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
           {RULES.map((r) => (
             <li key={r}>{r}</li>

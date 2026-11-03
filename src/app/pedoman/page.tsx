@@ -48,14 +48,14 @@ const PANCASILA = [
 export default function Pedoman() {
   return (
     <article className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-biru-tua">Pedoman penggunaan AI untuk heritage</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Pedoman penggunaan AI untuk heritage</h1>
       <p className="mt-4 text-lg leading-relaxed text-tinta-pudar">
         AI bisa membuat sejarah terasa dekat, tapi juga bisa membuat cerita rekaan terdengar seperti fakta. Pedoman
         ini disusun agar teknologi seperti KratonBot dipakai secara transparan dan bertanggung jawab.
       </p>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-biru-tua">Untuk pengunjung</h2>
+        <h2 className="text-xl font-bold text-sogan-tua">Untuk pengunjung</h2>
         <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed">
           {FOR_VISITORS.map((t) => (
             <li key={t}>{t}</li>
@@ -64,7 +64,7 @@ export default function Pedoman() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-biru-tua">Untuk pembuat AI heritage</h2>
+        <h2 className="text-xl font-bold text-sogan-tua">Untuk pembuat AI heritage</h2>
         <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed">
           {FOR_BUILDERS.map((t) => (
             <li key={t}>{t}</li>
@@ -73,7 +73,7 @@ export default function Pedoman() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-biru-tua">Kaitannya dengan Pancasila</h2>
+        <h2 className="text-xl font-bold text-sogan-tua">Kaitannya dengan Pancasila</h2>
         <dl className="mt-4 space-y-5">
           {PANCASILA.map((p) => (
             <div key={p.sila} className="border-l-4 border-emas pl-4">
@@ -85,7 +85,7 @@ export default function Pedoman() {
       </section>
 
       <p className="mt-12">
-        <Link href="/chat" className="font-semibold text-biru underline underline-offset-4">
+        <Link href="/chat" className="font-semibold text-sogan underline underline-offset-4">
           Coba KratonBot
         </Link>
       </p>

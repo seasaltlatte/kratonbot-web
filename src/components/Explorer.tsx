@@ -34,7 +34,7 @@ function Filter<T extends string>({
 }) {
   return (
     <fieldset>
-      <legend className="mb-2 text-sm font-semibold text-biru-tua">{legend}</legend>
+      <legend className="mb-2 text-sm font-semibold text-sogan-tua">{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
           <button
@@ -42,7 +42,7 @@ function Filter<T extends string>({
             type="button"
             aria-pressed={value === o.value}
             onClick={() => onChange(o.value)}
-            className="rounded-full border border-garis bg-white px-3 py-1 text-sm hover:border-biru aria-pressed:border-biru aria-pressed:bg-biru aria-pressed:text-white"
+            className="rounded-full border border-garis bg-white px-3 py-1 text-sm hover:border-sogan aria-pressed:border-sogan aria-pressed:bg-sogan aria-pressed:text-white"
           >
             {o.label}
           </button>
@@ -73,7 +73,7 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
     <div className="grid gap-8 lg:grid-cols-[17rem_1fr]">
       <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
         <div>
-          <label htmlFor="cari" className="mb-2 block text-sm font-semibold text-biru-tua">
+          <label htmlFor="cari" className="mb-2 block text-sm font-semibold text-sogan-tua">
             Cari kata
           </label>
           <input
@@ -82,7 +82,7 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="misalnya: Sekaten, 1757, gamelan"
-            className="w-full rounded-lg border border-garis bg-white px-3 py-2 focus:border-biru focus:outline-none"
+            className="w-full rounded-lg border border-garis bg-white px-3 py-2 focus:border-sogan focus:outline-none"
           />
         </div>
         <Filter legend="Istana" options={SITE_OPTIONS} value={site} onChange={setSite} />

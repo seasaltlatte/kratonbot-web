@@ -22,7 +22,7 @@ export const CLAIM_LABELS = [
     emoji: "🔵",
     name: "Info praktis",
     meaning: "Jam buka, tiket, aturan. Bisa berubah, cek ulang ke pengelola.",
-    className: "bg-biru-muda text-biru-tua",
+    className: "bg-kasunanan-muda text-kasunanan",
   },
   {
     emoji: "⚪",

@@ -16,7 +16,7 @@ export function CopyButton({ text, label = "Salin prompt" }: { text: string; lab
           // Clipboard tidak tersedia (mis. bukan HTTPS); teks tetap bisa diseleksi manual.
         }
       }}
-      className="rounded-md border border-garis bg-white px-3 py-1 text-sm font-semibold hover:border-biru"
+      className="rounded-md border border-garis bg-white px-3 py-1 text-sm font-semibold hover:border-sogan"
     >
       {copied ? "Tersalin" : label}
     </button>

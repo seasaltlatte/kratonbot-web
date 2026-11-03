@@ -66,7 +66,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
         <button
           type="button"
           onClick={start}
-          className="mt-8 rounded-lg bg-biru px-6 py-3 text-lg font-semibold text-white hover:bg-biru-tua"
+          className="mt-8 rounded-lg bg-sogan px-6 py-3 text-lg font-semibold text-white hover:bg-sogan-tua"
         >
           Mulai kuis
         </button>
@@ -84,7 +84,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
           : "Tidak apa-apa. Membedakan fakta dari tafsir dan legenda memang tidak mudah, apalagi kalau kalimatnya terdengar yakin.";
     return (
       <div className="max-w-2xl">
-        <p className="text-5xl font-extrabold text-biru-tua">
+        <p className="text-5xl font-extrabold text-sogan-tua">
           {score} <span className="text-2xl font-bold text-tinta-pudar">dari {total} tepat</span>
         </p>
         <p className="mt-4 text-lg leading-relaxed">{message}</p>
@@ -92,11 +92,11 @@ export function Quiz({ pool }: { pool: Card[] }) {
           <button
             type="button"
             onClick={start}
-            className="rounded-lg bg-biru px-5 py-2.5 font-semibold text-white hover:bg-biru-tua"
+            className="rounded-lg bg-sogan px-5 py-2.5 font-semibold text-white hover:bg-sogan-tua"
           >
             Main lagi
           </button>
-          <Link href="/jelajah" className="font-semibold text-biru underline underline-offset-4">
+          <Link href="/jelajah" className="font-semibold text-sogan underline underline-offset-4">
             Baca semua kartu pengetahuan
           </Link>
         </div>
@@ -115,7 +115,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
         <span>Skor: {score}</span>
       </div>
       <div className="mt-2 h-1.5 rounded-full bg-garis" aria-hidden="true">
-        <div className="h-1.5 rounded-full bg-biru" style={{ width: `${(step / questions.length) * 100}%` }} />
+        <div className="h-1.5 rounded-full bg-sogan" style={{ width: `${(step / questions.length) * 100}%` }} />
       </div>
 
       <blockquote className="mt-8 border-l-4 border-emas pl-5 text-xl leading-relaxed">{excerpt(q.isi)}</blockquote>
@@ -128,7 +128,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
             const l = CLAIM_LABELS[KATEGORI_INDEX[k]];
             const state =
               answer === null
-                ? "border-garis bg-white hover:border-biru"
+                ? "border-garis bg-white hover:border-sogan"
                 : k === q.kategori
                   ? "border-pareanom bg-pareanom-muda"
                   : k === answer
@@ -154,7 +154,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
             {correct ? "Tepat." : "Belum tepat."} Ini termasuk <LabelChip index={KATEGORI_INDEX[q.kategori]} />
           </p>
           <p className="mt-2 text-tinta-pudar">{HINTS[q.kategori as QuizKategori]}</p>
-          <h3 className="mt-5 font-bold text-biru-tua">{q.judul}</h3>
+          <h3 className="mt-5 font-bold text-sogan-tua">{q.judul}</h3>
           <p className="mt-1 leading-relaxed">{q.isi}</p>
           <SourceList sumber={q.sumber} className="mt-3" />
           <button
@@ -163,7 +163,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
               setStep((s) => s + 1);
               setAnswer(null);
             }}
-            className="mt-6 rounded-lg bg-biru px-5 py-2.5 font-semibold text-white hover:bg-biru-tua"
+            className="mt-6 rounded-lg bg-sogan px-5 py-2.5 font-semibold text-white hover:bg-sogan-tua"
             autoFocus
           >
             {step + 1 < questions.length ? "Pertanyaan berikutnya" : "Lihat hasil"}

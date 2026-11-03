@@ -11,7 +11,7 @@ export function SourceList({ sumber, className = "" }: { sumber: Sumber[]; class
               href={s.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-garis underline-offset-2 hover:text-biru hover:decoration-biru"
+              className="underline decoration-garis underline-offset-2 hover:text-sogan hover:decoration-sogan"
             >
               {s.text}
             </a>

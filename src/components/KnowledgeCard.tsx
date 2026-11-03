@@ -5,7 +5,7 @@ import type { Card } from "@/lib/cards";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 const SITE_STYLE = {
-  kasunanan: "border-l-biru",
+  kasunanan: "border-l-kasunanan",
   mangkunegaran: "border-l-pareanom",
   both: "border-l-emas",
 };
@@ -19,13 +19,13 @@ export function KnowledgeCard({ card }: { card: Card }) {
         <LabelChip index={KATEGORI_INDEX[card.kategori]} />
         <span className="text-sm text-tinta-pudar">{card.situs}</span>
       </div>
-      <h3 className="mt-3 text-lg leading-snug font-bold text-biru-tua">{card.judul}</h3>
+      <h3 className="mt-3 text-lg leading-snug font-bold text-sogan-tua">{card.judul}</h3>
       <p className="mt-2 leading-relaxed">{card.isi}</p>
       {card.dicek && <p className="mt-2 text-sm text-tinta-pudar">Dicek tim: {card.dicek}</p>}
       <SourceList sumber={card.sumber} className="mt-3" />
       <Link
         href={`/chat?q=${encodeURIComponent(`Ceritakan tentang ${card.judul}`)}`}
-        className="mt-3 inline-block text-sm font-semibold text-biru underline underline-offset-4"
+        className="mt-3 inline-block text-sm font-semibold text-sogan underline underline-offset-4"
       >
         Tanya KratonBot tentang ini
       </Link>

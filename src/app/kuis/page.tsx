@@ -12,7 +12,7 @@ export default function KuisPage() {
   );
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-biru-tua">Fakta, tafsir, atau legenda?</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Fakta, tafsir, atau legenda?</h1>
       <p className="mt-3 mb-10 max-w-2xl text-lg leading-relaxed text-tinta-pudar">
         AI sering menyampaikan tafsir dan legenda dengan nada seyakin fakta. Latih matamu membedakannya.
       </p>

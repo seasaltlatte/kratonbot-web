@@ -1,29 +1,31 @@
 @import "tailwindcss";
 
 /*
-  Palet diambil dari dua rumah yang dibahas KratonBot:
-  biru-putih Keraton Kasunanan, hijau-kuning (pareanom) Pura Mangkunegaran.
+  Palet "Batik Sogan Modern": cokelat sogan dan emas prada khas batik Solo di atas gading,
+  hijau pareanom untuk Pura Mangkunegaran, dan biru khusus penanda Keraton Kasunanan.
 */
 :root {
-  --kapur: #f5f8fa;
-  --biru: #2c5a84;
-  --biru-tua: #1b3a57;
-  --biru-muda: #d6e5f0;
-  --tinta: #14202b;
-  --tinta-pudar: #4c5b68;
-  --garis: #d5dee5;
+  --gading: #f6efe2;
+  --sogan: #6b3e1f;
+  --sogan-tua: #3e2412;
+  --sogan-muda: #ecdcc5;
+  --tinta: #2a1d14;
+  --tinta-pudar: #6a5646;
+  --garis: #e2d3bd;
   --pareanom: #2f6b45;
-  --pareanom-muda: #e1efe5;
-  --emas: #b8922a;
-  --emas-muda: #f6edcf;
+  --pareanom-muda: #e1ece2;
+  --emas: #b8892b;
+  --emas-muda: #f5e9c8;
+  --kasunanan: #2f5a86;
+  --kasunanan-muda: #e1eaf3;
   color-scheme: light;
 }
 
 @theme inline {
-  --color-kapur: var(--kapur);
-  --color-biru: var(--biru);
-  --color-biru-tua: var(--biru-tua);
-  --color-biru-muda: var(--biru-muda);
+  --color-gading: var(--gading);
+  --color-sogan: var(--sogan);
+  --color-sogan-tua: var(--sogan-tua);
+  --color-sogan-muda: var(--sogan-muda);
   --color-tinta: var(--tinta);
   --color-tinta-pudar: var(--tinta-pudar);
   --color-garis: var(--garis);
@@ -31,12 +33,14 @@
   --color-pareanom-muda: var(--pareanom-muda);
   --color-emas: var(--emas);
   --color-emas-muda: var(--emas-muda);
+  --color-kasunanan: var(--kasunanan);
+  --color-kasunanan-muda: var(--kasunanan-muda);
   --font-sans: var(--font-jakarta);
   --font-jawa: var(--font-jawa);
 }
 
 body {
-  background: var(--kapur);
+  background: var(--gading);
   color: var(--tinta);
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
@@ -45,6 +49,13 @@ body {
   outline: 3px solid var(--emas);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Motif geometris halus (belah ketupat berulang). Sengaja generik: bukan motif larangan keraton. */
+.motif {
+  background-color: var(--sogan-tua);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 2 26 14 14 26 2 14Z' fill='none' stroke='%23b8892b' stroke-opacity='.55'/%3E%3Cpath d='M14 8 20 14 14 20 8 14Z' fill='%23b8892b' fill-opacity='.35'/%3E%3C/svg%3E");
+  background-size: 28px 28px;
 }
 
 /* Isi jawaban KratonBot (Markdown) */
@@ -71,7 +82,7 @@ body {
   margin-top: 0.25em;
 }
 .md a {
-  color: var(--biru);
+  color: var(--sogan);
   text-decoration: underline;
   text-underline-offset: 2px;
   overflow-wrap: anywhere;

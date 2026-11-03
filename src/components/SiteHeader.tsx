@@ -14,7 +14,7 @@ export function SiteHeader() {
   return (
     <header className="border-b border-garis bg-white">
       <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-2 font-bold text-biru-tua">
+        <Link href="/" className="flex items-baseline gap-2 font-bold text-sogan-tua">
           <span className="font-jawa text-xl" aria-hidden="true">
             ꦏꦿꦠꦺꦴꦤ꧀
           </span>
@@ -23,7 +23,7 @@ export function SiteHeader() {
         <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium text-tinta-pudar">
           {links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="hover:text-biru">
+              <Link href={l.href} className="hover:text-sogan">
                 {l.label}
               </Link>
             </li>
