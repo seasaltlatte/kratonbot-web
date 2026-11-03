@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
+/* Varian Tailwind untuk mode terang: `terang:hidden`, `terang:inline`, dst. */
+@custom-variant terang (&:where([data-theme="light"], [data-theme="light"] *));
+
 /*
-  Konsep "editorial renaissance" dari portal Laravel tim (alicerestituta/kerajaan-mataram-islam):
-  latar hampir hitam, teks perkamen, aksen emas oker; Bodoni Moda untuk judul, Pinyon Script
-  untuk aksen tulisan tangan, Cormorant Garamond untuk isi, Plus Jakarta Sans untuk teks kecil.
+  Konsep "editorial renaissance" dari portal Laravel tim (alicerestituta/kerajaan-mataram-islam).
+  Mode gelap (bawaan): latar hampir hitam, teks perkamen, aksen emas oker.
+  Mode terang "Perkamen": latar gading naskah, tinta cokelat, emas tua.
+  Nama token menyatakan peran (malam = latar, perkamen = teks terkuat), bukan warna mutlak.
   Hijau pareanom = Pura Mangkunegaran, biru = Keraton Kasunanan.
 */
-:root {
+:root,
+[data-theme="dark"] {
   --malam: #0a0d0b;
   --malam-2: #0e0d0b;
   --permukaan: #121410;
@@ -25,7 +30,39 @@
   --kasunanan: #3e6e9e;
   --kasunanan-terang: #a6c4e0;
   --kasunanan-gelap: #121c29;
+  --galat: #e8a598;
+  --galat-latar: #2a1512;
+  --galat-garis: #6b2e25;
+  --batik-opacity: 0.13;
   color-scheme: dark;
+  color: var(--teks);
+}
+
+[data-theme="light"] {
+  --malam: #f4efe6;
+  --malam-2: #ece4d5;
+  --permukaan: #fbf8f2;
+  --perkamen: #2a1d14;
+  --teks: #3b2d22;
+  --abu: #6e5f4f;
+  --abu-gelap: #857664;
+  --garis: #dccfbb;
+  --emas: #8a6a2b;
+  --emas-terang: #6f5420;
+  --emas-redup: #5c4b33;
+  --catatan: #f3e7c6;
+  --pareanom: #2f6b45;
+  --pareanom-terang: #2f6b45;
+  --pareanom-gelap: #e1ece2;
+  --kasunanan: #2f5a86;
+  --kasunanan-terang: #2f5a86;
+  --kasunanan-gelap: #e1eaf3;
+  --galat: #8a2f1d;
+  --galat-latar: #fbeeeb;
+  --galat-garis: #e3b4ab;
+  --batik-opacity: 0.16;
+  color-scheme: light;
+  color: var(--teks);
 }
 
 @theme inline {
@@ -47,6 +84,9 @@
   --color-kasunanan: var(--kasunanan);
   --color-kasunanan-terang: var(--kasunanan-terang);
   --color-kasunanan-gelap: var(--kasunanan-gelap);
+  --color-galat: var(--galat);
+  --color-galat-latar: var(--galat-latar);
+  --color-galat-garis: var(--galat-garis);
   --font-sans: var(--font-jakarta);
   --font-display: var(--font-bodoni);
   --font-arsip: var(--font-cormorant);
@@ -59,6 +99,7 @@ body {
   color: var(--teks);
   font-family: var(--font-cormorant), Georgia, serif;
   font-size: 1.125rem;
+  transition: background-color 0.3s;
 }
 
 /* Teks kecil (label, keterangan, tombol kecil) memakai sans agar tetap terbaca. */
@@ -89,12 +130,45 @@ h3 {
   color: var(--malam);
 }
 
+/* Chip lima tanda */
+.chip {
+  border: 1px solid;
+}
+.chip-fakta { background: #142019; color: #a3cbae; border-color: #2a4433; }
+.chip-tafsir { background: #221c0e; color: #dcc17a; border-color: #4a3d1c; }
+.chip-legenda { background: #1d1726; color: #c7b3e3; border-color: #3d3150; }
+.chip-praktis { background: #121c29; color: #a6c4e0; border-color: #27405a; }
+.chip-kosong { background: #1a1a18; color: #a9a397; border-color: #33312b; }
+[data-theme="light"] .chip-fakta { background: #e3f0e6; color: #24573a; border-color: #b9d6c1; }
+[data-theme="light"] .chip-tafsir { background: #f6ecd0; color: #6f5420; border-color: #e0cd98; }
+[data-theme="light"] .chip-legenda { background: #efe8f7; color: #5d3f8f; border-color: #d6c8ea; }
+[data-theme="light"] .chip-praktis { background: #e3ecf5; color: #2f5a86; border-color: #bcd0e4; }
+[data-theme="light"] .chip-kosong { background: #ece8e1; color: #6e5f4f; border-color: #d5cdbf; }
+
+/* Motif batik geometris (bunga empat kelopak dan titik), sengaja generik: bukan motif larangan keraton. */
+.batik {
+  position: relative;
+  isolation: isolate;
+}
+.batik::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: var(--batik-opacity);
+  background-color: var(--emas);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.2'%3E%3Ccircle cx='36' cy='36' r='11'/%3E%3Cpath d='M36 25c4-7 4-13 0-17-4 4-4 10 0 17zM36 47c4 7 4 13 0 17-4-4-4-10 0-17zM25 36c-7-4-13-4-17 0 4 4 10 4 17 0zM47 36c7-4 13-4 17 0-4 4-10 4-17 0z'/%3E%3Cpath d='M36 29l2.5 4.5L43 36l-4.5 2.5L36 43l-2.5-4.5L29 36l4.5-2.5z'/%3E%3Ccircle cx='0' cy='0' r='7'/%3E%3Ccircle cx='72' cy='0' r='7'/%3E%3Ccircle cx='0' cy='72' r='7'/%3E%3Ccircle cx='72' cy='72' r='7'/%3E%3C/g%3E%3Cg fill='%23000'%3E%3Ccircle cx='0' cy='36' r='1.6'/%3E%3Ccircle cx='72' cy='36' r='1.6'/%3E%3Ccircle cx='36' cy='0' r='1.6'/%3E%3Ccircle cx='36' cy='72' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  mask-size: 72px 72px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.2'%3E%3Ccircle cx='36' cy='36' r='11'/%3E%3Cpath d='M36 25c4-7 4-13 0-17-4 4-4 10 0 17zM36 47c4 7 4 13 0 17-4-4-4-10 0-17zM25 36c-7-4-13-4-17 0 4 4 10 4 17 0zM47 36c7-4 13-4 17 0-4 4-10 4-17 0z'/%3E%3Cpath d='M36 29l2.5 4.5L43 36l-4.5 2.5L36 43l-2.5-4.5L29 36l4.5-2.5z'/%3E%3Ccircle cx='0' cy='0' r='7'/%3E%3Ccircle cx='72' cy='0' r='7'/%3E%3Ccircle cx='0' cy='72' r='7'/%3E%3Ccircle cx='72' cy='72' r='7'/%3E%3C/g%3E%3Cg fill='%23000'%3E%3Ccircle cx='0' cy='36' r='1.6'/%3E%3Ccircle cx='72' cy='36' r='1.6'/%3E%3Ccircle cx='36' cy='0' r='1.6'/%3E%3Ccircle cx='36' cy='72' r='1.6'/%3E%3C/g%3E%3C/svg%3E");
+  -webkit-mask-size: 72px 72px;
+}
+
 /* Foto arsip diberi nuansa lukisan cat minyak, seperti di portal tim. */
 .lukisan {
   filter: contrast(1.16) saturate(0.92) sepia(0.24) brightness(0.86);
 }
 
-/* Tautan bergaya "[ Tanya Sejarah ]" dengan garis tipis yang melebar saat hover. */
+/* Tautan bergaya "[ Linimasa lengkap ]" dengan garis tipis yang melebar saat hover. */
 .tautan-kurung {
   position: relative;
   letter-spacing: 0.28em;
@@ -110,45 +184,103 @@ h3 {
   left: 50%;
   width: 0;
   height: 1px;
-  background: var(--teks);
+  background: currentColor;
   opacity: 0.7;
   transform: translateX(-50%);
   transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .tautan-kurung:hover {
-  color: #fff;
+  color: var(--perkamen);
   letter-spacing: 0.34em;
 }
 .tautan-kurung:hover::after {
   width: 100%;
 }
 
-/* Satu-satunya animasi: hero muncul perlahan saat halaman dibuka. */
-@keyframes naik {
-  from {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes zoom-pelan {
-  from {
-    opacity: 0.6;
-    transform: scale(1.08);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.02);
-  }
+/* ===== Animasi hero (bergerak terus) ===== */
+
+/* Foto latar bergeser dan membesar perlahan tanpa henti. */
+@keyframes kamera-pelan {
+  0% { transform: scale(1.06) translate(0, 0); }
+  50% { transform: scale(1.16) translate(-2.5%, -1.5%); }
+  100% { transform: scale(1.08) translate(2%, 1%); }
 }
 .hero-bg {
-  animation: zoom-pelan 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: kamera-pelan 38s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Kilau emas yang berjalan di tulisan latin. */
+@keyframes kilau {
+  to { background-position: -200% center; }
+}
+.kilau {
+  background: linear-gradient(100deg, var(--emas) 0%, var(--emas) 40%, #fff3cf 50%, var(--emas) 60%, var(--emas) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: kilau 7s linear infinite;
+}
+
+/* Butiran emas yang melayang naik. */
+@keyframes melayang {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.6; }
+  100% { transform: translateY(-70vh) scale(1); opacity: 0; }
+}
+.debu {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 9999px;
+  background: var(--emas-terang);
+  box-shadow: 0 0 8px 2px rgba(220, 193, 122, 0.55);
+  animation: melayang linear infinite;
+}
+
+/* Bingkai hero yang "bernapas". */
+@keyframes napas {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}
+.bingkai-napas {
+  animation: napas 6s ease-in-out infinite;
+}
+
+/* Hero muncul perlahan saat halaman dibuka. */
+@keyframes naik {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
 }
 .hero-naik {
   animation: naik 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Petunjuk gulir di bawah hero. */
+@keyframes turun {
+  0% { transform: translateY(-6px); opacity: 0; }
+  40% { opacity: 1; }
+  100% { transform: translateY(10px); opacity: 0; }
+}
+.petunjuk-gulir {
+  animation: turun 2s ease-in-out infinite;
+}
+
+/* ===== Muncul saat di-scroll (dipicu komponen Reveal) ===== */
+.js .muncul {
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.js .muncul.dari-kiri { transform: translateX(-64px); }
+.js .muncul.dari-kanan { transform: translateX(64px); }
+.js .muncul.zoom { transform: scale(0.92); }
+.js .muncul.terlihat {
+  opacity: 1;
+  transform: none;
 }
 
 /* Isi jawaban KratonBot (Markdown) */
@@ -200,5 +332,8 @@ h3 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .debu {
+    display: none;
   }
 }

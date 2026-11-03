@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LabelChip, LabelLegend } from "@/components/LabelLegend";
+import { Reveal } from "@/components/Reveal";
+import { ScrollSpine } from "@/components/ScrollSpine";
 import { SectionTitle } from "@/components/SectionTitle";
 import { getCards } from "@/lib/cards";
 import { GALLERY } from "@/lib/gallery";
@@ -41,7 +43,14 @@ const SITES = [
   },
 ];
 
-const TEASER_YEARS = ["1744–1745", "1755", "1757", "2022"];
+// Butiran emas di hero: [posisi kiri %, ukuran px, durasi s, jeda s]. Nilai tetap agar tidak beda antara server dan browser.
+const DUST: [number, number, number, number][] = [
+  [6, 3, 14, -2], [13, 2, 18, -9], [21, 4, 16, -5], [28, 2, 20, -12], [35, 3, 15, -1],
+  [42, 2, 19, -7], [49, 4, 17, -14], [56, 2, 21, -3], [63, 3, 16, -10], [70, 2, 18, -6],
+  [77, 4, 15, -13], [84, 2, 20, -4], [91, 3, 17, -8], [97, 2, 22, -11], [17, 2, 23, -16], [66, 3, 24, -18],
+];
+
+const TEASER_YEARS =["1744–1745", "1755", "1757", "2022"];
 
 export default function Home() {
   const cards = getCards();
@@ -56,14 +65,27 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 -z-10">
+      {/* Hero selalu gelap (data-theme="dark") karena tulisannya berada di atas foto. */}
+      <section
+        data-theme="dark"
+        className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-center justify-center overflow-hidden bg-malam"
+      >
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image src={HERO.src} alt="" fill priority sizes="100vw" className="lukisan hero-bg object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-malam/85 via-malam/30 to-malam" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(7,9,8,0.8))]" />
+          <div className="absolute inset-0" aria-hidden="true">
+            {DUST.map((d, i) => (
+              <span
+                key={i}
+                className="debu"
+                style={{ left: `${d[0]}%`, width: d[1], height: d[1], animationDuration: `${d[2]}s`, animationDelay: `${d[3]}s` }}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="pointer-events-none absolute inset-3 border border-teks/15 sm:inset-6 md:inset-8" aria-hidden="true">
+        <div className="bingkai-napas pointer-events-none absolute inset-3 border border-teks/20 sm:inset-6 md:inset-8" aria-hidden="true">
           <span className="absolute -top-1.5 -left-1.5 size-3 border-t border-l border-teks/50" />
           <span className="absolute -top-1.5 -right-1.5 size-3 border-t border-r border-teks/50" />
           <span className="absolute -bottom-1.5 -left-1.5 size-3 border-b border-l border-teks/50" />
@@ -71,28 +93,37 @@ export default function Home() {
         </div>
 
         <div className="hero-naik relative w-full max-w-5xl px-6 py-24 text-center">
-          <p className="font-script text-3xl text-emas drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:text-4xl">
-            Mengenal Lebih Dekat
-          </p>
+          <p className="kilau font-script text-3xl sm:text-4xl">Mengenal Lebih Dekat</p>
           <h1 className="mt-2 font-display text-[clamp(2rem,7vw,5.5rem)] leading-[1.05] font-medium tracking-[0.1em] text-perkamen uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             <span className="block">Kerajaan</span>
             <span className="block">Mataram Islam</span>
           </h1>
-          <p className="mt-2 font-script text-[clamp(2rem,5vw,3.75rem)] text-emas drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          <p className="kilau mt-2 pb-2 font-script text-[clamp(2rem,5vw,3.75rem)] [animation-delay:-3.5s]">
             di Kota Surakarta
           </p>
           <p className="mx-auto mt-6 max-w-xl text-lg text-emas-redup italic">
             Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran. Setiap jawaban menunjukkan sumbernya.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-5 text-xs text-teks">
-            <Link href="/chat" className="tautan-kurung py-2">
-              [ Tanya Sejarah ]
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+            <Link
+              href="/chat"
+              className="group inline-flex min-w-56 items-center justify-center gap-3 border border-emas bg-emas px-8 py-4 text-sm font-semibold tracking-[0.22em] text-malam uppercase shadow-[0_0_32px_rgba(199,164,92,0.35)] transition hover:bg-emas-terang hover:shadow-[0_0_48px_rgba(199,164,92,0.55)]"
+            >
+              Tanya Sejarah
+              <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+                →
+              </span>
             </Link>
-            <Link href="/linimasa" className="tautan-kurung py-2">
-              [ Lihat Linimasa ]
+            <Link
+              href="/linimasa"
+              className="inline-flex min-w-56 items-center justify-center border border-perkamen/70 bg-malam/40 px-8 py-4 text-sm font-semibold tracking-[0.22em] text-perkamen uppercase backdrop-blur-sm transition hover:border-emas hover:text-emas"
+            >
+              Lihat Linimasa
             </Link>
           </div>
         </div>
+
+        <span className="petunjuk-gulir absolute bottom-16 left-1/2 hidden h-8 w-px -translate-x-1/2 bg-perkamen/60 sm:block" aria-hidden="true" />
 
         <a
           href={HERO.sourceUrl}
@@ -105,26 +136,24 @@ export default function Home() {
       </section>
 
       {/* Linimasa singkat */}
-      <section className="bg-malam-2 px-4 py-28 sm:px-8">
+      <section className="batik overflow-hidden bg-malam-2 px-4 py-28 sm:px-8">
         <SectionTitle
           script="Jejak Perjalanan Kerajaan"
           title="Linimasa"
           intro="Dari runtuhnya Kartasura sampai lahirnya Pura Mangkunegaran, dan terus sampai hari ini."
         />
         <ol className="relative mx-auto mt-20 max-w-4xl">
-          <span className="absolute top-0 bottom-0 left-1/2 hidden w-px -translate-x-1/2 bg-teks/15 md:block" aria-hidden="true" />
+          <ScrollSpine />
           {teaser.map((e, i) => (
             <li
               key={e.year}
-              className={`relative mb-16 md:w-1/2 ${i % 2 ? "md:ml-auto md:pl-14" : "md:pr-14 md:text-right"}`}
+              className={`relative mb-16 pl-12 md:w-1/2 md:pl-0 ${i % 2 ? "md:ml-auto md:pl-14" : "md:pr-14 md:text-right"}`}
             >
-              <span
-                className={`absolute top-2 hidden size-2 rounded-full bg-emas md:block ${i % 2 ? "-left-1" : "-right-1"}`}
-                aria-hidden="true"
-              />
-              <p className="text-sm tracking-[0.22em] text-abu">{e.year}</p>
-              <h3 className="mt-2 font-display text-xl font-normal tracking-[0.12em] uppercase">{e.title}</h3>
-              <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
+              <Reveal from={i % 2 ? "kanan" : "kiri"}>
+                <p className="font-display text-3xl text-emas tabular-nums">{e.year}</p>
+                <h3 className="mt-2 font-display text-xl font-normal tracking-[0.12em] uppercase">{e.title}</h3>
+                <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
+              </Reveal>
             </li>
           ))}
         </ol>
@@ -203,7 +232,7 @@ export default function Home() {
                 <ul className="mt-6 space-y-3 border-t border-garis pt-5">
                   {s.questions.map((q) => (
                     <li key={q}>
-                      <Link href={chatLink(q)} className="group inline-flex items-baseline gap-3 hover:text-white">
+                      <Link href={chatLink(q)} className="group inline-flex items-baseline gap-3 hover:text-perkamen">
                         <span className="text-emas transition-transform group-hover:translate-x-1" aria-hidden="true">
                           →
                         </span>
@@ -225,7 +254,7 @@ export default function Home() {
           {EXPLORE.map((x) => (
             <Link key={x.href} href={x.href} className="group block bg-malam p-7 text-center hover:bg-permukaan">
               <p className="font-display text-3xl text-emas tabular-nums">{x.big}</p>
-              <h3 className="mt-3 font-display text-base font-normal tracking-[0.14em] uppercase group-hover:text-white">
+              <h3 className="mt-3 font-display text-base font-normal tracking-[0.14em] uppercase group-hover:text-perkamen">
                 {x.title}
               </h3>
               <p className="mt-2 leading-relaxed text-abu">{x.text}</p>

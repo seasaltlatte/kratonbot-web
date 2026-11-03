@@ -226,7 +226,7 @@ export function ChatApp() {
               <article key={m.id} className="max-w-3xl">
                 <p className="mb-1 font-script text-2xl text-emas">KratonBot</p>
                 {m.error ? (
-                  <div className="border border-[#6B2E25] bg-[#2A1512] p-3 text-[#E8A598]">
+                  <div className="border border-galat-garis bg-galat-latar p-3 text-galat">
                     <p>{m.text}</p>
                     <button
                       type="button"
@@ -377,7 +377,7 @@ function ReportButton({ message, getSessionId }: { message: Msg; getSessionId: (
         maxLength={1000}
         className="mt-1 w-full border border-garis px-2 py-1.5 text-sm focus:border-emas focus:outline-none"
       />
-      {state === "error" && <p className="text-sm text-[#E8A598]">Laporan belum terkirim. Coba lagi.</p>}
+      {state === "error" && <p className="text-sm text-galat">Laporan belum terkirim. Coba lagi.</p>}
       <div className="mt-2 flex gap-3 text-sm">
         <button
           type="button"

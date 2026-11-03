@@ -132,7 +132,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
                 : k === q.kategori
                   ? "border-pareanom bg-pareanom-gelap"
                   : k === answer
-                    ? "border-[#6B2E25] bg-[#2A1512]"
+                    ? "border-galat-garis bg-galat-latar"
                     : "border-garis bg-permukaan opacity-60";
             return (
               <button
@@ -150,7 +150,7 @@ export function Quiz({ pool }: { pool: Card[] }) {
 
       {answer && (
         <div className="mt-8 border border-garis bg-permukaan p-5" role="status">
-          <p className={`text-lg font-bold ${correct ? "text-pareanom-terang" : "text-[#E8A598]"}`}>
+          <p className={`text-lg font-bold ${correct ? "text-pareanom-terang" : "text-galat"}`}>
             {correct ? "Tepat." : "Belum tepat."} Ini termasuk <LabelChip index={KATEGORI_INDEX[q.kategori]} />
           </p>
           <p className="mt-2 text-abu">{HINTS[q.kategori as QuizKategori]}</p>

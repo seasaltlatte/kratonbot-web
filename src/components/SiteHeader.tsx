@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/chat", label: "Tanya KratonBot" },
@@ -29,6 +30,7 @@ export function SiteHeader() {
             </li>
           ))}
         </ul>
+        <ThemeToggle />
       </nav>
     </header>
   );
