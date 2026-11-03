@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SectionTitle } from "@/components/SectionTitle";
 import { Quiz } from "@/components/Quiz";
 import { getCards } from "@/lib/cards";
 
@@ -11,11 +12,14 @@ export default function KuisPage() {
     (c) => ["FAKTA", "TAFSIR", "LEGENDA"].includes(c.kategori) && !/topik sensitif/i.test(c.judul),
   );
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Fakta, tafsir, atau legenda?</h1>
-      <p className="mt-3 mb-10 max-w-2xl text-lg leading-relaxed text-tinta-pudar">
-        AI sering menyampaikan tafsir dan legenda dengan nada seyakin fakta. Latih matamu membedakannya.
-      </p>
+    <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6">
+      <SectionTitle
+        as="h1"
+        script="Uji mata sejarahmu"
+        title="Fakta, tafsir, atau legenda?"
+        intro="AI sering menyampaikan tafsir dan legenda dengan nada seyakin fakta. Latih matamu membedakannya."
+      />
+      <div className="mt-16" />
       <Quiz pool={pool} />
     </div>
   );

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SectionTitle } from "@/components/SectionTitle";
 import { Explorer } from "@/components/Explorer";
 import { getCards, TEMA } from "@/lib/cards";
 
@@ -8,12 +9,14 @@ export const metadata: Metadata = {
 
 export default function JelajahPage() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Jelajahi kartu pengetahuan</h1>
-      <p className="mt-3 mb-10 max-w-2xl text-lg leading-relaxed text-tinta-pudar">
-        Semua yang diketahui KratonBot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, KratonBot
-        juga tidak tahu.
-      </p>
+    <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6">
+      <SectionTitle
+        as="h1"
+        script="Semua yang diketahui KratonBot"
+        title="Kartu pengetahuan"
+        intro="Semua yang diketahui KratonBot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, KratonBot juga tidak tahu."
+      />
+      <div className="mt-16" />
       <Explorer cards={getCards()} temas={Object.values(TEMA)} />
     </div>
   );

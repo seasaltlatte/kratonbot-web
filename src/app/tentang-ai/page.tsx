@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SectionTitle } from "@/components/SectionTitle";
 import { getCards, type Kategori } from "@/lib/cards";
 
 export const metadata: Metadata = {
@@ -26,15 +27,17 @@ export default function TentangAI() {
     "Untuk jadwal kunjungan, KratonBot merangkum datamu dan menunggu konfirmasi sebelum membuat undangan Google Calendar.",
   ];
   return (
-    <article className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Tentang AI ini</h1>
-      <p className="mt-4 text-lg leading-relaxed text-tinta-pudar">
-        KratonBot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi
-        heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah.
-      </p>
+    <article className="mx-auto w-full max-w-3xl px-4 py-24 sm:px-6">
+      <SectionTitle
+        as="h1"
+        script="Di balik layar"
+        title="Tentang AI ini"
+        intro="KratonBot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah."
+      />
+      <div className="mt-16" />
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Cara KratonBot menjawab</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Cara KratonBot menjawab</h2>
         <ol className="mt-4 list-decimal space-y-3 pl-5 leading-relaxed">
           {STEPS.map((s) => (
             <li key={s}>{s}</li>
@@ -43,16 +46,16 @@ export default function TentangAI() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Sumber pengetahuannya</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Sumber pengetahuannya</h2>
         <p className="mt-3 leading-relaxed">
           {cards.length} kartu pengetahuan tentang dua istana: {count("FAKTA")} fakta, {count("TAFSIR")} tafsir,{" "}
           {count("LEGENDA")} legenda, dan {count("INFO PRAKTIS")} info praktis. Semuanya bisa dibaca di halaman{" "}
-          <Link href="/jelajah" className="font-semibold text-sogan underline underline-offset-4">
+          <Link href="/jelajah" className="font-semibold text-emas underline underline-offset-4">
             kartu pengetahuan
           </Link>
           . Sumbernya antara lain:
         </p>
-        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-tinta-pudar">
+        <ul className="mt-3 list-disc space-y-1.5 pl-5 text-abu">
           {SOURCES.map((s) => (
             <li key={s}>{s}</li>
           ))}
@@ -60,7 +63,7 @@ export default function TentangAI() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Batasannya</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Batasannya</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
           <li>AI bisa keliru, termasuk salah memberi tanda. Selalu periksa sumber yang disebut.</li>
           <li>
@@ -81,7 +84,7 @@ export default function TentangAI() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Data yang kamu kirim</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Data yang kamu kirim</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 leading-relaxed">
           <li>Isi percakapan disimpan di server tim agar KratonBot ingat konteks obrolan.</li>
           <li>Email hanya diminta saat membuat jadwal, dan hanya dipakai untuk mengirim undangan kalender.</li>
@@ -91,15 +94,15 @@ export default function TentangAI() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Teknologi</h2>
-        <p className="mt-3 leading-relaxed text-tinta-pudar">
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Teknologi</h2>
+        <p className="mt-3 leading-relaxed text-abu">
           Langflow (alur agen AI), Google Gemini (model bahasa dan embedding), DataStax Astra DB (pencarian kartu
           pengetahuan), Composio (Google Calendar), dan Next.js (situs ini).
         </p>
       </section>
 
       <p className="mt-12">
-        <Link href="/pedoman" className="font-semibold text-sogan underline underline-offset-4">
+        <Link href="/pedoman" className="font-semibold text-emas underline underline-offset-4">
           Baca pedoman penggunaan AI untuk heritage
         </Link>
       </p>

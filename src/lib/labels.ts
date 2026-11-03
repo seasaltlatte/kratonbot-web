@@ -4,31 +4,31 @@ export const CLAIM_LABELS = [
     emoji: "🟢",
     name: "Fakta tercatat",
     meaning: "Tertulis di sumber yang sudah diperiksa tim.",
-    className: "bg-pareanom-muda text-pareanom",
+    className: "border border-[#2a4433] bg-pareanom-gelap text-pareanom-terang",
   },
   {
     emoji: "🟡",
     name: "Tafsir",
     meaning: "Pendapat atau interpretasi, bukan kepastian.",
-    className: "bg-emas-muda text-[#7a5d00]",
+    className: "border border-[#4a3d1c] bg-catatan text-emas-terang",
   },
   {
     emoji: "🟣",
     name: "Legenda",
     meaning: "Kisah yang dipercaya dan dituturkan turun-temurun.",
-    className: "bg-[#ece5f6] text-[#5d3f8f]",
+    className: "border border-[#3d3150] bg-[#1d1726] text-[#c7b3e3]",
   },
   {
     emoji: "🔵",
     name: "Info praktis",
     meaning: "Jam buka, tiket, aturan. Bisa berubah, cek ulang ke pengelola.",
-    className: "bg-kasunanan-muda text-kasunanan",
+    className: "border border-[#27405a] bg-kasunanan-gelap text-kasunanan-terang",
   },
   {
     emoji: "⚪",
     name: "Belum ada data",
     meaning: "KratonBot tidak menemukannya di sumber, jadi tidak menebak.",
-    className: "bg-[#eceff1] text-tinta-pudar",
+    className: "border border-[#33312b] bg-[#1a1a18] text-abu",
   },
 ] as const;
 

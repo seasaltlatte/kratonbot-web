@@ -34,7 +34,7 @@ function Filter<T extends string>({
 }) {
   return (
     <fieldset>
-      <legend className="mb-2 text-sm font-semibold text-sogan-tua">{legend}</legend>
+      <legend className="mb-2 text-sm font-semibold text-perkamen">{legend}</legend>
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
           <button
@@ -42,7 +42,7 @@ function Filter<T extends string>({
             type="button"
             aria-pressed={value === o.value}
             onClick={() => onChange(o.value)}
-            className="rounded-full border border-garis bg-white px-3 py-1 text-sm hover:border-sogan aria-pressed:border-sogan aria-pressed:bg-sogan aria-pressed:text-white"
+            className="rounded-full border border-garis bg-permukaan px-3 py-1 text-sm hover:border-emas aria-pressed:border-emas aria-pressed:bg-emas aria-pressed:text-malam"
           >
             {o.label}
           </button>
@@ -73,7 +73,7 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
     <div className="grid gap-8 lg:grid-cols-[17rem_1fr]">
       <div className="space-y-6 lg:sticky lg:top-6 lg:self-start">
         <div>
-          <label htmlFor="cari" className="mb-2 block text-sm font-semibold text-sogan-tua">
+          <label htmlFor="cari" className="mb-2 block text-sm font-semibold text-perkamen">
             Cari kata
           </label>
           <input
@@ -82,7 +82,7 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="misalnya: Sekaten, 1757, gamelan"
-            className="w-full rounded-lg border border-garis bg-white px-3 py-2 focus:border-sogan focus:outline-none"
+            className="w-full border border-garis bg-permukaan px-3 py-2 focus:border-emas focus:outline-none"
           />
         </div>
         <Filter legend="Istana" options={SITE_OPTIONS} value={site} onChange={setSite} />
@@ -96,11 +96,11 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
       </div>
 
       <div>
-        <p className="mb-4 text-sm text-tinta-pudar" aria-live="polite">
+        <p className="mb-4 text-sm text-abu" aria-live="polite">
           Menampilkan {visible.length} dari {cards.length} kartu
         </p>
         {visible.length === 0 ? (
-          <p className="rounded-lg border border-dashed border-garis p-6 text-tinta-pudar">
+          <p className="border border-dashed border-garis p-6 text-abu">
             Tidak ada kartu yang cocok. Coba kata lain atau pilih &ldquo;Semua&rdquo; di filter.
           </p>
         ) : (

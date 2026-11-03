@@ -12,18 +12,18 @@ const links = [
 
 export function SiteHeader() {
   return (
-    <header className="border-b border-garis bg-white">
-      <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6">
-        <Link href="/" className="flex items-baseline gap-2 font-bold text-sogan-tua">
-          <span className="font-jawa text-xl" aria-hidden="true">
+    <header className="border-b border-garis bg-malam">
+      <nav className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-4 py-4 sm:px-6">
+        <Link href="/" className="flex items-baseline gap-3 text-perkamen">
+          <span className="font-jawa text-lg text-emas" aria-hidden="true">
             ꦏꦿꦠꦺꦴꦤ꧀
           </span>
-          <span className="text-lg">KratonBot</span>
+          <span className="font-display text-lg tracking-[0.18em] uppercase">KratonBot</span>
         </Link>
-        <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm font-medium text-tinta-pudar">
+        <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xs tracking-[0.12em] text-abu">
           {links.map((l) => (
             <li key={l.href}>
-              <Link href={l.href} className="hover:text-sogan">
+              <Link href={l.href} className="hover:text-perkamen">
                 {l.label}
               </Link>
             </li>

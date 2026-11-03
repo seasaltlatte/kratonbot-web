@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SectionTitle } from "@/components/SectionTitle";
 
 export const metadata: Metadata = {
   title: "Pedoman penggunaan AI untuk heritage | KratonBot",
@@ -47,15 +48,17 @@ const PANCASILA = [
 
 export default function Pedoman() {
   return (
-    <article className="mx-auto w-full max-w-3xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Pedoman penggunaan AI untuk heritage</h1>
-      <p className="mt-4 text-lg leading-relaxed text-tinta-pudar">
-        AI bisa membuat sejarah terasa dekat, tapi juga bisa membuat cerita rekaan terdengar seperti fakta. Pedoman
-        ini disusun agar teknologi seperti KratonBot dipakai secara transparan dan bertanggung jawab.
-      </p>
+    <article className="mx-auto w-full max-w-3xl px-4 py-24 sm:px-6">
+      <SectionTitle
+        as="h1"
+        script="Agar AI tetap jujur"
+        title="Pedoman penggunaan AI"
+        intro="AI bisa membuat sejarah terasa dekat, tapi juga bisa membuat cerita rekaan terdengar seperti fakta. Pedoman ini disusun agar teknologi seperti KratonBot dipakai secara transparan dan bertanggung jawab."
+      />
+      <div className="mt-16" />
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Untuk pengunjung</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Untuk pengunjung</h2>
         <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed">
           {FOR_VISITORS.map((t) => (
             <li key={t}>{t}</li>
@@ -64,7 +67,7 @@ export default function Pedoman() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Untuk pembuat AI heritage</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Untuk pembuat AI heritage</h2>
         <ul className="mt-4 list-disc space-y-3 pl-5 leading-relaxed">
           {FOR_BUILDERS.map((t) => (
             <li key={t}>{t}</li>
@@ -73,19 +76,19 @@ export default function Pedoman() {
       </section>
 
       <section className="mt-10">
-        <h2 className="text-xl font-bold text-sogan-tua">Kaitannya dengan Pancasila</h2>
+        <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Kaitannya dengan Pancasila</h2>
         <dl className="mt-4 space-y-5">
           {PANCASILA.map((p) => (
             <div key={p.sila} className="border-l-4 border-emas pl-4">
               <dt className="font-semibold">{p.sila}</dt>
-              <dd className="mt-1 leading-relaxed text-tinta-pudar">{p.text}</dd>
+              <dd className="mt-1 leading-relaxed text-abu">{p.text}</dd>
             </div>
           ))}
         </dl>
       </section>
 
       <p className="mt-12">
-        <Link href="/chat" className="font-semibold text-sogan underline underline-offset-4">
+        <Link href="/chat" className="font-semibold text-emas underline underline-offset-4">
           Coba KratonBot
         </Link>
       </p>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { SectionTitle } from "@/components/SectionTitle";
 import { CopyButton } from "@/components/CopyButton";
 import { LabelChip } from "@/components/LabelLegend";
 import { getCardByTitle } from "@/lib/cards";
@@ -30,7 +31,7 @@ function SpeculationMeter({ level }: { level: GalleryItem["speculation"] }) {
     <span className="inline-flex items-center gap-2 text-sm font-semibold">
       <span className="flex gap-1" aria-hidden="true">
         {[1, 2, 3].map((i) => (
-          <span key={i} className={`h-2.5 w-6 rounded-sm ${i <= n ? "bg-emas" : "bg-garis"}`} />
+          <span key={i} className={`h-2.5 w-6 ${i <= n ? "bg-emas" : "bg-garis"}`} />
         ))}
       </span>
       Spekulasi {level}
@@ -42,26 +43,26 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
   const cards = item.cards.map(getCardByTitle);
   const a = item.archive;
   return (
-    <article id={item.id} className={`scroll-mt-24 rounded-xl border border-garis border-t-4 bg-white p-5 sm:p-7 ${SITE[item.site].border}`}>
-      <p className="text-sm text-tinta-pudar">{SITE[item.site].name}</p>
-      <h2 className="mt-1 text-2xl font-bold text-sogan-tua">{item.title}</h2>
+    <article id={item.id} className={`scroll-mt-24 border border-garis border-t-4 bg-permukaan p-5 sm:p-7 ${SITE[item.site].border}`}>
+      <p className="text-sm text-abu">{SITE[item.site].name}</p>
+      <h2 className="mt-1 text-2xl font-normal tracking-[0.14em] uppercase text-perkamen">{item.title}</h2>
       <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1">
         <SpeculationMeter level={item.speculation} />
-        <span className="text-sm text-tinta-pudar">{item.speculationReason}</span>
+        <span className="text-sm text-abu">{item.speculationReason}</span>
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <figure>
-          <p className="mb-2 text-sm font-bold text-sogan-tua">Arsip: {a.year}</p>
+          <p className="mb-2 text-sm font-bold text-perkamen">Arsip: {a.year}</p>
           <Image
             src={a.src}
             alt={a.caption}
             width={a.width}
             height={a.height}
             sizes="(min-width: 768px) 50vw, 100vw"
-            className="h-72 w-full rounded-lg bg-gading object-contain"
+            className="h-72 w-full bg-malam object-contain"
           />
-          <figcaption className="mt-2 text-sm leading-relaxed text-tinta-pudar">
+          <figcaption className="mt-2 text-sm leading-relaxed text-abu">
             {a.caption} Foto: {a.author}
             {a.institution ? `, ${a.institution}` : ""}.{" "}
             {a.licenseUrl ? (
@@ -80,7 +81,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
         </figure>
 
         <figure>
-          <p className="mb-2 text-sm font-bold text-[#7a5d00]">Rekonstruksi AI</p>
+          <p className="mb-2 text-sm font-bold text-emas-terang">Rekonstruksi AI</p>
           {item.ai ? (
             <>
               <div className="relative">
@@ -90,25 +91,25 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
                   width={item.ai.width}
                   height={item.ai.height}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="h-72 w-full rounded-lg bg-gading object-contain"
+                  className="h-72 w-full bg-malam object-contain"
                 />
-                <span className="absolute top-3 left-3 rounded-md bg-tinta/80 px-2.5 py-1 text-sm font-bold text-white">
+                <span className="absolute top-3 left-3 bg-malam/80 px-2.5 py-1 text-sm font-bold text-perkamen">
                   Ilustrasi AI, bukan foto
                 </span>
               </div>
-              <figcaption className="mt-2 text-sm text-tinta-pudar">
+              <figcaption className="mt-2 text-sm text-abu">
                 Dibuat dengan {item.ai.model} oleh {item.ai.madeBy}, {item.ai.date}.
               </figcaption>
             </>
           ) : (
-            <div className="flex h-72 flex-col items-center justify-center rounded-lg border-2 border-dashed border-emas/60 bg-emas-muda/50 p-6 text-center">
-              <p className="font-semibold text-[#5c4a12]">Ilustrasi AI belum ditambahkan</p>
-              <p className="mt-2 max-w-xs text-sm text-[#5c4a12]">
+            <div className="flex h-72 flex-col items-center justify-center border-2 border-dashed border-emas/60 bg-catatan/50 p-6 text-center">
+              <p className="font-semibold text-emas-terang">Ilustrasi AI belum ditambahkan</p>
+              <p className="mt-2 max-w-xs text-sm text-emas-terang">
                 Sementara itu, minta KratonBot merekonstruksi suasananya dengan kata-kata.
               </p>
               <Link
                 href={`/chat?q=${encodeURIComponent(item.askBot)}`}
-                className="mt-4 rounded-lg bg-sogan px-4 py-2 text-sm font-semibold text-white hover:bg-sogan-tua"
+                className="mt-4 bg-emas px-4 py-2 text-sm font-semibold text-malam hover:bg-emas-terang"
               >
                 Coba rekonstruksi teks
               </Link>
@@ -119,12 +120,12 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
 
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <section>
-          <h3 className="font-bold">Yang tercatat di sumber</h3>
+          <h3 className="font-normal tracking-[0.14em] uppercase">Yang tercatat di sumber</h3>
           <ul className="mt-3 space-y-2">
             {cards.map((c) => (
               <li key={c.id} className="flex flex-wrap items-baseline gap-2">
                 <LabelChip index={KATEGORI_INDEX[c.kategori]} />
-                <Link href={`/jelajah#${c.id}`} className="text-sogan underline underline-offset-2">
+                <Link href={`/jelajah#${c.id}`} className="text-emas underline underline-offset-2">
                   {c.judul}
                 </Link>
               </li>
@@ -132,8 +133,8 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
           </ul>
         </section>
         <section>
-          <h3 className="font-bold">Yang harus dibayangkan AI</h3>
-          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-tinta-pudar">
+          <h3 className="font-normal tracking-[0.14em] uppercase">Yang harus dibayangkan AI</h3>
+          <ul className="mt-3 list-disc space-y-1.5 pl-5 text-abu">
             {item.imagined.map((t) => (
               <li key={t}>{t}</li>
             ))}
@@ -141,7 +142,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
         </section>
       </div>
 
-      <details className="mt-6 rounded-lg border border-garis bg-gading p-4">
+      <details className="mt-6 border border-garis bg-malam p-4">
         <summary className="cursor-pointer font-semibold">Prompt untuk membuat ilustrasinya</summary>
         <p className="mt-3 leading-relaxed">{item.prompt}</p>
         <div className="mt-3">
@@ -154,16 +155,17 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
 
 export default function GaleriPage() {
   return (
-    <div className="mx-auto w-full max-w-5xl px-4 py-12 sm:px-6">
-      <h1 className="text-3xl font-extrabold tracking-tight text-sogan-tua">Rekonstruksi AI vs arsip</h1>
-      <p className="mt-3 max-w-2xl text-lg leading-relaxed text-tinta-pudar">
-        AI bisa menggambar masa lalu dengan meyakinkan, padahal sebagian besar isinya rekaan. Galeri ini memasangkan
-        setiap rekonstruksi dengan bukti aslinya, supaya kamu bisa melihat sendiri mana yang tercatat dan mana yang
-        dibayangkan.
-      </p>
+    <div className="mx-auto w-full max-w-5xl px-4 py-24 sm:px-6">
+      <SectionTitle
+        as="h1"
+        script="Antara bukti dan bayangan"
+        title="Rekonstruksi AI vs arsip"
+        intro="AI bisa menggambar masa lalu dengan meyakinkan, padahal sebagian besar isinya rekaan. Galeri ini memasangkan setiap rekonstruksi dengan bukti aslinya, supaya kamu bisa melihat sendiri mana yang tercatat dan mana yang dibayangkan."
+      />
+      <div className="mt-16" />
 
-      <section className="mt-8 rounded-xl bg-sogan-muda/60 p-5 sm:p-6">
-        <h2 className="font-bold text-sogan-tua">Aturan rekonstruksi di galeri ini</h2>
+      <section className="mt-8 bg-emas-redup/60 p-5 sm:p-6">
+        <h2 className="font-normal tracking-[0.14em] uppercase text-perkamen">Aturan rekonstruksi di galeri ini</h2>
         <ul className="mt-3 list-disc space-y-1.5 pl-5 leading-relaxed">
           {RULES.map((r) => (
             <li key={r}>{r}</li>

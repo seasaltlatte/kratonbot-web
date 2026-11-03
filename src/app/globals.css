@@ -1,72 +1,167 @@
 @import "tailwindcss";
 
 /*
-  Palet "Batik Sogan Modern": cokelat sogan dan emas prada khas batik Solo di atas gading,
-  hijau pareanom untuk Pura Mangkunegaran, dan biru khusus penanda Keraton Kasunanan.
+  Konsep "editorial renaissance" dari portal Laravel tim (alicerestituta/kerajaan-mataram-islam):
+  latar hampir hitam, teks perkamen, aksen emas oker; Bodoni Moda untuk judul, Pinyon Script
+  untuk aksen tulisan tangan, Cormorant Garamond untuk isi, Plus Jakarta Sans untuk teks kecil.
+  Hijau pareanom = Pura Mangkunegaran, biru = Keraton Kasunanan.
 */
 :root {
-  --gading: #f6efe2;
-  --sogan: #6b3e1f;
-  --sogan-tua: #3e2412;
-  --sogan-muda: #ecdcc5;
-  --tinta: #2a1d14;
-  --tinta-pudar: #6a5646;
-  --garis: #e2d3bd;
+  --malam: #0a0d0b;
+  --malam-2: #0e0d0b;
+  --permukaan: #121410;
+  --perkamen: #f4efe6;
+  --teks: #eae3cf;
+  --abu: #a39b8b;
+  --abu-gelap: #7d776b;
+  --garis: #2a2823;
+  --emas: #c7a45c;
+  --emas-terang: #dcc17a;
+  --emas-redup: #b5a37a;
+  --catatan: #221c0e;
   --pareanom: #2f6b45;
-  --pareanom-muda: #e1ece2;
-  --emas: #b8892b;
-  --emas-muda: #f5e9c8;
-  --kasunanan: #2f5a86;
-  --kasunanan-muda: #e1eaf3;
-  color-scheme: light;
+  --pareanom-terang: #9cc9a9;
+  --pareanom-gelap: #142019;
+  --kasunanan: #3e6e9e;
+  --kasunanan-terang: #a6c4e0;
+  --kasunanan-gelap: #121c29;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-gading: var(--gading);
-  --color-sogan: var(--sogan);
-  --color-sogan-tua: var(--sogan-tua);
-  --color-sogan-muda: var(--sogan-muda);
-  --color-tinta: var(--tinta);
-  --color-tinta-pudar: var(--tinta-pudar);
+  --color-malam: var(--malam);
+  --color-malam-2: var(--malam-2);
+  --color-permukaan: var(--permukaan);
+  --color-perkamen: var(--perkamen);
+  --color-teks: var(--teks);
+  --color-abu: var(--abu);
+  --color-abu-gelap: var(--abu-gelap);
   --color-garis: var(--garis);
-  --color-pareanom: var(--pareanom);
-  --color-pareanom-muda: var(--pareanom-muda);
   --color-emas: var(--emas);
-  --color-emas-muda: var(--emas-muda);
+  --color-emas-terang: var(--emas-terang);
+  --color-emas-redup: var(--emas-redup);
+  --color-catatan: var(--catatan);
+  --color-pareanom: var(--pareanom);
+  --color-pareanom-terang: var(--pareanom-terang);
+  --color-pareanom-gelap: var(--pareanom-gelap);
   --color-kasunanan: var(--kasunanan);
-  --color-kasunanan-muda: var(--kasunanan-muda);
+  --color-kasunanan-terang: var(--kasunanan-terang);
+  --color-kasunanan-gelap: var(--kasunanan-gelap);
   --font-sans: var(--font-jakarta);
+  --font-display: var(--font-bodoni);
+  --font-arsip: var(--font-cormorant);
+  --font-script: var(--font-pinyon);
   --font-jawa: var(--font-jawa);
 }
 
 body {
-  background: var(--gading);
-  color: var(--tinta);
+  background: var(--malam);
+  color: var(--teks);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.125rem;
+}
+
+/* Teks kecil (label, keterangan, tombol kecil) memakai sans agar tetap terbaca. */
+.text-xs,
+.text-sm,
+button,
+input,
+textarea,
+label,
+legend {
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
-:focus-visible {
-  outline: 3px solid var(--emas);
-  outline-offset: 2px;
-  border-radius: 4px;
+h1,
+h2,
+h3 {
+  font-family: var(--font-bodoni), Didot, Georgia, serif;
+  color: var(--perkamen);
 }
 
-/* Motif geometris halus (belah ketupat berulang). Sengaja generik: bukan motif larangan keraton. */
-.motif {
-  background-color: var(--sogan-tua);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28'%3E%3Cpath d='M14 2 26 14 14 26 2 14Z' fill='none' stroke='%23b8892b' stroke-opacity='.55'/%3E%3Cpath d='M14 8 20 14 14 20 8 14Z' fill='%23b8892b' fill-opacity='.35'/%3E%3C/svg%3E");
-  background-size: 28px 28px;
+:focus-visible {
+  outline: 2px solid var(--emas);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--emas);
+  color: var(--malam);
+}
+
+/* Foto arsip diberi nuansa lukisan cat minyak, seperti di portal tim. */
+.lukisan {
+  filter: contrast(1.16) saturate(0.92) sepia(0.24) brightness(0.86);
+}
+
+/* Tautan bergaya "[ Tanya Sejarah ]" dengan garis tipis yang melebar saat hover. */
+.tautan-kurung {
+  position: relative;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition:
+    color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tautan-kurung::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--teks);
+  opacity: 0.7;
+  transform: translateX(-50%);
+  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tautan-kurung:hover {
+  color: #fff;
+  letter-spacing: 0.34em;
+}
+.tautan-kurung:hover::after {
+  width: 100%;
+}
+
+/* Satu-satunya animasi: hero muncul perlahan saat halaman dibuka. */
+@keyframes naik {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes zoom-pelan {
+  from {
+    opacity: 0.6;
+    transform: scale(1.08);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+.hero-bg {
+  animation: zoom-pelan 2.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-naik {
+  animation: naik 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Isi jawaban KratonBot (Markdown) */
 .md {
-  line-height: 1.65;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
 }
 .md > * + * {
-  margin-top: 0.7em;
+  margin-top: 0.8em;
 }
 .md strong {
-  font-weight: 700;
+  color: var(--perkamen);
+  font-weight: 600;
 }
 .md ul,
 .md ol {
@@ -79,19 +174,23 @@ body {
   list-style: decimal;
 }
 .md li + li {
-  margin-top: 0.25em;
+  margin-top: 0.3em;
+}
+.md li::marker {
+  color: var(--abu-gelap);
 }
 .md a {
-  color: var(--sogan);
+  color: var(--emas);
   text-decoration: underline;
-  text-underline-offset: 2px;
-  overflow-wrap: anywhere;
+  text-underline-offset: 3px;
+}
+.md a:hover {
+  color: var(--perkamen);
 }
 .md h1,
 .md h2,
 .md h3 {
-  font-weight: 700;
-  font-size: 1.05em;
+  font-size: 1.1em;
 }
 
 @media (prefers-reduced-motion: reduce) {

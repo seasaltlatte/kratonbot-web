@@ -9,6 +9,7 @@ export type TimelineEvent = {
   note?: string;
   sites: Site[];
   cards: string[];
+  photo?: string; // id item di GALLERY; foto ditampilkan dengan tahun pemotretannya sendiri
 };
 
 export const TIMELINE: TimelineEvent[] = [
@@ -20,6 +21,7 @@ export const TIMELINE: TimelineEvent[] = [
     note: "Sumber berbeda soal tahun: 1742 untuk awal pemberontakan, 1743 untuk kerusakan keraton.",
     sites: ["kasunanan"],
     cards: ["Geger Pacinan", "Situs Keraton Kartasura"],
+    photo: "kartasura",
   },
   {
     year: "1744–1745",
@@ -29,6 +31,7 @@ export const TIMELINE: TimelineEvent[] = [
     note: "Tahun 1744 umumnya merujuk pada pembangunan, 1745 pada peresmian.",
     sites: ["kasunanan"],
     cards: ["Pendirian Keraton Kasunanan", "Asal nama Surakarta"],
+    photo: "kasunanan-1890",
   },
   {
     year: "1755",
@@ -44,6 +47,7 @@ export const TIMELINE: TimelineEvent[] = [
       "Disepakati pada 17 Maret 1757. Raden Mas Said menjadi Mangkunegara I dengan kedudukan Pangeran Miji. Bekas kediaman Patih Sindureja diberikan kepadanya, lalu diperluas menjadi istana.",
     sites: ["mangkunegaran"],
     cards: ["Perjanjian Salatiga", "Asal-usul bangunan"],
+    photo: "pendhapa-mangkunegaran",
   },
   {
     year: "1777 atau 1782",
@@ -52,6 +56,7 @@ export const TIMELINE: TimelineEvent[] = [
     note: "Sumber berbeda: 1777 menurut Wikipedia, 1782 menurut sumber pariwisata Jawa Tengah.",
     sites: ["kasunanan"],
     cards: ["Panggung Sangga Buwana - menara"],
+    photo: "sangga-buwana",
   },
   {
     year: "1795",

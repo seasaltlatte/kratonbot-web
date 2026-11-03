@@ -159,10 +159,10 @@ export function ChatApp() {
       <aside className="hidden lg:block">
         <div className="sticky top-6 space-y-8">
           <section>
-            <h2 className="mb-3 font-bold text-sogan-tua">Arti tanda di jawaban</h2>
+            <h2 className="mb-3 font-normal tracking-[0.14em] uppercase text-perkamen">Arti tanda di jawaban</h2>
             <LabelLegend compact />
           </section>
-          <section className="rounded-lg bg-emas-muda p-4 text-sm text-[#5c4a12]">
+          <section className="bg-catatan p-4 text-sm text-emas-terang">
             Jadwal kunjungan dari KratonBot berupa undangan Google Calendar untuk pengingat, bukan tiket
             atau reservasi resmi dari pengelola.
           </section>
@@ -170,21 +170,21 @@ export function ChatApp() {
       </aside>
 
       <div className="flex min-h-[70vh] flex-col">
-        <details className="mb-4 rounded-lg border border-garis bg-white p-3 lg:hidden">
-          <summary className="cursor-pointer font-semibold text-sogan-tua">Arti tanda di jawaban</summary>
+        <details className="mb-4 border border-garis bg-permukaan p-3 lg:hidden">
+          <summary className="cursor-pointer font-semibold text-perkamen">Arti tanda di jawaban</summary>
           <div className="mt-3">
             <LabelLegend compact />
           </div>
         </details>
 
         <div className="flex items-center justify-between gap-4 border-b border-garis pb-3">
-          <h1 className="text-xl font-bold text-sogan-tua">Tanya KratonBot</h1>
+          <h1 className="font-display text-2xl font-normal tracking-[0.18em] uppercase">Tanya KratonBot</h1>
           {messages.length > 0 && (
             <button
               type="button"
               onClick={startOver}
               disabled={busy}
-              className="text-sm font-medium text-tinta-pudar underline underline-offset-2 hover:text-sogan disabled:opacity-50"
+              className="text-sm font-medium text-abu underline underline-offset-2 hover:text-emas disabled:opacity-50"
             >
               Mulai percakapan baru
             </button>
@@ -199,14 +199,14 @@ export function ChatApp() {
                 Mangkunegaran. Setiap jawabanku menyebut sumbernya, dan aku menandai mana fakta, tafsir, atau
                 legenda.
               </p>
-              <p className="mt-6 mb-3 font-semibold text-sogan-tua">Coba tanyakan:</p>
+              <p className="mt-6 mb-3 font-semibold text-perkamen">Coba tanyakan:</p>
               <div className="flex flex-wrap gap-2">
                 {SUGGESTIONS.map((s) => (
                   <button
                     key={s}
                     type="button"
                     onClick={() => void ask(s, { showUser: true })}
-                    className="rounded-full border border-sogan/30 bg-white px-3.5 py-1.5 text-left text-sm text-sogan-tua hover:border-sogan hover:bg-sogan-muda"
+                    className="rounded-full border border-emas/30 bg-permukaan px-3.5 py-1.5 text-left text-sm text-perkamen hover:border-emas hover:bg-emas-redup"
                   >
                     {s}
                   </button>
@@ -218,15 +218,15 @@ export function ChatApp() {
           {messages.map((m) =>
             m.role === "user" ? (
               <div key={m.id} className="flex justify-end">
-                <p className="max-w-[85%] rounded-2xl rounded-br-sm bg-sogan px-4 py-2.5 whitespace-pre-wrap text-white">
+                <p className="max-w-[85%] border border-emas/40 bg-permukaan px-4 py-2.5 font-sans text-sm leading-relaxed whitespace-pre-wrap text-perkamen">
                   {m.text}
                 </p>
               </div>
             ) : (
               <article key={m.id} className="max-w-3xl">
-                <p className="mb-1 text-sm font-bold text-sogan">KratonBot</p>
+                <p className="mb-1 font-script text-2xl text-emas">KratonBot</p>
                 {m.error ? (
-                  <div className="rounded-lg border border-[#e3b4ab] bg-[#fbeeeb] p-3 text-[#8a2f1d]">
+                  <div className="border border-[#6B2E25] bg-[#2A1512] p-3 text-[#E8A598]">
                     <p>{m.text}</p>
                     <button
                       type="button"
@@ -252,7 +252,7 @@ export function ChatApp() {
               <button
                 type="button"
                 onClick={() => void ask("ya", { showUser: true })}
-                className="rounded-lg bg-pareanom px-4 py-2 font-semibold text-white hover:bg-[#245536]"
+                className="bg-pareanom px-4 py-2 font-semibold text-white hover:bg-[#3A8257]"
               >
                 Buat jadwal
               </button>
@@ -262,7 +262,7 @@ export function ChatApp() {
                   setInput("Ubah data: ");
                   inputRef.current?.focus();
                 }}
-                className="rounded-lg border border-garis bg-white px-4 py-2 font-semibold text-tinta hover:border-sogan"
+                className="border border-garis bg-permukaan px-4 py-2 font-semibold text-teks hover:border-emas"
               >
                 Ubah data
               </button>
@@ -270,11 +270,11 @@ export function ChatApp() {
           )}
 
           {busy && (
-            <p className="flex items-center gap-2 text-tinta-pudar" role="status">
+            <p className="flex items-center gap-2 text-abu" role="status">
               <span className="inline-flex gap-1" aria-hidden="true">
-                <span className="size-1.5 animate-bounce rounded-full bg-sogan [animation-delay:-0.3s]" />
-                <span className="size-1.5 animate-bounce rounded-full bg-sogan [animation-delay:-0.15s]" />
-                <span className="size-1.5 animate-bounce rounded-full bg-sogan" />
+                <span className="size-1.5 animate-bounce rounded-full bg-emas [animation-delay:-0.3s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-emas [animation-delay:-0.15s]" />
+                <span className="size-1.5 animate-bounce rounded-full bg-emas" />
               </span>
               KratonBot sedang mencari di sumber…
             </p>
@@ -283,7 +283,7 @@ export function ChatApp() {
         </div>
 
         <form
-          className="sticky bottom-0 border-t border-garis bg-gading pt-3 pb-4"
+          className="sticky bottom-0 border-t border-garis bg-malam pt-3 pb-4"
           onSubmit={(e) => {
             e.preventDefault();
             submit();
@@ -307,17 +307,17 @@ export function ChatApp() {
               rows={2}
               maxLength={2000}
               placeholder="Tanyakan sejarah, tradisi, atau rencana kunjunganmu…"
-              className="max-h-40 min-h-12 flex-1 resize-y rounded-lg border border-garis bg-white px-3 py-2.5 focus:border-sogan focus:outline-none"
+              className="max-h-40 min-h-12 flex-1 resize-y border border-garis bg-permukaan px-3 py-2.5 focus:border-emas focus:outline-none"
             />
             <button
               type="submit"
               disabled={busy || !input.trim()}
-              className="h-12 rounded-lg bg-sogan px-5 font-semibold text-white hover:bg-sogan-tua disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-12 bg-emas px-5 font-semibold text-malam hover:bg-emas-terang disabled:cursor-not-allowed disabled:opacity-50"
             >
               Kirim
             </button>
           </div>
-          <p className="mt-2 text-xs text-tinta-pudar">
+          <p className="mt-2 text-xs text-abu">
             KratonBot bisa keliru. Periksa sumber di setiap jawaban, dan jangan menulis data pribadi selain yang
             diminta untuk jadwal kunjungan.
           </p>
@@ -351,21 +351,21 @@ function ReportButton({ message, getSessionId }: { message: Msg; getSessionId: (
   }
 
   if (state === "sent") {
-    return <p className="mt-2 text-sm text-pareanom">Laporan terkirim. Terima kasih, tim akan memeriksanya.</p>;
+    return <p className="mt-2 text-sm text-pareanom-terang">Laporan terkirim. Terima kasih, tim akan memeriksanya.</p>;
   }
   if (state === "idle") {
     return (
       <button
         type="button"
         onClick={() => setState("open")}
-        className="mt-2 text-sm text-tinta-pudar underline underline-offset-2 hover:text-sogan"
+        className="mt-2 text-sm text-abu underline underline-offset-2 hover:text-emas"
       >
         Laporkan jawaban keliru
       </button>
     );
   }
   return (
-    <div className="mt-3 max-w-xl rounded-lg border border-garis bg-white p-3">
+    <div className="mt-3 max-w-xl border border-garis bg-permukaan p-3">
       <label htmlFor={`catatan-${message.id}`} className="text-sm font-semibold">
         Apa yang keliru? (opsional)
       </label>
@@ -375,19 +375,19 @@ function ReportButton({ message, getSessionId }: { message: Msg; getSessionId: (
         onChange={(e) => setNote(e.target.value)}
         rows={2}
         maxLength={1000}
-        className="mt-1 w-full rounded-md border border-garis px-2 py-1.5 text-sm focus:border-sogan focus:outline-none"
+        className="mt-1 w-full border border-garis px-2 py-1.5 text-sm focus:border-emas focus:outline-none"
       />
-      {state === "error" && <p className="text-sm text-[#8a2f1d]">Laporan belum terkirim. Coba lagi.</p>}
+      {state === "error" && <p className="text-sm text-[#E8A598]">Laporan belum terkirim. Coba lagi.</p>}
       <div className="mt-2 flex gap-3 text-sm">
         <button
           type="button"
           onClick={() => void send()}
           disabled={state === "sending"}
-          className="rounded-md bg-sogan px-3 py-1.5 font-semibold text-white disabled:opacity-50"
+          className="bg-emas px-3 py-1.5 font-semibold text-malam disabled:opacity-50"
         >
           {state === "sending" ? "Mengirim…" : "Kirim laporan"}
         </button>
-        <button type="button" onClick={() => setState("idle")} className="text-tinta-pudar underline">
+        <button type="button" onClick={() => setState("idle")} className="text-abu underline">
           Batal
         </button>
       </div>
