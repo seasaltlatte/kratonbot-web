@@ -1,31 +1,60 @@
-# KratonBot Web
+# KratonBot
 
-Front-end KratonBot: chatbot AI tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran, untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage). Dibuat dengan Next.js 16, Tailwind CSS 4, dan TypeScript.
+Chatbot AI tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran yang selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda. Dibuat untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage).
+
+**Situs:** https://kratonbot-web.vercel.app
+
+Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composio. Front-end dan back-end berada di satu proyek dan berjalan di Vercel.
+
+## Halaman
 
 | Halaman | Isi |
 |---|---|
-| `/` | Landing: contoh jawaban asli, arti lima tanda, dua istana, ajakan berkunjung |
+| `/` | Landing: hero, linimasa singkat, contoh jawaban, dua istana, ajakan berkunjung |
 | `/chat` | Chat dengan KratonBot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
-| `/linimasa` | Linimasa 1742–2022. Setiap peristiwa merujuk kartu, dan versi tahun yang berbeda ditampilkan |
-| `/jelajah` | Semua kartu pengetahuan, dengan filter istana, jenis, dan tema, plus pencarian |
-| `/kuis` | Kuis 8 soal "Fakta, tafsir, atau legenda?" dari kartu pengetahuan |
-| `/tentang-ai` | Cara kerja, sumber data, batasan, dan privasi (model card) |
-| `/pedoman` | Draf Pedoman Penggunaan AI untuk Heritage (luaran kedua tema 7) |
+| `/linimasa` | Linimasa 1742–2022; setiap peristiwa merujuk kartu, versi tahun yang berbeda ditampilkan |
+| `/jelajah` | Semua kartu pengetahuan, dengan filter dan pencarian |
+| `/galeri` | Foto arsip berdampingan dengan rekonstruksi AI |
+| `/kuis` | Kuis "Fakta, tafsir, atau legenda?" |
+| `/tentang-ai` | Cara kerja, sumber data, batasan, dan privasi |
+| `/pedoman` | Pedoman penggunaan AI untuk heritage |
 
-Alur data:
+## Cara kerja
 
 ```
-Browser ──▶ /api/chat (Vercel) ──▶ agen KratonBot (src/lib/agent.ts) ◀──▶ Gemini (GOOGLE_API_KEY)
-                                     ├─ cari_pengetahuan_keraton → content/kartu (BM25, di memori)
-                                     ├─ tanggal_sekarang         → jam WIB
-                                     └─ buat_jadwal_kunjungan    → Composio → Google Calendar kelompok
-                                                                   (gagal/kosong → tautan "Tambahkan ke Google Calendar")
-Browser ──▶ /api/report ──▶ Google Sheets (opsional, lewat Apps Script)
+Browser ──▶ /api/chat ──▶ agen KratonBot (src/lib/agent.ts) ◀──▶ Gemini
+                            ├─ cari_pengetahuan_keraton → content/kartu (pencarian BM25)
+                            ├─ tanggal_sekarang         → jam WIB
+                            └─ buat_jadwal_kunjungan    → Composio → Google Calendar
+                                                          (gagal → tautan "Tambahkan ke Google Calendar")
+Browser ──▶ /api/report ──▶ Google Sheets (opsional)
 ```
 
-Semua berjalan di Vercel: tidak perlu Langflow, tunnel, atau laptop yang menyala. Flow Langflow tetap disimpan sebagai rancangan awal; logikanya dipindahkan ke `src/lib/agent.ts` dengan system prompt yang sama (`content/system-prompt.md`). API key **tidak pernah** dikirim ke browser.
+- Bot hanya menjawab dari kartu di `content/kartu/`, memberi label 🟢 fakta, 🟡 tafsir, 🟣 legenda, 🔵 info praktis, atau ⚪ belum ada data, dan mencantumkan sumbernya.
+- Riwayat percakapan disimpan di browser pengunjung dan dikirim bersama setiap pertanyaan; server tidak menyimpan percakapan.
+- API key hanya ada di server, tidak pernah dikirim ke browser.
+- Jadwal kunjungan hanya dibuat jika bot sudah menampilkan ringkasan dan pengguna menjawab "ya", email yang diundang ditulis sendiri oleh pengguna, dan tanggalnya belum lewat. Pemeriksaan ini dilakukan di server.
 
-Konfirmasi booking dijaga di server: jadwal hanya dibuat jika pesan bot sebelumnya adalah ringkasan "Ketik ya…" dan pengguna menjawab "ya", email yang diundang ditulis sendiri oleh pengguna, tanggalnya belum lewat, dan hanya satu jadwal per konfirmasi.
+## Struktur repo
+
+```
+content/
+  kartu/*.md            kartu pengetahuan (dipakai bot dan halaman situs)
+  system-prompt.md      aturan perilaku KratonBot
+src/
+  app/                  halaman (front-end); nama folder = alamat halaman
+  app/api/chat/         API chat (back-end)
+  app/api/report/       API laporan jawaban keliru
+  components/           komponen tampilan: ChatApp, Quiz, Explorer, header, footer, dll.
+  lib/agent.ts          otak bot: Gemini + alat + penjaga booking
+  lib/search.ts         pencarian kartu
+  lib/calendar.ts       undangan Google Calendar
+  lib/cards.ts          membaca file kartu
+  lib/timeline.ts       data linimasa
+  lib/gallery.ts        data galeri
+  lib/labels.ts         lima tanda jawaban
+  app/globals.css       warna, font, mode gelap/terang, animasi
+```
 
 ## Menjalankan di laptop
 
@@ -33,66 +62,56 @@ Butuh Node.js 20 atau lebih baru.
 
 ```bash
 npm install
-cp .env.example .env.local   # lalu isi GOOGLE_API_KEY (dan COMPOSIO_API_KEY untuk undangan kalender)
+cp .env.example .env.local
 npm run dev
 ```
 
-Buka http://localhost:3000. Penjelasan setiap variabel ada di `.env.example`.
+Isi `.env.local` (penjelasan lengkap ada di `.env.example`), lalu buka http://localhost:3000. Di PowerShell yang memblokir skrip, pakai `npm.cmd run dev`.
 
-## Struktur file
+| Variabel | Wajib | Isi |
+|---|---|---|
+| `GOOGLE_API_KEY` | ya | API key Gemini dari Google AI Studio |
+| `GEMINI_MODEL` | tidak | model utama (bawaan: `gemini-3.5-flash-lite`, dengan cadangan otomatis) |
+| `COMPOSIO_API_KEY` | tidak | API key Composio dengan izin *Tool execution: Write*, untuk undangan kalender otomatis |
+| `COMPOSIO_CONNECTED_ACCOUNT_ID` | tidak | ID akun Google Calendar yang aktif di Composio |
+| `REPORT_WEBHOOK_URL` | tidak | URL Apps Script untuk menyimpan laporan ke Google Sheets |
 
-| File | Fungsi |
+`.env.local` tidak pernah masuk GitHub.
+
+## Mengubah isi
+
+| Mau mengubah… | Edit |
 |---|---|
-| `src/app/page.tsx` | Landing |
-| `src/components/ChatApp.tsx` | Seluruh logika chat: sesi, riwayat (localStorage), tombol booking, laporan |
-| `src/app/api/chat/route.ts` | Menerima pesan dan riwayat, menjalankan agen, dan menerjemahkan error menjadi pesan yang jelas |
-| `src/lib/agent.ts` | Agen Gemini dengan tiga alat dan penjaga konfirmasi booking |
-| `src/lib/search.ts` | Pencarian kartu (BM25) untuk bot |
-| `src/lib/calendar.ts` | Undangan Google Calendar lewat Composio, dengan tautan manual sebagai cadangan |
-| `content/system-prompt.md` | System prompt KratonBot |
-| `src/app/api/report/route.ts` | Menerima laporan jawaban keliru |
-| `src/lib/labels.ts` | Lima tanda jawaban. Harus sama dengan `content/system-prompt.md` |
-| `src/app/globals.css` | Warna: biru-putih Kasunanan, hijau-kuning (pareanom) Mangkunegaran |
+| Pengetahuan bot dan isi situs | `content/kartu/*.md` |
+| Aturan atau gaya jawaban bot | `content/system-prompt.md` |
+| Tampilan, warna, font | `src/app/globals.css` dan `src/components/` |
+| Isi suatu halaman | `src/app/<halaman>/page.tsx` |
+| Peristiwa linimasa | `src/lib/timeline.ts` (wajib merujuk judul kartu; build gagal jika kartunya tidak ada) |
+| Ilustrasi AI di galeri | lihat bagian di bawah |
 
-## Kartu pengetahuan (`content/kartu/`)
+Format kartu: blok dipisah `---`, dengan baris `Judul`, `Situs`, `Kategori` (FAKTA, TAFSIR, LEGENDA, atau INFO PRAKTIS), `Sumber`, `Dicek` (opsional), dan `Isi`. Kalimat untuk bot ("bot sebaiknya…", "Catatan untuk tim…") dibaca bot tetapi disembunyikan dari pengunjung.
 
-Bot **dan** halaman Linimasa, Kartu pengetahuan, Kuis, serta Tentang AI semuanya membaca `content/kartu/*.md`, jadi isi situs dan pengetahuan bot selalu sama. Untuk mengubah pengetahuan: edit file kartu, commit, lalu push. Vercel akan deploy ulang otomatis.
+### Menambahkan ilustrasi AI ke galeri
 
-Aturan otomatis:
-- Kalimat untuk bot ("bot sebaiknya…", "Catatan untuk tim…") disembunyikan dari pengunjung.
-- File `07-…` (tentang KratonBot) tidak ditampilkan sebagai kartu.
-- Setiap peristiwa di `src/lib/timeline.ts` wajib merujuk judul kartu. Kalau kartunya tidak ditemukan, build gagal, jadi linimasa tidak bisa memuat klaim tanpa sumber.
-
-## Menambahkan ilustrasi AI ke galeri (`/galeri`)
-
-Foto arsip diambil langsung dari Wikimedia Commons, dengan lisensi tercantum per foto di `src/lib/gallery.ts`. Ilustrasi AI dibuat tim:
-
-1. Buka `/galeri`, buka bagian **Prompt untuk membuat ilustrasinya**, lalu salin prompt-nya ke alat gambar AI (misalnya Gemini atau ChatGPT).
-2. Pastikan hasilnya **tidak fotorealistik** dan ada tulisan "Ilustrasi AI" di gambar. Kalau alatnya tidak bisa menulis, tambahkan tulisan itu sendiri.
-3. Simpan file sebagai `public/galeri/<id>.webp`, misalnya `public/galeri/sangga-buwana.webp`.
-4. Isi bagian `ai` pada item tersebut di `src/lib/gallery.ts`:
+1. Buka `/galeri`, salin prompt di bagian **Prompt untuk membuat ilustrasinya** ke alat gambar AI.
+2. Pastikan hasilnya tidak fotorealistik dan ada tulisan "Ilustrasi AI" di gambar.
+3. Simpan sebagai `public/galeri/<id>.webp`, lalu isi bagian `ai` pada item tersebut di `src/lib/gallery.ts`:
    ```ts
    ai: { src: "/galeri/sangga-buwana.webp", width: 1200, height: 800, model: "Gemini", madeBy: "Nama", date: "05-11-2026" },
    ```
 
-## Deploy ke Vercel
+## Deploy
 
-1. Buat repository di GitHub (boleh private), lalu push kode ini:
-   ```bash
-   git add -A && git commit -m "KratonBot web"
-   git remote add origin https://github.com/USERNAME/kratonbot-web.git
-   git push -u origin main
-   ```
-2. Di https://vercel.com, pilih **Add New → Project**, lalu impor repository tersebut.
-3. Isi **Environment Variables**: `GOOGLE_API_KEY` (wajib), lalu opsional `COMPOSIO_API_KEY`, `COMPOSIO_CONNECTED_ACCOUNT_ID`, `GEMINI_MODEL`, dan `REPORT_WEBHOOK_URL`.
-4. Klik **Deploy**.
+Proyek ini terhubung ke Vercel lewat GitHub:
 
-Setiap push ke `main` otomatis di-deploy ulang. Kalau mengubah Environment Variables, lakukan Deployments → ⋯ → **Redeploy** agar nilainya terpakai.
+- Push ke `main` → situs utama diperbarui otomatis dalam 1–2 menit.
+- Push ke branch lain → Vercel membuat alamat preview terpisah.
+- Jika build gagal, situs lama tetap tampil.
+- Setelah mengubah Environment Variables di Vercel (Settings → Environment Variables), lakukan **Deployments → ⋯ → Redeploy** agar nilainya terpakai.
 
 ## Laporan ke Google Sheets (opsional)
 
-1. Buat Google Sheet baru, lalu buka **Extensions → Apps Script**.
-2. Tempel kode berikut:
+1. Buat Google Sheet, lalu buka **Extensions → Apps Script** dan tempel:
    ```js
    function doPost(e) {
      const d = JSON.parse(e.postData.contents);
@@ -102,20 +121,7 @@ Setiap push ke `main` otomatis di-deploy ulang. Kalau mengubah Environment Varia
        .setMimeType(ContentService.MimeType.JSON);
    }
    ```
-3. Pilih **Deploy → New deployment → Web app**. Atur *Execute as*: Me, dan *Who has access*: Anyone.
-4. Salin URL Web App, lalu isi sebagai `REPORT_WEBHOOK_URL`.
+2. **Deploy → New deployment → Web app**, atur *Execute as*: Me dan *Who has access*: Anyone.
+3. Isi URL Web App sebagai `REPORT_WEBHOOK_URL`.
 
-Selama `REPORT_WEBHOOK_URL` kosong, laporan hanya muncul di log server (Vercel → Logs).
-
-## Wajib dicek tim sebelum presentasi
-
-- [ ] Ganti `[nama kelompok]` di `src/components/SiteFooter.tsx`.
-- [ ] Minta orang yang bisa membaca aksara Jawa untuk memeriksa tulisan **ꦱꦸꦫꦏꦂꦠ** (Surakarta, di landing) dan **ꦏꦿꦠꦺꦴꦤ꧀** (Kraton, di header).
-- [ ] Tinjau dan sesuaikan isi `/pedoman` dan `/tentang-ai`. Keduanya draf.
-- [ ] Periksa ringkasan peristiwa di `src/lib/timeline.ts`. Ringkasan itu ditulis ulang dari kartu, jadi pastikan tidak ada yang bergeser maknanya.
-
-## Pembagian kerja yang disarankan (3 orang)
-
-- **Landing dan tampilan:** `page.tsx`, `globals.css`, `SiteHeader`, `SiteFooter`
-- **Chat:** `ChatApp.tsx`, `api/chat`, `api/report`
-- **Halaman informasi dan deploy:** `tentang-ai`, `pedoman`, Vercel, Google Sheets
+Tanpa `REPORT_WEBHOOK_URL`, laporan hanya tercatat di log Vercel.
