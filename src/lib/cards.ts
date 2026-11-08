@@ -70,40 +70,63 @@ function cleanIsi(isi: string) {
     .trim();
 }
 
+// Semua blok kartu per file, dengan baris CRLF dinormalkan (sebagian file diedit di Windows).
+function readBlocks(): { file: string; block: string }[] {
+  const out: { file: string; block: string }[] = [];
+  for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith(".md")).sort()) {
+    const text = fs
+      .readFileSync(path.join(DIR, file), "utf8")
+      .replace(/\r\n?/g, "\n")
+      .replace(/<!--[\s\S]*?-->/g, "");
+    for (const block of text.split(/\n-{3,}\n/)) {
+      if (field(block, "Judul")) out.push({ file, block: block.trim() });
+    }
+  }
+  return out;
+}
+
 let cache: Card[] | null = null;
 
 export function getCards(): Card[] {
   if (cache) return cache;
   const cards: Card[] = [];
-  for (const file of fs.readdirSync(DIR).filter((f) => f.endsWith(".md")).sort()) {
+  for (const { file, block } of readBlocks()) {
     const tema = TEMA[file.slice(0, 2)];
     if (!tema) continue;
-    const text = fs
-      .readFileSync(path.join(DIR, file), "utf8")
-      .replace(/\r\n?/g, "\n") // sebagian file diedit di Windows (CRLF)
-      .replace(/<!--[\s\S]*?-->/g, "");
-    for (const block of text.split(/\n-{3,}\n/)) {
-      const judul = field(block, "Judul");
-      if (!judul) continue;
-      const situs = field(block, "Situs") ?? "";
-      const sites: Site[] = [];
-      if (/Kasunanan|Masjid Agung|Kartasura/.test(situs)) sites.push("kasunanan");
-      if (/Mangkunegaran/.test(situs)) sites.push("mangkunegaran");
-      cards.push({
-        id: slug(judul),
-        judul,
-        situs,
-        sites,
-        kategori: (field(block, "Kategori") ?? "FAKTA") as Kategori,
-        tema,
-        sumber: parseSumber(field(block, "Sumber") ?? ""),
-        dicek: field(block, "Dicek"),
-        isi: cleanIsi(block.match(/^Isi:\s*([\s\S]*)$/m)?.[1] ?? ""),
-      });
-    }
+    const judul = field(block, "Judul")!;
+    const situs = field(block, "Situs") ?? "";
+    const sites: Site[] = [];
+    if (/Kasunanan|Masjid Agung|Kartasura/.test(situs)) sites.push("kasunanan");
+    if (/Mangkunegaran/.test(situs)) sites.push("mangkunegaran");
+    cards.push({
+      id: slug(judul),
+      judul,
+      situs,
+      sites,
+      kategori: (field(block, "Kategori") ?? "FAKTA") as Kategori,
+      tema,
+      sumber: parseSumber(field(block, "Sumber") ?? ""),
+      dicek: field(block, "Dicek"),
+      isi: cleanIsi(block.match(/^Isi:\s*([\s\S]*)$/m)?.[1] ?? ""),
+    });
   }
   cache = cards;
   return cards;
+}
+
+// Untuk bot: semua kartu, termasuk file 07 (tentang KratonBot) dan instruksi untuk bot di dalam isi,
+// dalam format teks asli (Judul/Situs/Kategori/Sumber/Isi) yang dirujuk system prompt.
+export type BotCard = { judul: string; situs: string; isi: string; block: string };
+let botCache: BotCard[] | null = null;
+
+export function getBotCards(): BotCard[] {
+  botCache ??= readBlocks().map(({ block }) => ({
+    judul: field(block, "Judul")!,
+    situs: field(block, "Situs") ?? "",
+    isi: block.match(/^Isi:\s*([\s\S]*)$/m)?.[1].trim() ?? "",
+    block,
+  }));
+  return botCache;
 }
 
 export function getCardByTitle(prefix: string): Card {

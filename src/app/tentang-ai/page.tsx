@@ -96,8 +96,9 @@ export default function TentangAI() {
       <section className="mt-10">
         <h2 className="text-xl font-normal tracking-[0.14em] uppercase text-perkamen">Teknologi</h2>
         <p className="mt-3 leading-relaxed text-abu">
-          Langflow (alur agen AI), Google Gemini (model bahasa dan embedding), DataStax Astra DB (pencarian kartu
-          pengetahuan), Composio (Google Calendar), dan Next.js (situs ini).
+          Google Gemini (model bahasa), pencarian kata kunci (BM25) atas kartu pengetahuan, Composio (Google
+          Calendar), dan Next.js di Vercel. Alur agennya dirancang dan diuji lebih dulu di Langflow, lalu dipindahkan
+          ke kode agar bisa berjalan tanpa server terpisah.
         </p>
       </section>
 

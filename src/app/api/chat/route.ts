@@ -1,29 +1,25 @@
-// Meneruskan pesan pengunjung ke flow Langflow "kratonbot-chat".
-// API key Langflow hanya ada di server (env), tidak pernah dikirim ke browser.
+// Menerima pesan pengunjung dan menjawabnya dengan agen KratonBot (src/lib/agent.ts).
+// API key hanya ada di server (env Vercel), tidak pernah dikirim ke browser.
+import { AgentError, runAgent, type Turn } from "@/lib/agent";
 
 export const maxDuration = 60;
 
 const MAX_MESSAGE = 2000;
-const SESSION_ID = /^[A-Za-z0-9_-]{8,100}$/;
+const MAX_TURNS = 16;
+const MAX_TURN_TEXT = 4000;
 
 function fail(status: number, error: string) {
   return Response.json({ error }, { status });
 }
 
 export async function POST(request: Request) {
-  const baseUrl = process.env.LANGFLOW_URL?.trim().replace(/\/+$/, "");
-  const apiKey = process.env.LANGFLOW_API_KEY?.trim();
-  if (!baseUrl || !apiKey) {
-    return fail(500, "Server belum dikonfigurasi: isi LANGFLOW_URL dan LANGFLOW_API_KEY.");
-  }
-
   let body: unknown;
   try {
     body = await request.json();
   } catch {
     return fail(400, "Format permintaan tidak valid.");
   }
-  const { message, sessionId } = (body ?? {}) as { message?: unknown; sessionId?: unknown };
+  const { message, history } = (body ?? {}) as { message?: unknown; history?: unknown };
   if (typeof message !== "string" || !message.trim()) {
     return fail(400, "Pesan masih kosong.");
   }
@@ -31,43 +27,26 @@ export async function POST(request: Request) {
     return fail(400, `Pesan terlalu panjang (maksimal ${MAX_MESSAGE} karakter).`);
   }
 
-  let res: Response;
+  // Riwayat dikirim browser karena server tidak menyimpan percakapan.
+  const turns: Turn[] = (Array.isArray(history) ? history : [])
+    .filter(
+      (t): t is Turn =>
+        !!t && (t.role === "user" || t.role === "bot") && typeof t.text === "string" && t.text.trim().length > 0,
+    )
+    .slice(-MAX_TURNS)
+    .map((t) => ({ role: t.role, text: t.text.slice(0, MAX_TURN_TEXT) }));
+
   try {
-    res = await fetch(`${baseUrl}/api/v1/run/kratonbot-chat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-api-key": apiKey },
-      body: JSON.stringify({
-        input_value: message.trim(),
-        input_type: "chat",
-        output_type: "chat",
-        session_id: typeof sessionId === "string" && SESSION_ID.test(sessionId) ? sessionId : undefined,
-      }),
-      signal: AbortSignal.timeout(55_000),
-      cache: "no-store",
-    });
+    const reply = await runAgent(turns, message.trim());
+    return Response.json({ reply });
   } catch (e) {
-    const timedOut = e instanceof DOMException && e.name === "TimeoutError";
-    return fail(
-      timedOut ? 504 : 502,
-      timedOut
-        ? "KratonBot terlalu lama menjawab. Coba kirim ulang pertanyaanmu."
-        : "KratonBot sedang offline. Coba lagi beberapa saat lagi.",
-    );
+    if (e instanceof AgentError) {
+      console.error(`[chat] ${e.kind}: ${e.message}`);
+      if (e.kind === "konfigurasi") return fail(500, "Server salah konfigurasi. Hubungi tim pengembang.");
+      if (e.kind === "sibuk") return fail(503, "KratonBot sedang ramai. Coba kirim ulang sebentar lagi.");
+      return fail(502, "KratonBot gagal menyusun jawaban. Coba kirim ulang pertanyaanmu.");
+    }
+    console.error("[chat] error tak terduga:", e);
+    return fail(500, "Terjadi kesalahan di server. Coba lagi sebentar lagi.");
   }
-
-  if (res.status === 401 || res.status === 403) {
-    console.error("[chat] Langflow menolak API key:", res.status);
-    return fail(500, "Server salah konfigurasi (API key ditolak). Hubungi tim pengembang.");
-  }
-  if (!res.ok) {
-    console.error("[chat] Langflow error:", res.status);
-    return fail(502, "KratonBot sedang offline. Coba lagi beberapa saat lagi.");
-  }
-
-  const data = await res.json().catch(() => null);
-  const reply = data?.outputs?.[0]?.outputs?.[0]?.results?.message?.text;
-  if (typeof reply !== "string" || !reply.trim()) {
-    return fail(502, "KratonBot tidak mengirim jawaban. Coba kirim ulang pertanyaanmu.");
-  }
-  return Response.json({ reply });
 }

@@ -57,12 +57,21 @@ export function ChatApp() {
   const initRef = useRef(false);
   const endRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const messagesRef = useRef<Msg[]>([]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   const ask = useCallback(async (question: string, opts: { showUser: boolean }) => {
     const q = question.trim();
     if (!q || busyRef.current) return;
     busyRef.current = true;
     setBusy(true);
+
+    // Server tidak menyimpan percakapan, jadi riwayat (tanpa pesan error) ikut dikirim.
+    const history = messagesRef.current.filter((m) => !m.error).map((m) => ({ role: m.role, text: m.text }));
+    if (!opts.showUser && history.at(-1)?.role === "user" && history.at(-1)?.text === q) history.pop();
     if (opts.showUser) setMessages((m) => [...m, { id: newId(), role: "user", text: q }]);
 
     let bot: Msg;
@@ -70,7 +79,7 @@ export function ChatApp() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: q, sessionId: sessionRef.current }),
+        body: JSON.stringify({ message: q, history: history.slice(-16) }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || typeof data.reply !== "string") {

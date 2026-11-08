@@ -15,11 +15,17 @@ Front-end KratonBot: chatbot AI tentang Keraton Kasunanan Surakarta dan Pura Man
 Alur data:
 
 ```
-Browser ──▶ /api/chat (server Next.js, menyimpan API key) ──▶ LANGFLOW_URL/api/v1/run/kratonbot-chat
+Browser ──▶ /api/chat (Vercel) ──▶ agen KratonBot (src/lib/agent.ts) ◀──▶ Gemini (GOOGLE_API_KEY)
+                                     ├─ cari_pengetahuan_keraton → content/kartu (BM25, di memori)
+                                     ├─ tanggal_sekarang         → jam WIB
+                                     └─ buat_jadwal_kunjungan    → Composio → Google Calendar kelompok
+                                                                   (gagal/kosong → tautan "Tambahkan ke Google Calendar")
 Browser ──▶ /api/report ──▶ Google Sheets (opsional, lewat Apps Script)
 ```
 
-API key Langflow **tidak pernah** dikirim ke browser.
+Semua berjalan di Vercel: tidak perlu Langflow, tunnel, atau laptop yang menyala. Flow Langflow tetap disimpan sebagai rancangan awal; logikanya dipindahkan ke `src/lib/agent.ts` dengan system prompt yang sama (`content/system-prompt.md`). API key **tidak pernah** dikirim ke browser.
+
+Konfirmasi booking dijaga di server: jadwal hanya dibuat jika pesan bot sebelumnya adalah ringkasan "Ketik ya…" dan pengguna menjawab "ya", email yang diundang ditulis sendiri oleh pengguna, tanggalnya belum lewat, dan hanya satu jadwal per konfirmasi.
 
 ## Menjalankan di laptop
 
@@ -27,11 +33,11 @@ Butuh Node.js 20 atau lebih baru.
 
 ```bash
 npm install
-cp .env.example .env.local   # lalu isi LANGFLOW_URL dan LANGFLOW_API_KEY
+cp .env.example .env.local   # lalu isi GOOGLE_API_KEY (dan COMPOSIO_API_KEY untuk undangan kalender)
 npm run dev
 ```
 
-Buka http://localhost:3000. `LANGFLOW_URL` diisi dengan URL tunnel yang muncul saat `online.bat` dijalankan di laptop yang menyalakan Langflow.
+Buka http://localhost:3000. Penjelasan setiap variabel ada di `.env.example`.
 
 ## Struktur file
 
@@ -39,17 +45,18 @@ Buka http://localhost:3000. `LANGFLOW_URL` diisi dengan URL tunnel yang muncul s
 |---|---|
 | `src/app/page.tsx` | Landing |
 | `src/components/ChatApp.tsx` | Seluruh logika chat: sesi, riwayat (localStorage), tombol booking, laporan |
-| `src/app/api/chat/route.ts` | Meneruskan pesan ke Langflow, dan menerjemahkan error menjadi pesan yang jelas |
+| `src/app/api/chat/route.ts` | Menerima pesan dan riwayat, menjalankan agen, dan menerjemahkan error menjadi pesan yang jelas |
+| `src/lib/agent.ts` | Agen Gemini dengan tiga alat dan penjaga konfirmasi booking |
+| `src/lib/search.ts` | Pencarian kartu (BM25) untuk bot |
+| `src/lib/calendar.ts` | Undangan Google Calendar lewat Composio, dengan tautan manual sebagai cadangan |
+| `content/system-prompt.md` | System prompt KratonBot |
 | `src/app/api/report/route.ts` | Menerima laporan jawaban keliru |
-| `src/lib/labels.ts` | Lima tanda jawaban. Harus sama dengan system prompt Agent di Langflow |
+| `src/lib/labels.ts` | Lima tanda jawaban. Harus sama dengan `content/system-prompt.md` |
 | `src/app/globals.css` | Warna: biru-putih Kasunanan, hijau-kuning (pareanom) Mangkunegaran |
 
 ## Kartu pengetahuan (`content/kartu/`)
 
-Halaman Linimasa, Kartu pengetahuan, Kuis, dan jumlah kartu di Tentang AI dibaca dari `content/kartu/*.md`. Ini file yang sama dengan yang di-ingest ke Astra DB (`Documents\KratonBot\flow\data\v3`). Setiap kali kartu diubah:
-
-1. Salin file kartu terbaru ke `content/kartu/`.
-2. Ingest ulang ke Astra lewat flow Ingest di Langflow, supaya isi situs dan isi bot tetap sama.
+Bot **dan** halaman Linimasa, Kartu pengetahuan, Kuis, serta Tentang AI semuanya membaca `content/kartu/*.md`, jadi isi situs dan pengetahuan bot selalu sama. Untuk mengubah pengetahuan: edit file kartu, commit, lalu push. Vercel akan deploy ulang otomatis.
 
 Aturan otomatis:
 - Kalimat untuk bot ("bot sebaiknya…", "Catatan untuk tim…") disembunyikan dari pengunjung.
@@ -77,10 +84,10 @@ Foto arsip diambil langsung dari Wikimedia Commons, dengan lisensi tercantum per
    git push -u origin main
    ```
 2. Di https://vercel.com, pilih **Add New → Project**, lalu impor repository tersebut.
-3. Isi **Environment Variables**: `LANGFLOW_URL`, `LANGFLOW_API_KEY`, dan `REPORT_WEBHOOK_URL` (opsional).
+3. Isi **Environment Variables**: `GOOGLE_API_KEY` (wajib), lalu opsional `COMPOSIO_API_KEY`, `COMPOSIO_CONNECTED_ACCOUNT_ID`, `GEMINI_MODEL`, dan `REPORT_WEBHOOK_URL`.
 4. Klik **Deploy**.
 
-**Saat URL tunnel berubah:** buka Vercel → Project → Settings → Environment Variables, ubah `LANGFLOW_URL`, lalu Deployments → ⋯ → **Redeploy**.
+Setiap push ke `main` otomatis di-deploy ulang. Kalau mengubah Environment Variables, lakukan Deployments → ⋯ → **Redeploy** agar nilainya terpakai.
 
 ## Laporan ke Google Sheets (opsional)
 
