@@ -8,6 +8,13 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/chat": ["./content/**/*"],
   },
+  // Alamat lama tetap berfungsi setelah halaman diganti nama atau dihapus.
+  async redirects() {
+    return [
+      { source: "/jelajah", destination: "/pustaka", permanent: true },
+      { source: "/kuis", destination: "/", permanent: true },
+    ];
+  },
   images: {
     // Foto arsip di halaman Galeri diambil langsung dari Wikimedia Commons (lisensi dicantumkan per foto).
     remotePatterns: [new URL("https://upload.wikimedia.org/**"), new URL("https://thumb.wikimedia.org/**")],

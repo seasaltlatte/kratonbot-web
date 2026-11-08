@@ -77,7 +77,7 @@ export default function LinimasaPage() {
                   <SourceList sumber={e.sumber} className="mt-4" />
                   <p className="mt-5 flex flex-wrap gap-x-6 text-xs text-teks">
                     {e.cardIds.map((id, n) => (
-                      <Link key={id} href={`/jelajah#${id}`} className="tautan-kurung py-1">
+                      <Link key={id} href={`/pustaka#${id}`} className="tautan-kurung py-1">
                         [ {e.cardIds.length > 1 ? `Kartu ${n + 1}` : "Baca kartunya"} ]
                       </Link>
                     ))}
@@ -88,7 +88,7 @@ export default function LinimasaPage() {
               {e.photo && (
                 <Reveal from="zoom" delay={150} className={right ? "md:order-1 md:pr-14" : "md:pl-14"}>
                   <figure>
-                    <div className="relative aspect-[4/3] overflow-hidden border border-garis bg-permukaan">
+                    <div className="batik relative aspect-[4/3] overflow-hidden border border-garis bg-permukaan">
                       <Image
                         src={e.photo.src}
                         alt={e.photo.caption}

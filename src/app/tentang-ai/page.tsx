@@ -50,8 +50,8 @@ export default function TentangAI() {
         <p className="mt-3 leading-relaxed">
           {cards.length} kartu pengetahuan tentang dua istana: {count("FAKTA")} fakta, {count("TAFSIR")} tafsir,{" "}
           {count("LEGENDA")} legenda, dan {count("INFO PRAKTIS")} info praktis. Semuanya bisa dibaca di halaman{" "}
-          <Link href="/jelajah" className="font-semibold text-emas underline underline-offset-4">
-            kartu pengetahuan
+          <Link href="/pustaka" className="font-semibold text-emas underline underline-offset-4">
+            Pustaka
           </Link>
           . Sumbernya antara lain:
         </p>

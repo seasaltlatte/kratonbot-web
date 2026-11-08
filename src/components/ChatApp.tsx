@@ -135,8 +135,10 @@ export function ChatApp() {
     if (ready) writeStorage(HISTORY_KEY, JSON.stringify(messages.slice(-60)));
   }, [messages, ready]);
 
+  // Percakapan di-scroll di dalam panelnya sendiri, jadi halaman (dan header) tidak ikut bergeser.
   useEffect(() => {
-    endRef.current?.scrollIntoView({ block: "end" });
+    const list = endRef.current?.parentElement;
+    if (list && (messages.length > 0 || busy)) list.scrollTo({ top: list.scrollHeight, behavior: "smooth" });
   }, [messages, busy]);
 
   function submit() {
@@ -164,30 +166,28 @@ export function ChatApp() {
   const awaitingBooking = !busy && last?.role === "bot" && !last.error && BOOKING_PROMPT.test(last.text);
 
   return (
-    <div className="mx-auto grid w-full max-w-6xl flex-1 gap-8 px-4 py-6 sm:px-6 lg:grid-cols-[17rem_1fr]">
-      <aside className="hidden lg:block">
-        <div className="sticky top-6 space-y-8">
-          <section>
-            <h2 className="mb-3 font-normal tracking-[0.14em] uppercase text-perkamen">Arti tanda di jawaban</h2>
-            <LabelLegend compact />
-          </section>
-          <section className="bg-catatan p-4 text-sm text-emas-terang">
-            Jadwal kunjungan dari KratonBot berupa undangan Google Calendar untuk pengingat, bukan tiket
-            atau reservasi resmi dari pengelola.
-          </section>
-        </div>
+    <div className="mx-auto grid h-[calc(100dvh-var(--tinggi-header))] w-full max-w-6xl gap-6 px-3 py-4 sm:px-6 lg:grid-cols-[18rem_1fr] lg:py-6">
+      <aside className="hidden min-h-0 overflow-y-auto border border-garis bg-permukaan p-5 lg:block">
+        <h2 className="mb-4 border-b border-garis pb-3 text-sm font-normal tracking-[0.16em] uppercase text-perkamen">
+          Arti tanda di jawaban
+        </h2>
+        <LabelLegend compact />
+        <p className="mt-6 border-l-2 border-emas/60 bg-catatan p-3 text-sm text-emas-terang">
+          Jadwal kunjungan dari KratonBot berupa undangan Google Calendar untuk pengingat, bukan tiket atau
+          reservasi resmi dari pengelola.
+        </p>
       </aside>
 
-      <div className="flex min-h-[70vh] flex-col">
-        <details className="mb-4 border border-garis bg-permukaan p-3 lg:hidden">
-          <summary className="cursor-pointer font-semibold text-perkamen">Arti tanda di jawaban</summary>
-          <div className="mt-3">
+      <div className="flex min-h-0 flex-col border border-garis bg-permukaan/40">
+        <details className="border-b border-garis bg-permukaan px-4 py-2.5 lg:hidden">
+          <summary className="cursor-pointer text-sm font-semibold text-perkamen">Arti tanda di jawaban</summary>
+          <div className="mt-3 max-h-56 overflow-y-auto pb-2">
             <LabelLegend compact />
           </div>
         </details>
 
-        <div className="flex items-center justify-between gap-4 border-b border-garis pb-3">
-          <h1 className="font-display text-2xl font-normal tracking-[0.18em] uppercase">Tanya KratonBot</h1>
+        <div className="flex items-center justify-between gap-4 border-b border-garis px-4 py-3 sm:px-6">
+          <h1 className="font-display text-lg font-normal tracking-[0.18em] uppercase sm:text-2xl">Tanya KratonBot</h1>
           {messages.length > 0 && (
             <button
               type="button"
@@ -200,7 +200,7 @@ export function ChatApp() {
           )}
         </div>
 
-        <div className="flex-1 space-y-6 py-6" aria-live="polite">
+        <div className="min-h-0 flex-1 space-y-6 overflow-y-auto overscroll-contain px-4 py-6 sm:px-6" aria-live="polite">
           {ready && messages.length === 0 && (
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed">
@@ -292,7 +292,7 @@ export function ChatApp() {
         </div>
 
         <form
-          className="sticky bottom-0 border-t border-garis bg-malam pt-3 pb-4"
+          className="border-t border-garis bg-permukaan px-3 pt-3 pb-3 sm:px-6"
           onSubmit={(e) => {
             e.preventDefault();
             submit();
@@ -313,22 +313,21 @@ export function ChatApp() {
                   submit();
                 }
               }}
-              rows={2}
+              rows={1}
               maxLength={2000}
-              placeholder="Tanyakan sejarah, tradisi, atau rencana kunjunganmu…"
-              className="max-h-40 min-h-12 flex-1 resize-y border border-garis bg-permukaan px-3 py-2.5 focus:border-emas focus:outline-none"
+              placeholder="Tanyakan sejarah, tradisi, atau kunjungan…"
+              className="max-h-32 min-h-11 flex-1 resize-none border border-garis bg-malam px-3 py-2.5 text-base leading-snug [field-sizing:content] focus:border-emas focus:outline-none"
             />
             <button
               type="submit"
               disabled={busy || !input.trim()}
-              className="h-12 bg-emas px-5 font-semibold text-malam hover:bg-emas-terang disabled:cursor-not-allowed disabled:opacity-50"
+              className="h-11 bg-emas px-5 text-sm font-semibold tracking-[0.12em] text-malam uppercase hover:bg-emas-terang disabled:cursor-not-allowed disabled:opacity-50"
             >
               Kirim
             </button>
           </div>
-          <p className="mt-2 text-xs text-abu">
-            KratonBot bisa keliru. Periksa sumber di setiap jawaban, dan jangan menulis data pribadi selain yang
-            diminta untuk jadwal kunjungan.
+          <p className="mt-2 text-xs text-abu-gelap">
+            KratonBot bisa keliru. Periksa sumber di setiap jawaban.
           </p>
         </form>
       </div>

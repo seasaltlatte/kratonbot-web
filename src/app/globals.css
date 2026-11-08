@@ -94,6 +94,55 @@
   --font-jawa: var(--font-jawa);
 }
 
+:root {
+  --tinggi-header: 4rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--tinggi-header) + 1rem);
+}
+
+/* Tombol utama (emas penuh) dan tombol kedua (garis). Di layer components agar utilitas tetap bisa menimpa. */
+@layer components {
+  .tombol-emas,
+  .tombol-garis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 3.25rem;
+    padding: 0.875rem 2rem;
+    font-family: var(--font-jakarta), system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition:
+      background-color 0.25s,
+      border-color 0.25s,
+      color 0.25s,
+      box-shadow 0.25s;
+  }
+  .tombol-emas {
+    border: 1px solid var(--emas);
+    background: var(--emas);
+    color: var(--malam);
+    box-shadow: 0 0 28px color-mix(in srgb, var(--emas) 35%, transparent);
+  }
+  .tombol-emas:hover {
+    background: var(--emas-terang);
+    box-shadow: 0 0 44px color-mix(in srgb, var(--emas) 55%, transparent);
+  }
+  .tombol-garis {
+    border: 1px solid color-mix(in srgb, var(--perkamen) 70%, transparent);
+    color: var(--perkamen);
+  }
+  .tombol-garis:hover {
+    border-color: var(--emas);
+    color: var(--emas);
+  }
+}
+
 body {
   background: var(--malam);
   color: var(--teks);

@@ -57,9 +57,8 @@ export default function Home() {
   const teaser = TIMELINE.filter((e) => TEASER_YEARS.includes(e.year));
   const EXPLORE = [
     { href: "/linimasa", big: `${TIMELINE[0].year.slice(0, 4)}–${TIMELINE[TIMELINE.length - 1].year}`, title: "Linimasa", text: "Dari runtuhnya Kartasura sampai Mangkunegara X." },
-    { href: "/jelajah", big: `${cards.length}`, title: "Kartu pengetahuan", text: "Semua yang diketahui KratonBot, lengkap dengan sumber." },
+    { href: "/pustaka", big: `${cards.length}`, title: "Pustaka", text: "Semua yang diketahui KratonBot, lengkap dengan sumber." },
     { href: "/galeri", big: `${GALLERY.length}`, title: "Rekonstruksi AI vs arsip", text: "Foto arsip di samping bayangan AI." },
-    { href: "/kuis", big: "8", title: "Kuis", text: "Fakta, tafsir, atau legenda?" },
   ];
 
   return (
@@ -68,7 +67,7 @@ export default function Home() {
       {/* Hero selalu gelap (data-theme="dark") karena tulisannya berada di atas foto. */}
       <section
         data-theme="dark"
-        className="relative isolate flex min-h-[calc(100svh-4.5rem)] items-center justify-center overflow-hidden bg-malam"
+        className="relative isolate flex min-h-[calc(100svh-var(--tinggi-header))] items-center justify-center overflow-hidden bg-malam"
       >
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <Image src={HERO.src} alt="" fill priority sizes="100vw" className="lukisan hero-bg object-cover" />
@@ -105,19 +104,13 @@ export default function Home() {
             Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran. Setiap jawaban menunjukkan sumbernya.
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-            <Link
-              href="/chat"
-              className="group inline-flex min-w-56 items-center justify-center gap-3 border border-emas bg-emas px-8 py-4 text-sm font-semibold tracking-[0.22em] text-malam uppercase shadow-[0_0_32px_rgba(199,164,92,0.35)] transition hover:bg-emas-terang hover:shadow-[0_0_48px_rgba(199,164,92,0.55)]"
-            >
+            <Link href="/chat" className="tombol-emas group min-w-56">
               Tanya Sejarah
               <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
                 →
               </span>
             </Link>
-            <Link
-              href="/linimasa"
-              className="inline-flex min-w-56 items-center justify-center border border-perkamen/70 bg-malam/40 px-8 py-4 text-sm font-semibold tracking-[0.22em] text-perkamen uppercase backdrop-blur-sm transition hover:border-emas hover:text-emas"
-            >
+            <Link href="/linimasa" className="tombol-garis min-w-56 bg-malam/40 backdrop-blur-sm">
               Lihat Linimasa
             </Link>
           </div>
@@ -157,9 +150,9 @@ export default function Home() {
             </li>
           ))}
         </ol>
-        <p className="text-center text-xs text-teks">
-          <Link href="/linimasa" className="tautan-kurung py-2">
-            [ Linimasa lengkap ]
+        <p className="text-center">
+          <Link href="/linimasa" className="tombol-garis">
+            Lihat linimasa lengkap
           </Link>
         </p>
       </section>
@@ -201,9 +194,9 @@ export default function Home() {
               sumber dan mana yang bukan.
             </p>
             <LabelLegend compact />
-            <p className="mt-10 text-xs text-teks">
-              <Link href="/chat" className="tautan-kurung py-2">
-                [ Mulai bertanya ]
+            <p className="mt-10">
+              <Link href="/chat" className="tombol-emas">
+                Mulai bertanya
               </Link>
             </p>
           </div>
@@ -250,7 +243,7 @@ export default function Home() {
       {/* Jelajahi */}
       <section className="border-t border-garis px-4 py-28 sm:px-8">
         <SectionTitle script="Belajar tanpa harus bertanya" title="Jelajahi" />
-        <div className="mx-auto mt-16 grid max-w-5xl gap-px border border-garis bg-garis sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-16 grid max-w-5xl gap-px border border-garis bg-garis sm:grid-cols-3">
           {EXPLORE.map((x) => (
             <Link key={x.href} href={x.href} className="group block bg-malam p-7 text-center hover:bg-permukaan">
               <p className="font-display text-3xl text-emas tabular-nums">{x.big}</p>
@@ -271,9 +264,9 @@ export default function Home() {
           <span className="text-perkamen">Buat jadwal</span>, undangan masuk ke Google Calendar-mu. Ini pengingat
           pribadi, bukan tiket resmi, jadi tetap cek tiket dan aturan berkunjung ke pengelola.
         </p>
-        <p className="mt-10 text-xs text-teks">
-          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tautan-kurung py-2">
-            [ Rencanakan kunjungan ]
+        <p className="mt-10">
+          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tombol-emas">
+            Rencanakan kunjungan
           </Link>
         </p>
       </section>

@@ -125,7 +125,7 @@ function GalleryEntry({ item }: { item: GalleryItem }) {
             {cards.map((c) => (
               <li key={c.id} className="flex flex-wrap items-baseline gap-2">
                 <LabelChip index={KATEGORI_INDEX[c.kategori]} />
-                <Link href={`/jelajah#${c.id}`} className="text-emas underline underline-offset-2">
+                <Link href={`/pustaka#${c.id}`} className="text-emas underline underline-offset-2">
                   {c.judul}
                 </Link>
               </li>

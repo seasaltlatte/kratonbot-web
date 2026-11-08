@@ -13,9 +13,8 @@ Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composi
 | `/` | Landing: hero, linimasa singkat, contoh jawaban, dua istana, ajakan berkunjung |
 | `/chat` | Chat dengan KratonBot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
 | `/linimasa` | Linimasa 1742–2022; setiap peristiwa merujuk kartu, versi tahun yang berbeda ditampilkan |
-| `/jelajah` | Semua kartu pengetahuan, dengan filter dan pencarian |
+| `/pustaka` | Semua kartu pengetahuan, dengan filter dan pencarian |
 | `/galeri` | Foto arsip berdampingan dengan rekonstruksi AI |
-| `/kuis` | Kuis "Fakta, tafsir, atau legenda?" |
 | `/tentang-ai` | Cara kerja, sumber data, batasan, dan privasi |
 | `/pedoman` | Pedoman penggunaan AI untuk heritage |
 
@@ -45,7 +44,7 @@ src/
   app/                  halaman (front-end); nama folder = alamat halaman
   app/api/chat/         API chat (back-end)
   app/api/report/       API laporan jawaban keliru
-  components/           komponen tampilan: ChatApp, Quiz, Explorer, header, footer, dll.
+  components/           komponen tampilan: ChatApp, Explorer, header, footer, dll.
   lib/agent.ts          otak bot: Gemini + alat + penjaga booking
   lib/search.ts         pencarian kartu
   lib/calendar.ts       undangan Google Calendar
