@@ -202,7 +202,7 @@ export default function GaleriPage() {
           as="h1"
           script="Antara bukti dan bayangan"
           title="Rekonstruksi AI vs arsip"
-          intro="AI bisa menggambar masa lalu dengan meyakinkan, padahal sebagian besar isinya rekaan. Galeri ini memasangkan setiap rekonstruksi dengan bukti aslinya, supaya kamu bisa melihat sendiri mana yang tercatat dan mana yang dibayangkan."
+          intro="Gambar masa lalu buatan AI sebagian besar berisi rekaan, karena AI mengisi bagian yang tidak tercatat di sumber. Galeri ini memasangkan setiap rekonstruksi dengan bukti aslinya, supaya kamu bisa melihat sendiri mana yang tercatat dan mana yang dibayangkan."
         />
       </Reveal>
 
