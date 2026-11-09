@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroCursor } from "@/components/HeroCursor";
-import { IkonGaleri, IkonKalender, IkonLinimasa, IkonLontar } from "@/components/Icons";
-import { LabelChip, LabelLegend } from "@/components/LabelLegend";
+import { IkonGaleri, IkonLinimasa, IkonLontar } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
 import { ScrollSpine } from "@/components/ScrollSpine";
 import { SectionTitle } from "@/components/SectionTitle";
-import { SourceList } from "@/components/SourceList";
+import { SiteHeader } from "@/components/SiteHeader";
 import { getCards } from "@/lib/cards";
 import { GALLERY } from "@/lib/gallery";
 import { TIMELINE } from "@/lib/timeline";
@@ -21,280 +20,345 @@ const HERO = {
 };
 
 const photo = (id: string) => GALLERY.find((g) => g.id === id)!.archive;
-const KUNJUNGAN = photo("kasunanan-1890");
 
 const SITES = [
   {
+    year: "1755",
+    event: "Perjanjian Giyanti",
     name: "Keraton Kasunanan Surakarta Hadiningrat",
     script: "Kasunanan",
     photo: photo("kasunanan-1890"),
-    border: "border-t-kasunanan",
     fact: "Perjanjian Giyanti tahun 1755 membagi wilayah Mataram menjadi dua: Kasunanan Surakarta dan Kesultanan Yogyakarta.",
-    source: "Wikipedia bahasa Indonesia, “Keraton Surakarta Hadiningrat”",
-    questions: [
-      "Bagaimana sejarah berdirinya Keraton Surakarta?",
-      "Apa saja yang bisa dilihat di Museum Keraton Surakarta?",
-    ],
+    source: "Sumber: Wikipedia bahasa Indonesia, “Keraton Surakarta Hadiningrat”. Foto: fotografer tidak diketahui, 1890.",
   },
   {
+    year: "1757",
+    event: "Perjanjian Salatiga",
     name: "Pura Mangkunegaran",
     script: "Mangkunegaran",
     photo: photo("pendhapa-mangkunegaran"),
-    border: "border-t-pareanom",
     fact: "Perjanjian Salatiga, 17 Maret 1757, melahirkan Praja Mangkunegaran. Raden Mas Said menjadi Mangkunegara I.",
-    source: "Situs resmi Mangkunegaran, “Sejarah Singkat Mangkunegaran”",
-    questions: ["Siapa Raden Mas Said?", "Bagaimana cara berkunjung ke Pura Mangkunegaran?"],
+    source: "Sumber: Situs resmi Mangkunegaran, “Sejarah Singkat Mangkunegaran”. Foto: James Page, sekitar 1880.",
   },
 ];
 
-// Butiran emas di hero: [posisi kiri %, ukuran px, durasi s, jeda s]. Nilai tetap agar tidak beda antara server dan browser.
+// Butiran emas di hero: [posisi kiri %, ukuran px, durasi s, jeda s].
 const DUST: [number, number, number, number][] = [
   [6, 3, 14, -2], [13, 2, 18, -9], [21, 4, 16, -5], [28, 2, 20, -12], [35, 3, 15, -1],
   [42, 2, 19, -7], [49, 4, 17, -14], [56, 2, 21, -3], [63, 3, 16, -10], [70, 2, 18, -6],
   [77, 4, 15, -13], [84, 2, 20, -4], [91, 3, 17, -8], [97, 2, 22, -11], [17, 2, 23, -16], [66, 3, 24, -18],
 ];
 
-const TEASER_YEARS = ["1586", "1755", "1757", "2022"];
+const TEASER_YEARS = ["1744–1745", "1755", "1757", "2022"];
+
+const CLAIM_MARKS = [
+  {
+    name: "FAKTA TERCATAT",
+    desc: "Tertulis di sumber yang sudah diperiksa tim.",
+    color: "bg-[#2f6b45]",
+  },
+  {
+    name: "TAFSIR",
+    desc: "Pendapat atau interpretasi, bukan kepastian.",
+    color: "bg-[#b58129]",
+  },
+  {
+    name: "LEGENDA",
+    desc: "Kisah yang dipercaya dan dituturkan turun-temurun.",
+    color: "bg-[#703da8]",
+  },
+  {
+    name: "INFO PRAKTIS",
+    desc: "Jam buka, tiket, aturan. Bisa berubah, cek ulang.",
+    color: "bg-[#2b6cb0]",
+  },
+  {
+    name: "BELUM ADA DATA",
+    desc: "Bot tidak menemukannya di sumber, jadi tidak menebak.",
+    color: "bg-[#71717a]",
+  },
+];
 
 export default function Home() {
   const cards = getCards();
   const teaser = TIMELINE.filter((e) => TEASER_YEARS.includes(e.year));
   const EXPLORE = [
-    { href: "/linimasa", big: `${TIMELINE[0].year.slice(0, 4)}–${TIMELINE[TIMELINE.length - 1].year}`, Icon: IkonLinimasa, title: "Linimasa", text: "Dari Kotagede sampai Mangkunegara X." },
-    { href: "/pustaka", big: `${cards.length}`, Icon: IkonLontar, title: "Pustaka", text: "Semua yang diketahui KratonBot, lengkap dengan sumber." },
-    { href: "/galeri", big: `${GALLERY.length}`, Icon: IkonGaleri, title: "Rekonstruksi AI vs arsip", text: "Foto arsip di samping bayangan AI." },
+    {
+      href: "/linimasa",
+      big: `${TIMELINE[0].year.slice(0, 4)}–${TIMELINE[TIMELINE.length - 1].year}`,
+      Icon: IkonLinimasa,
+      title: "Linimasa",
+      text: "Dari Kotagede sampai Mangkunegara X.",
+    },
+    {
+      href: "/pustaka",
+      big: `${cards.length}`,
+      Icon: IkonLontar,
+      title: "Pengetahuan",
+      text: "Semua yang diketahui Kerajaan Mataram Islam Bot, lengkap dengan sumber.",
+    },
+    {
+      href: "/galeri",
+      big: `${GALLERY.length}`,
+      Icon: IkonGaleri,
+      title: "Rekonstruksi AI vs arsip",
+      text: "Foto arsip di samping bayangan AI.",
+    },
   ];
 
   return (
     <>
-      {/* Hero */}
-      {/* Hero selalu gelap (data-theme="dark") karena tulisannya berada di atas foto. */}
-      <section
-        data-theme="dark"
-        className="relative isolate flex min-h-[calc(100svh-var(--tinggi-header))] items-center justify-center overflow-hidden bg-malam"
-      >
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <Image src={HERO.src} alt="" fill priority sizes="100vw" className="lukisan hero-bg object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-malam/85 via-malam/30 to-malam" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(7,9,8,0.8))]" />
-          <div className="absolute inset-0" aria-hidden="true">
-            {DUST.map((d, i) => (
-              <span
-                key={i}
-                className="debu"
-                style={{ left: `${d[0]}%`, width: d[1], height: d[1], animationDuration: `${d[2]}s`, animationDelay: `${d[3]}s` }}
-              />
+      {/* Wrapper Bersatu: Hero Canvas Card & Linimasa berbagi satu latar batik yang menyatu tanpa putus */}
+      <div className="batik bg-malam-2">
+        <div className="p-2 sm:p-3 md:p-4 lg:p-5">
+          <section
+            data-theme="dark"
+            className="relative isolate flex min-h-[calc(100svh-1rem)] sm:min-h-[calc(100svh-1.5rem)] md:min-h-[calc(100svh-2rem)] flex-col justify-between overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] lg:rounded-[2.75rem] border border-teks/15 bg-malam shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9)]"
+          >
+            {/* Foto Latar & Debu Emas */}
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+              <Image src={HERO.src} alt="" fill priority unoptimized sizes="100vw" className="lukisan hero-bg object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-b from-malam/80 via-malam/20 to-malam/95" />
+              <div className="absolute inset-0" aria-hidden="true">
+                {DUST.map((d, i) => (
+                  <span
+                    key={i}
+                    className="debu"
+                    style={{ left: `${d[0]}%`, width: d[1], height: d[1], animationDuration: `${d[2]}s`, animationDelay: `${d[3]}s` }}
+                  />
+                ))}
+              </div>
+              <HeroCursor />
+            </div>
+
+            {/* Top Bar Navigation di dalam kartu Hero */}
+            <SiteHeader inHero />
+
+            {/* Area Konten Hero */}
+            <div className="hero-naik relative z-20 w-full px-6 pb-6 sm:px-10 sm:pb-8 md:px-12 md:pb-10">
+              <div className="grid grid-cols-1 items-end gap-8 lg:grid-cols-[1fr_auto]">
+                {/* Kolom Kiri: Judul Besar, Skrip, & Tombol CTA */}
+                <div className="max-w-4xl text-left lg:mb-12">
+                  <p className="kilau font-script text-3xl sm:text-4xl md:text-5xl">
+                    Mengenal Lebih Dekat
+                  </p>
+                  <h1 className="mt-2 font-display text-[clamp(2.4rem,5.5vw,5rem)] leading-[1.15] font-medium tracking-[0.06em] text-perkamen uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
+                    Kerajaan Mataram Islam
+                  </h1>
+                  <p className="kilau mt-3 font-script text-2xl sm:text-3xl md:text-4xl [animation-delay:-3.5s]">
+                    di Kota Surakarta
+                  </p>
+                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-perkamen/90 italic drop-shadow-[0_1px_4px_rgba(0,0,0,1)] sm:text-lg">
+                    Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran. Setiap jawaban menunjukkan sumbernya.
+                  </p>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    <Link href="/chat" className="tombol-emas group min-w-48">
+                      Tanya Sejarah
+                      <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+                        →
+                      </span>
+                    </Link>
+                    <Link href="/linimasa" className="tombol-garis min-w-48 bg-malam/40 backdrop-blur-sm">
+                      Lihat Linimasa
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Kolom Kanan: Kredit Foto */}
+                <div className="flex flex-col items-start gap-4 lg:items-end">
+                  <div className="flex flex-col items-start gap-1 text-xs text-abu-gelap lg:items-end lg:text-right">
+                    <a
+                      href={HERO.sourceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="max-w-xs text-[11px] leading-tight hover:text-abu transition-colors"
+                    >
+                      {HERO.credit}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        {/* Linimasa singkat */}
+        <section className="overflow-hidden px-4 pt-16 pb-28 sm:px-8 sm:pt-20">
+          <SectionTitle
+            script="Jejak Perjalanan"
+            title="Linimasa"
+            intro="Dari runtuhnya Kartasura sampai lahirnya Pura Mangkunegaran"
+          />
+          <ol className="relative mx-auto mt-20 max-w-4xl">
+            <ScrollSpine />
+            {teaser.map((e, i) => (
+              <li
+                key={e.year}
+                className={`relative mb-16 pl-12 md:w-1/2 md:pl-0 ${i % 2 ? "md:ml-auto md:pl-14" : "md:pr-14 md:text-right"}`}
+              >
+                <Reveal from={i % 2 ? "kanan" : "kiri"}>
+                  <p className="font-display text-3xl text-emas tabular-nums">{e.year}</p>
+                  <h3 className="mt-2 font-display text-xl font-normal tracking-[0.12em] uppercase">{e.title}</h3>
+                  <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
+                </Reveal>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 text-center text-xs text-teks">
+            <Link href="/linimasa" className="tautan-kurung py-2">
+              [ Linimasa lengkap ]
+            </Link>
+          </p>
+        </section>
+      </div>
+
+      {/* Kerajaan Mataram Islam Bot: Lima Tanda (Inspo 1 - Kompatibel Mode Terang & Gelap) */}
+      <section className="border-t border-garis px-4 py-24 sm:px-8 sm:py-28">
+        <SectionTitle
+          script="Lima Tanda di Setiap Jawaban"
+          title="Tahu Mana yang Pasti"
+          intro="AI mudah terdengar yakin walaupun sedang mengarang. Setiap kalimat diberi tanda agar kamu bisa memilah sumber dari dugaan."
+        />
+
+        <div className="mx-auto mt-14 grid max-w-5xl gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:items-center">
+          {/* Kartu Contoh Jawaban (Aman keterbacaan di tema terang & gelap) */}
+          <div className="rounded-2xl border border-garis bg-permukaan p-6 shadow-sm sm:p-7 terang:border-[#e8dfd2] terang:bg-white">
+            {/* Header Kartu */}
+            <div className="flex items-center gap-2 border-b border-garis pb-4 text-xs font-display tracking-[0.2em] text-abu uppercase terang:border-[#eee7dc] terang:text-[#7d7164]">
+              <span className="size-2 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
+              <span>Contoh Jawaban</span>
+            </div>
+
+            {/* Bubble Pertanyaan Pengguna */}
+            <div className="mt-6 flex justify-end">
+              <Link
+                href="/chat?q=Apa%20itu%20Perjanjian%20Salatiga%3F"
+                className="rounded-lg bg-emas px-4 py-2.5 text-sm font-medium text-malam transition-opacity hover:opacity-90 sm:text-base terang:bg-[#8a6036] terang:text-white"
+              >
+                Kapan Perjanjian Salatiga disepakati?
+              </Link>
+            </div>
+
+            {/* Jawaban Bot */}
+            <div className="mt-4 rounded-xl border border-garis/80 bg-catatan/40 p-5 sm:p-6 terang:border-[#e8dfd2] terang:bg-[#f4eee4]">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="font-script text-2xl text-emas sm:text-3xl terang:text-[#8a6036]">
+                  Kerajaan Mataram Islam Bot
+                </p>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-pareanom/30 bg-pareanom-gelap/60 px-2.5 py-0.5 text-xs font-medium text-pareanom-terang terang:border-transparent terang:bg-[#dfead8] terang:text-[#2f6b45]">
+                  <span className="size-1.5 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
+                  Fakta tercatat
+                </span>
+              </div>
+
+              <p className="mt-4 font-arsip text-base leading-relaxed text-perkamen sm:text-lg terang:text-[#2b221a]">
+                Perjanjian Salatiga disepakati pada 17 Maret 1757. Perjanjian ini melahirkan Praja Mangkunegaran dan
+                menetapkan Raden Mas Said sebagai Mangkunegara I.
+              </p>
+
+              <div className="my-4 border-b border-garis terang:border-[#e2d8c9]" />
+
+              <p className="font-arsip text-xs text-abu sm:text-sm terang:text-[#827567]">
+                Sumber: Situs resmi Mangkunegaran, “Sejarah Singkat Mangkunegaran”
+              </p>
+            </div>
+          </div>
+
+          {/* Daftar 5 Tanda */}
+          <div className="space-y-6 sm:space-y-7">
+            {CLAIM_MARKS.map((mark, i) => (
+              <div
+                key={mark.name}
+                className={i < CLAIM_MARKS.length - 1 ? "border-b border-garis pb-5 terang:border-[#e5dcce]" : "pb-1"}
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className={`size-2 rounded-full ${mark.color}`} aria-hidden="true" />
+                  <h3 className="font-display text-xs font-medium tracking-[0.2em] text-perkamen uppercase sm:text-sm terang:text-[#2a1d14]">
+                    {mark.name}
+                  </h3>
+                </div>
+                <p className="mt-2 font-arsip text-base text-abu sm:text-lg leading-relaxed terang:text-[#6f6254]">
+                  {mark.desc}
+                </p>
+              </div>
             ))}
           </div>
-          <HeroCursor />
         </div>
-
-        <div className="bingkai-napas pointer-events-none absolute inset-3 border border-teks/20 sm:inset-6 md:inset-8" aria-hidden="true">
-          <span className="absolute -top-1.5 -left-1.5 size-3 border-t border-l border-teks/50" />
-          <span className="absolute -top-1.5 -right-1.5 size-3 border-t border-r border-teks/50" />
-          <span className="absolute -bottom-1.5 -left-1.5 size-3 border-b border-l border-teks/50" />
-          <span className="absolute -right-1.5 -bottom-1.5 size-3 border-r border-b border-teks/50" />
-        </div>
-
-        <div className="hero-naik relative isolate w-full max-w-5xl px-6 py-24 text-center">
-          {/* Bayangan gelap lembut di balik tulisan agar terbaca di atas foto. */}
-          <span
-            className="pointer-events-none absolute inset-x-0 inset-y-10 -z-10 bg-[radial-gradient(ellipse_closest-side,rgba(5,6,5,0.82),rgba(5,6,5,0.6)_60%,transparent)]"
-            aria-hidden="true"
-          />
-          <p className="kilau font-script text-4xl drop-shadow-[0_2px_6px_rgba(0,0,0,1)] sm:text-5xl">Mengenal Lebih Dekat</p>
-          <h1 className="mt-2 font-display text-[clamp(2rem,7vw,5.5rem)] leading-[1.05] font-medium tracking-[0.1em] text-perkamen uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
-            <span className="block">Kerajaan</span>
-            <span className="block">Mataram Islam</span>
-          </h1>
-          <p className="kilau mt-2 pb-2 font-script text-[clamp(2.25rem,5.5vw,4rem)] drop-shadow-[0_2px_6px_rgba(0,0,0,1)] [animation-delay:-3.5s]">
-            di Kota Surakarta
-          </p>
-          <p className="mx-auto mt-6 text-lg leading-relaxed text-perkamen/90 italic drop-shadow-[0_1px_4px_rgba(0,0,0,1)] sm:text-xl">
-            <span className="block">Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran.</span>
-            <span className="block">Setiap jawaban menunjukkan sumbernya.</span>
-          </p>
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-            <Link href="/chat" className="tombol-emas group min-w-56">
-              Tanya Sejarah
-              <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
-                →
-              </span>
-            </Link>
-            <Link href="/linimasa" className="tombol-garis min-w-56 bg-malam/40 backdrop-blur-sm">
-              Lihat Linimasa
-            </Link>
-          </div>
-        </div>
-
-        <span className="petunjuk-gulir absolute bottom-16 left-1/2 hidden h-8 w-px -translate-x-1/2 bg-perkamen/60 sm:block" aria-hidden="true" />
-
-        <a
-          href={HERO.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute right-4 bottom-3 max-w-[16rem] text-right text-[10px] leading-snug text-abu-gelap/80 hover:text-abu sm:right-10 sm:bottom-10 sm:max-w-none"
-        >
-          {HERO.credit}
-        </a>
       </section>
 
-      {/* Linimasa singkat */}
-      <section className="batik overflow-hidden bg-malam-2 px-4 py-28 sm:px-8">
-        <SectionTitle panel
-          script="Jejak Perjalanan Kerajaan"
-          title="Linimasa"
-          intro="Dari berdirinya Mataram di Kotagede, terbaginya Mataram, sampai hari ini."
-        />
-        <ol className="relative mx-auto mt-20 max-w-4xl">
-          <ScrollSpine />
-          {teaser.map((e, i) => (
-            <li
-              key={e.year}
-              className={`relative mb-12 pl-12 md:w-1/2 md:pl-0 ${i % 2 ? "md:ml-auto md:pl-12" : "md:pr-12"}`}
-            >
-              <Reveal from={i % 2 ? "kanan" : "kiri"}>
-                <article className="relative border border-garis bg-permukaan/90 p-6 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm">
-                  <span className="absolute -top-px -left-px size-3 border-t-2 border-l-2 border-emas" aria-hidden="true" />
-                  <span className="absolute -right-px -bottom-px size-3 border-r-2 border-b-2 border-emas" aria-hidden="true" />
-                  <p className="font-display text-3xl text-emas tabular-nums">{e.year}</p>
-                  <h3 className="mt-2 font-display text-lg font-normal tracking-[0.12em] uppercase">{e.title}</h3>
-                  <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
-                </article>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-4 text-center">
-          <Link href="/linimasa" className="tombol-emas group min-w-64">
-            Lihat linimasa lengkap
-            <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        </p>
-      </section>
-
-      {/* KratonBot */}
-      <section className="cahaya-emas border-t border-garis px-4 py-28 sm:px-8">
+      {/* Dua Istana: Dua Kerajaan, Satu Sejarah (Inspo 2 - Desain Kubah Klasik & 2 Kolom) */}
+      <section className="border-t border-garis bg-malam-2 px-4 py-24 sm:px-8 sm:py-28">
         <SectionTitle
-          script="Bertanya kepada Sang Pendamping"
-          title="KratonBot"
-          intro="KratonBot menjawab dari kartu pengetahuan yang disusun tim, lalu menandai mana fakta tercatat, tafsir, dan legenda. Kalau datanya tidak ada, ia bilang belum tahu."
+          script="Dua Kerajaan, Satu Sejarah"
+          title="Mataram Islam di Surakarta"
         />
 
-        <div className="mx-auto mt-16 grid max-w-5xl gap-10 lg:grid-cols-[1.15fr_1fr] lg:items-start">
-          <Reveal from="kiri">
-            <figure className="overflow-hidden border border-emas/30 bg-permukaan shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)]">
-              <div className="flex items-center gap-3 border-b border-garis bg-malam/60 px-5 py-3">
-                <span className="flex size-9 items-center justify-center rounded-full border border-emas/60 font-jawa text-emas" aria-hidden="true">
-                  ꦏ
+        <div className="mx-auto mt-16 grid max-w-5xl gap-12 md:grid-cols-2 md:gap-0 md:divide-x md:divide-garis/60 terang:md:divide-[#dfd6c7]">
+          {SITES.map((s, index) => (
+            <article
+              key={s.name}
+              className={`flex flex-col ${index === 0 ? "md:pr-8 lg:pr-12" : "md:pl-8 lg:pl-12"}`}
+            >
+              {/* Header: Tahun & Nama Peristiwa */}
+              <div className="flex items-baseline gap-4">
+                <span className="font-display text-5xl sm:text-6xl text-emas tabular-nums terang:text-[#8a6036]">
+                  {s.year}
                 </span>
-                <span className="font-script text-2xl text-emas">KratonBot</span>
-                <span className="ml-auto inline-flex items-center gap-1.5 text-xs text-abu">
-                  <span className="size-2 rounded-full bg-pareanom-terang" aria-hidden="true" />
-                  Daring
+                <span className="font-display text-xs sm:text-sm tracking-[0.22em] text-abu uppercase terang:text-[#7d7164]">
+                  {s.event}
                 </span>
               </div>
-              <div className="space-y-5 p-5 sm:p-6">
-                <p className="text-right">
-                  <span className="inline-block border border-emas/40 bg-malam/40 px-4 py-2 text-sm text-perkamen">
-                    Apa itu Perjanjian Salatiga?
-                  </span>
+
+              {/* Foto Berbingkai Kubah / Arch Klasik */}
+              <div className="relative mt-6 aspect-[4/3] w-full overflow-hidden rounded-t-[6rem] sm:rounded-t-[8rem] md:rounded-t-[10rem] lg:rounded-t-[12rem] rounded-b-none border border-garis/40 shadow-sm terang:border-[#e5dcce]">
+                <Image
+                  src={s.photo.src}
+                  alt={s.photo.caption}
+                  fill
+                  unoptimized
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="lukisan object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+
+              {/* Teks Konten */}
+              <div className="flex flex-1 flex-col pt-6 sm:pt-7">
+                <p className="font-script text-3xl sm:text-4xl text-emas terang:text-[#8a6036]">
+                  {s.script}
                 </p>
-                <div>
-                  <p className="leading-[1.8]">
-                    <LabelChip index={0} /> Perjanjian Salatiga yang disepakati pada 17 Maret 1757 adalah perjanjian yang
-                    melahirkan Praja Mangkunegaran dan menetapkan Raden Mas Said sebagai Mangkunegara I dengan
-                    kedudukan Pangeran Miji.
-                  </p>
-                  <SourceList
-                    className="mt-4"
-                    sumber={[
-                      { text: "Situs resmi Mangkunegaran, “Sejarah Singkat Mangkunegaran”" },
-                      { text: "Wikipedia bahasa Indonesia, “Raden Mas Said”" },
-                    ]}
-                  />
+                <h3 className="mt-2 font-display text-lg sm:text-xl font-normal tracking-[0.14em] text-perkamen uppercase leading-snug terang:text-[#2a1d14]">
+                  {s.name}
+                </h3>
+
+                <div className="mt-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-pareanom/30 bg-pareanom-gelap/60 px-2.5 py-0.5 text-xs font-medium text-pareanom-terang terang:border-transparent terang:bg-[#dfead8] terang:text-[#2f6b45]">
+                    <span className="size-1.5 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
+                    Fakta tercatat
+                  </span>
                 </div>
+
+                <p className="mt-4 font-arsip text-base sm:text-lg leading-relaxed text-perkamen terang:text-[#2a1d14]">
+                  {s.fact}
+                </p>
+
+                <p className="mt-4 font-arsip text-xs sm:text-sm text-abu terang:text-[#827567] leading-normal">
+                  {s.source}
+                </p>
               </div>
-              <figcaption className="border-t border-garis bg-malam/40 px-5 py-3 text-xs text-abu-gelap">
-                Jawaban asli KratonBot saat diuji tim, 2 November 2026.
-              </figcaption>
-            </figure>
-          </Reveal>
-
-          <Reveal from="kanan" delay={120}>
-            <div className="border border-garis bg-permukaan/80 p-6 sm:p-7">
-              <h3 className="font-display text-lg font-normal tracking-[0.16em] uppercase">Lima tanda di setiap jawaban</h3>
-              <p className="mt-3 mb-6 leading-relaxed text-abu">
-                AI mudah terdengar yakin walaupun sedang mengarang. Tanda ini membantumu memilah mana yang tercatat di
-                sumber dan mana yang bukan.
-              </p>
-              <LabelLegend compact />
-            </div>
-            <Link href="/chat" className="tombol-emas mt-6 w-full">
-              Mulai bertanya
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Dua istana */}
-      <section className="batik border-t border-garis bg-malam-2 px-4 py-28 sm:px-8">
-        <SectionTitle script="Dua istana, satu sejarah" title="Mataram di Surakarta" />
-        <div className="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-2">
-          {SITES.map((s, i) => (
-            <Reveal key={s.name} from={i ? "kanan" : "kiri"}>
-              <article className={`group flex h-full flex-col border border-t-4 border-teks/12 bg-permukaan shadow-[0_24px_60px_-36px_rgba(0,0,0,0.7)] ${s.border}`}>
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  <Image
-                    src={s.photo.src}
-                    alt={s.photo.caption}
-                    fill
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="lukisan object-cover transition-transform duration-[1.5s] group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <p className="font-script text-2xl text-emas">{s.script}</p>
-                  <h3 className="font-display text-lg leading-snug font-normal tracking-[0.12em] uppercase">{s.name}</h3>
-                  <p className="mt-5 leading-[1.8] text-emas-redup">
-                    <LabelChip index={0} /> {s.fact}
-                  </p>
-                  <p className="mt-3 flex gap-2 text-xs text-abu-gelap">
-                    <IkonLontar className="size-4 shrink-0 text-emas" />
-                    <span>
-                      {s.source}. Foto: {s.photo.author}, {s.photo.year}, {s.photo.license}.
-                    </span>
-                  </p>
-                  <ul className="mt-6 space-y-3 border-t border-garis pt-5">
-                    {s.questions.map((q) => (
-                      <li key={q}>
-                        <Link href={chatLink(q)} className="group/q inline-flex items-baseline gap-3 hover:text-perkamen">
-                          <span className="text-emas transition-transform group-hover/q:translate-x-1" aria-hidden="true">
-                            →
-                          </span>
-                          <span className="underline decoration-teks/25 underline-offset-4 group-hover/q:decoration-emas">{q}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            </Reveal>
+            </article>
           ))}
         </div>
       </section>
 
       {/* Jelajahi */}
       <section className="cahaya-emas border-t border-garis px-4 py-28 sm:px-8">
-        <SectionTitle script="Belajar tanpa harus bertanya" title="Jelajahi" />
+        <SectionTitle script="Cari Tahu Lebih Banyak" title="Jelajahi" />
         <div className="mx-auto mt-16 grid max-w-5xl gap-6 sm:grid-cols-3">
           {EXPLORE.map((x, i) => (
             <Reveal key={x.href} delay={i * 120}>
               <Link
                 href={x.href}
-                className="group relative flex h-full flex-col items-center border border-garis bg-permukaan p-8 text-center transition-colors hover:border-emas/60"
+                className="group relative flex h-full flex-col items-center border border-garis bg-permukaan p-8 text-center transition-colors hover:border-emas/60 terang:bg-white"
               >
                 <span className="absolute -top-px -left-px size-3 border-t-2 border-l-2 border-emas" aria-hidden="true" />
                 <span className="absolute -right-px -bottom-px size-3 border-r-2 border-b-2 border-emas" aria-hidden="true" />
@@ -310,28 +374,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Berkunjung: selalu gelap karena teksnya di atas foto. */}
-      <section data-theme="dark" className="relative isolate overflow-hidden bg-malam px-4 py-32 text-center sm:px-8">
-        <div className="absolute inset-0 -z-10">
-          <Image src={KUNJUNGAN.src} alt="" fill sizes="100vw" className="lukisan object-cover opacity-45" />
-          <div className="absolute inset-0 bg-gradient-to-b from-malam via-malam/60 to-malam" />
-        </div>
-        <span className="mx-auto flex size-14 items-center justify-center rounded-full border border-emas/60 text-emas" aria-hidden="true">
-          <IkonKalender className="size-6" />
-        </span>
-        <p className="mt-5 font-script text-3xl text-emas sm:text-4xl">Mau berkunjung langsung?</p>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-[1.8] text-teks">
-          Sebutkan tanggal, jam, dan jumlah orang. KratonBot merangkumnya dulu, dan baru setelah kamu menekan{" "}
+      {/* Berkunjung */}
+      <section className="border-t border-garis bg-malam-2 px-4 py-28 text-center sm:px-8">
+        <p className="font-script text-3xl text-emas sm:text-4xl">Mau Berkunjung Langsung?</p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-[1.8] text-abu">
+          Sebutkan tanggal, jam, dan jumlah orang. Kerajaan Mataram Islam Bot merangkumnya dulu, dan baru setelah kamu menekan{" "}
           <span className="text-perkamen">Buat jadwal</span>, undangan masuk ke Google Calendar-mu. Ini pengingat
           pribadi, bukan tiket resmi, jadi tetap cek tiket dan aturan berkunjung ke pengelola.
         </p>
-        <p className="mt-10">
-          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tombol-emas">
-            Rencanakan kunjungan
+        <p className="mt-10 text-xs text-teks">
+          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tautan-kurung py-2">
+            [ Rencanakan kunjungan ]
           </Link>
-        </p>
-        <p className="absolute right-4 bottom-3 max-w-[16rem] text-right text-[10px] leading-snug text-abu-gelap/80 sm:right-8 sm:bottom-5 sm:max-w-none">
-          Foto latar: {KUNJUNGAN.caption} {KUNJUNGAN.author}, {KUNJUNGAN.year}. {KUNJUNGAN.license}.
         </p>
       </section>
     </>

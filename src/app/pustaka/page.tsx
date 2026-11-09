@@ -4,7 +4,7 @@ import { Explorer } from "@/components/Explorer";
 import { getCards, TEMA } from "@/lib/cards";
 
 export const metadata: Metadata = {
-  title: "Pustaka | KratonBot",
+  title: "Pustaka | Kerajaan Mataram Islam Bot",
 };
 
 export default function PustakaPage() {
@@ -14,9 +14,9 @@ export default function PustakaPage() {
         <SectionTitle
           panel
           as="h1"
-          script="Semua yang diketahui KratonBot"
-          title="Pustaka"
-          intro="Semua yang diketahui KratonBot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, KratonBot juga tidak tahu."
+          script="Semua yang diketahui bot"
+          title="Pustaka Pengetahuan"
+          intro="Semua yang diketahui Kerajaan Mataram Islam Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
         />
         <div className="mt-10" />
         <Explorer cards={getCards()} temas={Object.values(TEMA)} />

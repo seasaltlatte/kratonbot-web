@@ -17,7 +17,7 @@ const pinyon = Pinyon_Script({ variable: "--font-pinyon", subsets: ["latin"], we
 const jawa = Noto_Sans_Javanese({ variable: "--font-jawa", subsets: ["javanese"], weight: ["400", "700"] });
 
 export const metadata: Metadata = {
-  title: "KratonBot: tanya sejarah Keraton Surakarta & Mangkunegaran",
+  title: "Kerajaan Mataram Islam Bot: tanya sejarah Keraton Surakarta & Mangkunegaran",
   description:
     "Chatbot AI tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran yang selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda.",
 };

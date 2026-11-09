@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { SectionTitle } from "@/components/SectionTitle";
 
 export const metadata: Metadata = {
-  title: "Pedoman penggunaan AI untuk heritage | KratonBot",
+  title: "Pedoman penggunaan AI untuk heritage | Kerajaan Mataram Islam Bot",
 };
 
 // Draf pedoman (luaran kedua tema 7). Tim wajib meninjau dan menyesuaikan isinya.

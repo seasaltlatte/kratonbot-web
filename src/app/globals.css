@@ -2,6 +2,7 @@
 
 /* Varian Tailwind untuk mode terang: `terang:hidden`, `terang:inline`, dst. */
 @custom-variant terang (&:where([data-theme="light"], [data-theme="light"] *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /*
   Konsep "editorial renaissance" dari portal Laravel tim (alicerestituta/kerajaan-mataram-islam).

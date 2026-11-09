@@ -18,7 +18,7 @@ import { getCards, type Kategori } from "@/lib/cards";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 export const metadata: Metadata = {
-  title: "Tentang AI ini | KratonBot",
+  title: "Tentang AI ini | Kerajaan Mataram Islam Bot",
 };
 
 const SOURCES = [
@@ -36,11 +36,11 @@ const BATASAN = [
   "Pengetahuannya terbatas pada kartu di Pustaka. Pertanyaan di luar itu dijawab “belum ada data”, bukan ditebak.",
   "Mode rekonstruksi (“bayangkan suasana…”) adalah cerita imajinatif. Bagian yang berdasar sumber diberi tanda fakta tercatat, sisanya rekaan.",
   "Info praktis seperti jam buka dan harga tiket bisa berubah. Cek ulang ke pengelola sebelum berangkat.",
-  "KratonBot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
+  "Kerajaan Mataram Islam Bot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
 ];
 
 const DATA = [
-  "Riwayat percakapan disimpan di browser-mu sendiri, lalu dikirim bersama setiap pertanyaan. Server KratonBot tidak menyimpannya.",
+  "Riwayat percakapan disimpan di browser-mu sendiri, lalu dikirim bersama setiap pertanyaan. Server Kerajaan Mataram Islam Bot tidak menyimpannya.",
   "Email hanya diminta saat membuat jadwal, dan hanya dipakai untuk mengirim undangan kalender.",
   "Laporan “jawaban keliru” dikirim ke tim berisi pertanyaan, jawaban, dan catatanmu.",
   "Jangan menulis data pribadi lain seperti nomor identitas atau alamat rumah.",

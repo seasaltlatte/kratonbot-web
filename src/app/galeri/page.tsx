@@ -14,7 +14,7 @@ import { GALLERY, type AiIllustration, type GalleryItem } from "@/lib/gallery";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 export const metadata: Metadata = {
-  title: "Galeri rekonstruksi AI vs arsip | KratonBot",
+  title: "Galeri rekonstruksi AI vs arsip | Kerajaan Mataram Islam Bot",
 };
 
 const RULES: { icon: ReactNode; text: string }[] = [
@@ -118,7 +118,7 @@ function GalleryEntry({ item, index }: { item: GalleryItem; index: number }) {
         <div className="mt-6 grid gap-6 md:grid-cols-2">
           <figure>
             <Frame label={`Arsip · ${a.year}`} tone="arsip">
-              <Image src={a.src} alt={a.caption} fill sizes="(min-width: 768px) 45vw, 100vw" className="object-contain" />
+              <Image src={a.src} alt={a.caption} fill unoptimized sizes="(min-width: 768px) 45vw, 100vw" className="object-contain" />
             </Frame>
             <figcaption className="mt-2 text-xs leading-relaxed text-abu-gelap">
               {a.caption} Foto: {a.author}

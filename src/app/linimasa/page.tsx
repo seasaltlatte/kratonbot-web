@@ -13,7 +13,7 @@ import { getPhoto } from "@/lib/photos";
 import { TIMELINE } from "@/lib/timeline";
 
 export const metadata: Metadata = {
-  title: "Linimasa | KratonBot",
+  title: "Linimasa | Kerajaan Mataram Islam Bot",
 };
 
 const SITE_NAME = { kasunanan: "Kasunanan", mangkunegaran: "Mangkunegaran" };
@@ -107,6 +107,7 @@ export default function LinimasaPage() {
                         src={e.foto.src}
                         alt={e.foto.caption}
                         fill
+                        unoptimized
                         sizes="(min-width: 768px) 40vw, 100vw"
                         className="lukisan object-cover"
                       />

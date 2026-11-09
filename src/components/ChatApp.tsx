@@ -83,7 +83,7 @@ export function ChatApp() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || typeof data.reply !== "string") {
-        throw new Error(data.error || "KratonBot tidak bisa dihubungi. Coba kirim ulang.");
+        throw new Error(data.error || "Kerajaan Mataram Islam Bot tidak bisa dihubungi. Coba kirim ulang.");
       }
       bot = { id: newId(), role: "bot", text: data.reply, question: q };
     } catch (e) {
@@ -173,7 +173,7 @@ export function ChatApp() {
         </h2>
         <LabelLegend compact />
         <p className="mt-6 border-l-2 border-emas/60 bg-catatan p-3 text-sm text-emas-terang">
-          Jadwal kunjungan dari KratonBot berupa undangan Google Calendar untuk pengingat, bukan tiket atau
+          Jadwal kunjungan dari Kerajaan Mataram Islam Bot berupa undangan Google Calendar untuk pengingat, bukan tiket atau
           reservasi resmi dari pengelola.
         </p>
       </aside>
@@ -187,7 +187,7 @@ export function ChatApp() {
         </details>
 
         <div className="flex items-center justify-between gap-4 border-b border-garis px-4 py-3 sm:px-6">
-          <h1 className="font-display text-lg font-normal tracking-[0.18em] uppercase sm:text-2xl">Tanya KratonBot</h1>
+          <h1 className="font-display text-lg font-normal tracking-[0.18em] uppercase sm:text-2xl">Tanya Sejarah Kerajaan</h1>
           {messages.length > 0 && (
             <button
               type="button"
@@ -204,7 +204,7 @@ export function ChatApp() {
           {ready && messages.length === 0 && (
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed">
-                Sugeng rawuh. Aku KratonBot, pemandu AI untuk Keraton Kasunanan Surakarta dan Pura
+                Sugeng rawuh. Aku Kerajaan Mataram Islam Bot, pemandu AI untuk Keraton Kasunanan Surakarta dan Pura
                 Mangkunegaran. Setiap jawabanku menyebut sumbernya, dan aku menandai mana fakta, tafsir, atau
                 legenda.
               </p>
@@ -233,7 +233,7 @@ export function ChatApp() {
               </div>
             ) : (
               <article key={m.id} className="max-w-3xl">
-                <p className="mb-1 font-script text-2xl text-emas">KratonBot</p>
+                <p className="mb-1 font-script text-2xl text-emas">Kerajaan Mataram Islam Bot</p>
                 {m.error ? (
                   <div className="border border-galat-garis bg-galat-latar p-3 text-galat">
                     <p>{m.text}</p>
@@ -285,7 +285,7 @@ export function ChatApp() {
                 <span className="size-1.5 animate-bounce rounded-full bg-emas [animation-delay:-0.15s]" />
                 <span className="size-1.5 animate-bounce rounded-full bg-emas" />
               </span>
-              KratonBot sedang mencari di sumber…
+              Kerajaan Mataram Islam Bot sedang mencari di sumber…
             </p>
           )}
           <div ref={endRef} />
@@ -299,7 +299,7 @@ export function ChatApp() {
           }}
         >
           <label htmlFor="pesan" className="sr-only">
-            Pertanyaan untuk KratonBot
+            Pertanyaan untuk Kerajaan Mataram Islam Bot
           </label>
           <div className="flex items-end gap-2">
             <textarea
@@ -327,7 +327,7 @@ export function ChatApp() {
             </button>
           </div>
           <p className="mt-2 text-xs text-abu-gelap">
-            KratonBot bisa keliru. Periksa sumber di setiap jawaban.
+            Kerajaan Mataram Islam Bot bisa keliru. Periksa sumber di setiap jawaban.
           </p>
         </form>
       </div>

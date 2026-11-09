@@ -12,11 +12,11 @@ const IDENTITAS = {
 };
 
 const MENU = [
-  { href: "/chat", label: "Tanya KratonBot" },
+  { href: "/chat", label: "Tanya Sejarah" },
   { href: "/linimasa", label: "Linimasa" },
-  { href: "/pustaka", label: "Pustaka" },
+  { href: "/pustaka", label: "Pengetahuan" },
   { href: "/galeri", label: "Galeri" },
-  { href: "/tentang-ai", label: "Tentang AI ini" },
+  { href: "/tentang-ai", label: "Tentang AI" },
   { href: "/pedoman", label: "Pedoman" },
 ];
 
@@ -33,7 +33,7 @@ export function SiteFooter() {
             <span className="font-jawa text-2xl text-emas" aria-hidden="true">
               ꦏꦿꦠꦺꦴꦤ꧀
             </span>
-            <span className="font-display text-xl tracking-[0.18em] text-perkamen uppercase">KratonBot</span>
+            <span className="font-display text-xl tracking-[0.18em] text-perkamen uppercase">Kerajaan Mataram Islam Bot</span>
           </p>
           <p className="mt-4 max-w-sm leading-relaxed text-abu">
             Pemandu AI untuk sejarah Keraton Kasunanan Surakarta dan Pura Mangkunegaran, yang selalu menunjukkan
@@ -70,7 +70,7 @@ export function SiteFooter() {
 
       <div className="border-t border-garis">
         <p className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-abu-gelap sm:px-6">
-          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. KratonBot adalah program AI dan bisa keliru.
+          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. Kerajaan Mataram Islam Bot adalah program AI dan bisa keliru.
         </p>
       </div>
     </footer>
