@@ -10,6 +10,18 @@ const base = {
   "aria-hidden": true,
 };
 
+// Kartu: dua kartu bertumpuk dengan sudut terlipat, penanda kartu pengetahuan.
+export function IkonKartu({ className = "size-4" }: P) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M7 3.5h8.5L19 7v13.5H7z" />
+      <path d="M15.5 3.5V7H19" />
+      <path d="M4.5 6.5v15h11" />
+      <path d="M10 11h6M10 14.5h6M10 18h3.5" />
+    </svg>
+  );
+}
+
 // Lontar: dua lembar daun naskah yang diikat tali, penanda sumber.
 export function IkonLontar({ className = "size-4" }: P) {
   return (

@@ -4,31 +4,31 @@ export const CLAIM_LABELS = [
     emoji: "🟢",
     name: "Fakta tercatat",
     meaning: "Tertulis di sumber yang sudah diperiksa tim.",
-    className: "chip chip-fakta",
+    jenis: "fakta",
   },
   {
     emoji: "🟡",
     name: "Tafsir",
     meaning: "Pendapat atau interpretasi, bukan kepastian.",
-    className: "chip chip-tafsir",
+    jenis: "tafsir",
   },
   {
     emoji: "🟣",
     name: "Legenda",
     meaning: "Kisah yang dipercaya dan dituturkan turun-temurun.",
-    className: "chip chip-legenda",
+    jenis: "legenda",
   },
   {
     emoji: "🔵",
     name: "Info praktis",
     meaning: "Jam buka, tiket, aturan. Bisa berubah, cek ulang ke pengelola.",
-    className: "chip chip-praktis",
+    jenis: "praktis",
   },
   {
     emoji: "⚪",
     name: "Belum ada data",
     meaning: "KratonBot tidak menemukannya di sumber, jadi tidak menebak.",
-    className: "chip chip-kosong",
+    jenis: "kosong",
   },
 ] as const;
 

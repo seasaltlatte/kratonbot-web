@@ -96,17 +96,23 @@ export default function Home() {
           <span className="absolute -right-1.5 -bottom-1.5 size-3 border-r border-b border-teks/50" />
         </div>
 
-        <div className="hero-naik relative w-full max-w-5xl px-6 py-24 text-center">
-          <p className="kilau font-script text-3xl sm:text-4xl">Mengenal Lebih Dekat</p>
+        <div className="hero-naik relative isolate w-full max-w-5xl px-6 py-24 text-center">
+          {/* Bayangan gelap lembut di balik tulisan agar terbaca di atas foto. */}
+          <span
+            className="pointer-events-none absolute inset-x-0 inset-y-10 -z-10 bg-[radial-gradient(ellipse_closest-side,rgba(5,6,5,0.82),rgba(5,6,5,0.6)_60%,transparent)]"
+            aria-hidden="true"
+          />
+          <p className="kilau font-script text-4xl drop-shadow-[0_2px_6px_rgba(0,0,0,1)] sm:text-5xl">Mengenal Lebih Dekat</p>
           <h1 className="mt-2 font-display text-[clamp(2rem,7vw,5.5rem)] leading-[1.05] font-medium tracking-[0.1em] text-perkamen uppercase drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]">
             <span className="block">Kerajaan</span>
             <span className="block">Mataram Islam</span>
           </h1>
-          <p className="kilau mt-2 pb-2 font-script text-[clamp(2rem,5vw,3.75rem)] [animation-delay:-3.5s]">
+          <p className="kilau mt-2 pb-2 font-script text-[clamp(2.25rem,5.5vw,4rem)] drop-shadow-[0_2px_6px_rgba(0,0,0,1)] [animation-delay:-3.5s]">
             di Kota Surakarta
           </p>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-emas-redup italic">
-            Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran. Setiap jawaban menunjukkan sumbernya.
+          <p className="mx-auto mt-6 text-lg leading-relaxed text-perkamen/90 italic drop-shadow-[0_1px_4px_rgba(0,0,0,1)] sm:text-xl">
+            <span className="block">Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran.</span>
+            <span className="block">Setiap jawaban menunjukkan sumbernya.</span>
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
             <Link href="/chat" className="tombol-emas group min-w-56">
@@ -127,7 +133,7 @@ export default function Home() {
           href={HERO.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute right-6 bottom-5 left-6 text-center text-xs text-abu-gelap hover:text-abu sm:right-12 sm:bottom-12 sm:left-auto sm:text-right"
+          className="absolute right-4 bottom-3 max-w-[16rem] text-right text-[10px] leading-snug text-abu-gelap/80 hover:text-abu sm:right-10 sm:bottom-10 sm:max-w-none"
         >
           {HERO.credit}
         </a>
@@ -135,7 +141,7 @@ export default function Home() {
 
       {/* Linimasa singkat */}
       <section className="batik overflow-hidden bg-malam-2 px-4 py-28 sm:px-8">
-        <SectionTitle
+        <SectionTitle panel
           script="Jejak Perjalanan Kerajaan"
           title="Linimasa"
           intro="Dari berdirinya Mataram di Kotagede, terbaginya Mataram, sampai hari ini."
@@ -160,8 +166,11 @@ export default function Home() {
           ))}
         </ol>
         <p className="mt-4 text-center">
-          <Link href="/linimasa" className="tombol-garis bg-malam-2/80">
+          <Link href="/linimasa" className="tombol-emas group min-w-64">
             Lihat linimasa lengkap
+            <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+              →
+            </span>
           </Link>
         </p>
       </section>
@@ -321,7 +330,7 @@ export default function Home() {
             Rencanakan kunjungan
           </Link>
         </p>
-        <p className="mt-8 text-xs text-abu-gelap">
+        <p className="absolute right-4 bottom-3 max-w-[16rem] text-right text-[10px] leading-snug text-abu-gelap/80 sm:right-8 sm:bottom-5 sm:max-w-none">
           Foto latar: {KUNJUNGAN.caption} {KUNJUNGAN.author}, {KUNJUNGAN.year}. {KUNJUNGAN.license}.
         </p>
       </section>

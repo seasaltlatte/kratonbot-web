@@ -9,15 +9,18 @@ export const metadata: Metadata = {
 
 export default function PustakaPage() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6">
-      <SectionTitle
-        as="h1"
-        script="Semua yang diketahui KratonBot"
-        title="Pustaka"
-        intro="Semua yang diketahui KratonBot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, KratonBot juga tidak tahu."
-      />
-      <div className="mt-16" />
-      <Explorer cards={getCards()} temas={Object.values(TEMA)} />
+    <div className="batik overflow-hidden bg-malam-2">
+      <div className="mx-auto w-full max-w-6xl px-4 pt-16 pb-24 sm:px-6">
+        <SectionTitle
+          panel
+          as="h1"
+          script="Semua yang diketahui KratonBot"
+          title="Pustaka"
+          intro="Semua yang diketahui KratonBot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, KratonBot juga tidak tahu."
+        />
+        <div className="mt-10" />
+        <Explorer cards={getCards()} temas={Object.values(TEMA)} />
+      </div>
     </div>
   );
 }

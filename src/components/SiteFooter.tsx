@@ -1,12 +1,14 @@
 import Link from "next/link";
 
-// Identitas kelompok. Ganti isi IDENTITAS dengan data kelompok yang sebenarnya.
 const IDENTITAS = {
   kelompok: "Kelompok 4",
-  anggota: ["[Nama anggota 1]", "[Nama anggota 2]", "[Nama anggota 3]", "[Nama anggota 4]"],
-  mataKuliah: "Pendidikan Pancasila",
-  dosen: "[Nama dosen pengampu]",
-  kelas: "[Kelas]",
+  anggota: [
+    { nama: "Syifa Kaila Putri", nim: "L0125068" },
+    { nama: "Alice Restituta Cynthia Dewi", nim: "L0125032" },
+    { nama: "Muhammad Yoga Prakasa", nim: "L0125056" },
+    { nama: "Bintang Rizqika Ariyanto", nim: "L0125036" },
+    { nama: "M. Enno Ramadhan Al Firdaus", nim: "L0125024" },
+  ],
 };
 
 const MENU = [
@@ -21,13 +23,13 @@ const MENU = [
 // Footer selalu gelap dan dibatasi pita motif, supaya terpisah jelas dari isi halaman.
 export function SiteFooter() {
   return (
-    <footer data-theme="dark" className="bg-[#070908] text-teks">
+    <footer data-theme="dark" className="latar-bingkai text-teks">
       <div className="pita-motif h-[18px] opacity-70" aria-hidden="true" />
       <div className="h-px bg-emas/50" aria-hidden="true" />
 
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 md:grid-cols-2 lg:grid-cols-[1.2fr_1.4fr_0.8fr]">
         <div>
-          <p className="flex items-baseline gap-3">
+          <p className="flex items-baseline gap-3 whitespace-nowrap">
             <span className="font-jawa text-2xl text-emas" aria-hidden="true">
               ꦏꦿꦠꦺꦴꦤ꧀
             </span>
@@ -42,25 +44,14 @@ export function SiteFooter() {
 
         <div>
           <h2 className="text-sm font-normal tracking-[0.16em] text-perkamen uppercase">{IDENTITAS.kelompok}</h2>
-          <ul className="mt-4 space-y-1.5 text-abu">
+          <ul className="mt-4 space-y-2">
             {IDENTITAS.anggota.map((a) => (
-              <li key={a}>{a}</li>
+              <li key={a.nim} className="flex flex-wrap items-baseline justify-between gap-x-4 border-b border-garis/60 pb-1.5">
+                <span className="text-teks">{a.nama}</span>
+                <span className="text-xs tracking-[0.12em] text-abu-gelap tabular-nums">{a.nim}</span>
+              </li>
             ))}
           </ul>
-          <dl className="mt-5 space-y-1 text-sm text-abu-gelap">
-            <div>
-              <dt className="inline">Mata kuliah: </dt>
-              <dd className="inline text-abu">{IDENTITAS.mataKuliah}</dd>
-            </div>
-            <div>
-              <dt className="inline">Dosen: </dt>
-              <dd className="inline text-abu">{IDENTITAS.dosen}</dd>
-            </div>
-            <div>
-              <dt className="inline">Kelas: </dt>
-              <dd className="inline text-abu">{IDENTITAS.kelas}</dd>
-            </div>
-          </dl>
         </div>
 
         <nav aria-label="Menu footer">

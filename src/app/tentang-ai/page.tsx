@@ -34,7 +34,7 @@ const SOURCES = [
 const BATASAN = [
   "AI bisa keliru, termasuk salah memberi tanda. Selalu periksa sumber yang disebut.",
   "Pengetahuannya terbatas pada kartu di Pustaka. Pertanyaan di luar itu dijawab “belum ada data”, bukan ditebak.",
-  "Mode rekonstruksi (“bayangkan suasana…”) adalah cerita imajinatif. Bagian yang berdasar sumber ditandai 🟢, sisanya rekaan.",
+  "Mode rekonstruksi (“bayangkan suasana…”) adalah cerita imajinatif. Bagian yang berdasar sumber diberi tanda fakta tercatat, sisanya rekaan.",
   "Info praktis seperti jam buka dan harga tiket bisa berubah. Cek ulang ke pengelola sebelum berangkat.",
   "KratonBot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
 ];

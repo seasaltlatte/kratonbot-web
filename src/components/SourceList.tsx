@@ -35,10 +35,15 @@ export function SourceList({
   if (!lipat) return list;
   return (
     <details className={`group ${className}`}>
-      <summary className="inline-flex cursor-pointer list-none items-center gap-2 border border-garis px-3 py-1.5 text-sm text-emas hover:border-emas [&::-webkit-details-marker]:hidden">
-        <IkonLontar className="size-4" />
-        Sumber ({sumber.length})
-        <span className="transition-transform group-open:rotate-180" aria-hidden="true">
+      <summary className="group/s inline-flex cursor-pointer list-none items-center gap-2.5 text-sm font-medium text-perkamen [&::-webkit-details-marker]:hidden">
+        <span className="flex size-9 items-center justify-center rounded-full bg-emas/15 text-emas ring-1 ring-emas/50 transition group-hover/s:bg-emas group-hover/s:text-malam">
+          <IkonLontar className="size-[18px]" />
+        </span>
+        <span className="border-b border-dashed border-emas/60 pb-0.5 whitespace-nowrap group-hover/s:border-solid">Lihat sumber</span>
+        <span className="flex size-5 items-center justify-center rounded-full bg-emas text-[11px] font-semibold text-malam tabular-nums">
+          {sumber.length}
+        </span>
+        <span className="text-emas transition-transform group-open:rotate-180" aria-hidden="true">
           ▾
         </span>
       </summary>

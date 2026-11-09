@@ -2,17 +2,32 @@ import { Children, type ReactNode } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { IkonLontar } from "@/components/Icons";
+import { TandaIkon, type Jenis } from "@/components/LabelLegend";
+import { CLAIM_LABELS } from "@/lib/labels";
 
-// Jawaban bot memakai "📚 Sumber:"; emoji itu diganti ikon lontar agar seragam dengan situs.
-function gantiEmojiSumber(children: ReactNode) {
-  const items = Children.toArray(children);
-  const first = items[0];
-  if (typeof first !== "string" || !first.trimStart().startsWith("📚")) return children;
-  return [
-    <IkonLontar key="ikon" className="mr-1.5 inline size-[1.1em] -translate-y-px align-middle text-emas" />,
-    first.trimStart().replace(/^📚\s*/, ""),
-    ...items.slice(1),
-  ];
+// Jawaban bot memakai emoji (📚 untuk sumber, 🟢🟡🟣🔵⚪ untuk jenis klaim). Emoji itu diganti ikon
+// situs agar seragam dengan tampilan; teks aslinya tetap emoji supaya prompt bot tidak perlu diubah.
+const JENIS_EMOJI = new Map<string, Jenis>(CLAIM_LABELS.map((l) => [l.emoji, l.jenis]));
+const POLA = /(📚\s*|🟢|🟡|🟣|🔵|⚪️?)/u;
+
+function gantiEmoji(children: ReactNode) {
+  return Children.toArray(children).flatMap<ReactNode>((item, i) => {
+    if (typeof item !== "string" || !POLA.test(item)) return [item];
+    return item.split(POLA).map((part, j) => {
+      const key = `${i}-${j}`;
+      if (part.startsWith("📚")) {
+        return <IkonLontar key={key} className="mr-1.5 inline size-[1.1em] -translate-y-px align-middle text-emas" />;
+      }
+      const jenis = JENIS_EMOJI.get(part.replace(/️/, ""));
+      return jenis ? (
+        <span key={key} className={`tanda-${jenis} mx-0.5 inline-flex -translate-y-px align-middle`}>
+          <TandaIkon jenis={jenis} />
+        </span>
+      ) : (
+        part
+      );
+    });
+  });
 }
 
 export function Markdown({ children }: { children: string }) {
@@ -26,10 +41,11 @@ export function Markdown({ children }: { children: string }) {
               {children}
             </a>
           ),
-          p: ({ children }) => <p>{gantiEmojiSumber(children)}</p>,
-          li: ({ children }) => <li>{gantiEmojiSumber(children)}</li>,
-          h3: ({ children }) => <h3>{gantiEmojiSumber(children)}</h3>,
-          strong: ({ children }) => <strong>{gantiEmojiSumber(children)}</strong>,
+          p: ({ children }) => <p>{gantiEmoji(children)}</p>,
+          li: ({ children }) => <li>{gantiEmoji(children)}</li>,
+          h3: ({ children }) => <h3>{gantiEmoji(children)}</h3>,
+          strong: ({ children }) => <strong>{gantiEmoji(children)}</strong>,
+          em: ({ children }) => <em>{gantiEmoji(children)}</em>,
         }}
       >
         {children}

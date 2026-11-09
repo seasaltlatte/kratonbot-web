@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +10,7 @@ import { LabelChip } from "@/components/LabelLegend";
 import { Reveal } from "@/components/Reveal";
 import { SectionTitle } from "@/components/SectionTitle";
 import { getCardByTitle } from "@/lib/cards";
-import { GALLERY, type GalleryItem } from "@/lib/gallery";
+import { GALLERY, type AiIllustration, type GalleryItem } from "@/lib/gallery";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 export const metadata: Metadata = {
@@ -26,7 +28,25 @@ const RULES: { icon: ReactNode; text: string }[] = [
     icon: <IkonPerisai className="size-5" />,
     text: "Bagian yang terpaksa dibayangkan AI ditulis terang-terangan, dan tingkat spekulasinya diberi nilai.",
   },
+  {
+    icon: <IkonPerisai className="size-5" />,
+    text: "Setiap ilustrasi hanyalah perkiraan: tidak 100% sama dengan bentuk, warna, atau kejadian yang sebenarnya.",
+  },
 ];
+
+// Ilustrasi AI cukup disimpan sebagai public/galeri/<id>.webp|png|jpg; halaman memakainya otomatis.
+// Isi `ai` di src/lib/gallery.ts hanya perlu jika ingin mencantumkan model, pembuat, dan tanggal yang tepat.
+function cariIlustrasi(item: GalleryItem): AiIllustration | undefined {
+  if (item.ai) return item.ai;
+  for (const ext of ["webp", "png", "jpg", "jpeg"]) {
+    const file = path.join(process.cwd(), "public", "galeri", `${item.id}.${ext}`);
+    if (!fs.existsSync(file)) continue;
+    const t = fs.statSync(file).mtime;
+    const date = `${String(t.getDate()).padStart(2, "0")}-${String(t.getMonth() + 1).padStart(2, "0")}-${t.getFullYear()}`;
+    return { src: `/galeri/${item.id}.${ext}`, width: 1200, height: 900, model: "Gemini", madeBy: "Kelompok 4", date };
+  }
+  return undefined;
+}
 
 const LEVELS = { rendah: 1, sedang: 2, tinggi: 3 } as const;
 const SITE = {
@@ -70,6 +90,7 @@ function Frame({ label, tone, children }: { label: string; tone: "arsip" | "ai";
 function GalleryEntry({ item, index }: { item: GalleryItem; index: number }) {
   const cards = item.cards.map(getCardByTitle);
   const a = item.archive;
+  const ai = cariIlustrasi(item);
   return (
     <article id={item.id} className="relative scroll-mt-24 border border-emas/35 bg-permukaan/95 shadow-[0_24px_60px_-30px_rgba(0,0,0,0.65)]">
       <span className="absolute -top-px -left-px size-4 border-t-2 border-l-2 border-emas" aria-hidden="true" />
@@ -119,9 +140,9 @@ function GalleryEntry({ item, index }: { item: GalleryItem; index: number }) {
 
           <figure>
             <Frame label="Rekonstruksi AI" tone="ai">
-              {item.ai ? (
+              {ai ? (
                 <Image
-                  src={item.ai.src}
+                  src={ai.src}
                   alt={`Ilustrasi AI, bukan foto: ${item.title}`}
                   fill
                   sizes="(min-width: 768px) 45vw, 100vw"
@@ -141,10 +162,17 @@ function GalleryEntry({ item, index }: { item: GalleryItem; index: number }) {
               )}
             </Frame>
             <figcaption className="mt-2 text-xs leading-relaxed text-abu-gelap">
-              {item.ai
-                ? `Ilustrasi AI, bukan foto. Dibuat dengan ${item.ai.model} oleh ${item.ai.madeBy}, ${item.ai.date}.`
+              {ai
+                ? `Ilustrasi AI, bukan foto. Dibuat dengan ${ai.model} oleh ${ai.madeBy}, ${ai.date}.`
                 : "Ilustrasi akan dibuat dari prompt di bawah, dengan foto arsip di sebelah kiri sebagai acuan."}
             </figcaption>
+            <p className="mt-3 flex gap-2.5 border-l-2 border-emas bg-catatan px-3.5 py-2.5 text-sm leading-relaxed text-emas-terang">
+              <IkonPerisai className="mt-0.5 size-4 shrink-0" />
+              <span>
+                <strong className="font-semibold">Perkiraan, bukan kejadian sebenarnya.</strong> Ilustrasi ini dibayangkan AI dari
+                foto arsip dan prompt, sehingga tidak 100% sama dengan bentuk, warna, atau suasana aslinya.
+              </span>
+            </p>
           </figure>
         </div>
 
@@ -198,7 +226,7 @@ export default function GaleriPage() {
   return (
     <div className="batik overflow-hidden bg-malam-2 px-4 py-24 sm:px-8">
       <Reveal>
-        <SectionTitle
+        <SectionTitle panel
           as="h1"
           script="Antara bukti dan bayangan"
           title="Rekonstruksi AI vs arsip"

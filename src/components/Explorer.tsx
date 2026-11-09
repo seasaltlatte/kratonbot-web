@@ -54,67 +54,76 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
 
   return (
     <div>
-      <div role="tablist" aria-label="Tema" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 sm:mx-0 sm:flex-wrap sm:justify-center sm:px-0">
-        {tabs.map((t) => (
-          <button
-            key={t}
-            type="button"
-            role="tab"
-            aria-selected={tema === t}
-            onClick={() => setTema(t)}
-            className="shrink-0 border border-garis bg-permukaan px-4 py-2 text-sm whitespace-nowrap text-abu hover:border-emas hover:text-perkamen aria-selected:border-emas aria-selected:bg-emas aria-selected:text-malam"
-          >
-            {t === "semua" ? "Semua tema" : t} <span className="opacity-70">({counts[t] ?? 0})</span>
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-6 grid gap-3 border border-garis bg-permukaan/70 p-4 sm:grid-cols-[1fr_auto_auto] sm:items-center">
-        <label className="sr-only" htmlFor="cari">
-          Cari kata
-        </label>
-        <input
-          id="cari"
-          type="search"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Cari kata, misalnya Sekaten, 1757, gamelan"
-          className="w-full border border-garis bg-malam px-3 py-2 text-base focus:border-emas focus:outline-none"
-        />
-        <label className="sr-only" htmlFor="istana">
-          Istana
-        </label>
-        <select
-          id="istana"
-          value={site}
-          onChange={(e) => setSite(e.target.value as Site | "semua")}
-          className="border border-garis bg-malam px-3 py-2 text-sm text-teks focus:border-emas focus:outline-none"
-        >
-          {SITE_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value}>
-              {o.label}
-            </option>
+      {/* Penyaring: deret indeks tema bergaris bawah (seperti indeks buku) dan baris pencarian tanpa kotak. */}
+      <div className="border-y border-emas/35 bg-malam/85 backdrop-blur-sm">
+        <div role="tablist" aria-label="Tema" className="flex gap-6 overflow-x-auto overflow-y-hidden px-4 sm:flex-wrap sm:overflow-visible sm:justify-center sm:gap-x-8 sm:px-6">
+          {tabs.map((t) => (
+            <button
+              key={t}
+              type="button"
+              role="tab"
+              aria-selected={tema === t}
+              onClick={() => setTema(t)}
+              className="relative shrink-0 py-4 font-display text-[15px] tracking-[0.08em] whitespace-nowrap text-abu transition-colors after:absolute after:inset-x-0 after:-bottom-px after:h-[3px] after:scale-x-0 after:bg-emas after:transition-transform hover:text-perkamen aria-selected:text-perkamen aria-selected:after:scale-x-100"
+            >
+              {t === "semua" ? "Semua tema" : t}
+              <sup className="ml-1 font-sans text-[10px] text-emas tabular-nums">{counts[t] ?? 0}</sup>
+            </button>
           ))}
-        </select>
-        <label className="sr-only" htmlFor="jenis">
-          Jenis pengetahuan
-        </label>
-        <select
-          id="jenis"
-          value={kategori}
-          onChange={(e) => setKategori(e.target.value as Kategori | "semua")}
-          className="border border-garis bg-malam px-3 py-2 text-sm text-teks focus:border-emas focus:outline-none"
-        >
-          <option value="semua">Semua jenis</option>
-          {(Object.keys(KATEGORI_INDEX) as Kategori[]).map((k) => {
-            const l = CLAIM_LABELS[KATEGORI_INDEX[k]];
-            return (
-              <option key={k} value={k}>
-                {l.emoji} {l.name}
+        </div>
+        <div className="flex flex-col gap-3 border-t border-garis px-4 py-4 sm:flex-row sm:items-end sm:gap-6 sm:px-6">
+          <label className="flex flex-1 items-center gap-3 border-b-2 border-emas/50 pb-1.5 focus-within:border-emas">
+            <span className="sr-only">Cari kata</span>
+            <svg className="size-5 shrink-0 text-emas" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" />
+              <path d="m16 16 4.5 4.5" />
+            </svg>
+            <input
+              id="cari"
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Cari: Sekaten, 1757, gamelan…"
+              className="w-full bg-transparent py-1 text-lg placeholder:text-abu-gelap focus:outline-none"
+            />
+          </label>
+          <label className="flex items-baseline gap-2 text-xs tracking-[0.12em] text-abu-gelap uppercase">
+            Istana
+            <select
+              id="istana"
+              value={site}
+              onChange={(e) => setSite(e.target.value as Site | "semua")}
+              className="border-b border-garis bg-transparent py-1 font-sans text-sm tracking-normal text-perkamen normal-case focus:border-emas focus:outline-none"
+            >
+              {SITE_OPTIONS.map((o) => (
+                <option key={o.value} value={o.value} className="bg-malam">
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label className="flex items-baseline gap-2 text-xs tracking-[0.12em] text-abu-gelap uppercase">
+            Jenis
+            <select
+              id="jenis"
+              value={kategori}
+              onChange={(e) => setKategori(e.target.value as Kategori | "semua")}
+              className="border-b border-garis bg-transparent py-1 font-sans text-sm tracking-normal text-perkamen normal-case focus:border-emas focus:outline-none"
+            >
+              <option value="semua" className="bg-malam">
+                Semua jenis
               </option>
-            );
-          })}
-        </select>
+              {(Object.keys(KATEGORI_INDEX) as Kategori[]).map((k) => {
+                const l = CLAIM_LABELS[KATEGORI_INDEX[k]];
+                return (
+                  <option key={k} value={k} className="bg-malam">
+                    {l.name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </div>
       </div>
 
       <p className="mt-6 mb-4 text-sm text-abu" aria-live="polite">
@@ -140,8 +149,8 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
                   <LabelChip index={KATEGORI_INDEX[c.kategori]} />
                   <span className="text-xs text-abu-gelap">{c.tema}</span>
                 </div>
-                <h3 className="mt-3 text-lg leading-snug font-normal text-perkamen">{c.judul}</h3>
-                <p className={`mt-2 leading-relaxed text-abu ${open ? "" : "line-clamp-3"}`}>{c.isi}</p>
+                <h3 className="mt-3 font-display text-xl leading-snug font-medium text-perkamen">{c.judul}</h3>
+                <p className={`mt-2.5 font-sans text-[15px] leading-relaxed text-abu ${open ? "" : "line-clamp-3"}`}>{c.isi}</p>
                 {open && (
                   <>
                     <p className="mt-3 text-sm text-abu-gelap">{c.situs}</p>

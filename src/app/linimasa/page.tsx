@@ -7,6 +7,7 @@ import { Reveal } from "@/components/Reveal";
 import { ScrollSpine } from "@/components/ScrollSpine";
 import { SectionTitle } from "@/components/SectionTitle";
 import { SourceList } from "@/components/SourceList";
+import { IkonKartu } from "@/components/Icons";
 import { getCardByTitle, type Sumber } from "@/lib/cards";
 import { getPhoto } from "@/lib/photos";
 import { TIMELINE } from "@/lib/timeline";
@@ -31,7 +32,7 @@ export default function LinimasaPage() {
   return (
     <div className="batik overflow-hidden bg-malam-2 px-4 py-24 sm:px-8">
       <Reveal>
-        <SectionTitle
+        <SectionTitle panel
           as="h1"
           script="Jejak Perjalanan Kerajaan"
           title="Linimasa"
@@ -75,17 +76,26 @@ export default function LinimasaPage() {
                     {e.note && (
                       <p className="mt-4 border-l-2 border-emas/60 bg-catatan px-4 py-2 text-sm text-emas-terang">{e.note}</p>
                     )}
-                    <div className="mt-5 flex flex-wrap items-start gap-x-5 gap-y-3">
-                      <SourceList sumber={e.sumber} lipat />
-                      <span className="flex flex-wrap gap-x-4 gap-y-1 pt-1.5 text-sm">
-                        {e.cardIds.map((id, n) => (
-                          <Link key={id} href={`/pustaka#${id}`} className="text-emas underline underline-offset-4 hover:text-perkamen">
-                            {e.cardIds.length > 1 ? `Baca kartu ${n + 1}` : "Baca kartunya"}
-                          </Link>
-                        ))}
-                      </span>
-                    </div>
                   </div>
+                  {/* Kaki kartu: sumber (bisa dibuka) di kiri, tautan ke kartu pengetahuan di kanan. */}
+                  <footer className="flex flex-col items-start gap-4 border-t border-emas/25 bg-malam/35 px-6 py-4 sm:px-7">
+                    <SourceList sumber={e.sumber} lipat className="w-full" />
+                    <span className="flex flex-wrap gap-2">
+                      {e.cardIds.map((id, n) => (
+                        <Link
+                          key={id}
+                          href={`/pustaka#${id}`}
+                          className="group/k inline-flex items-center gap-2 whitespace-nowrap bg-emas px-3.5 py-2 text-xs font-semibold tracking-[0.12em] text-malam uppercase shadow-[0_6px_16px_-8px_rgba(0,0,0,0.5)] transition hover:bg-emas-terang"
+                        >
+                          <IkonKartu className="size-4" />
+                          {e.cardIds.length > 1 ? `Kartu ${n + 1}` : "Baca kartu"}
+                          <span className="transition-transform group-hover/k:translate-x-0.5" aria-hidden="true">
+                            →
+                          </span>
+                        </Link>
+                      ))}
+                    </span>
+                  </footer>
                 </article>
               </Reveal>
 

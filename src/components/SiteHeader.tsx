@@ -29,7 +29,8 @@ export function SiteHeader() {
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-garis bg-malam/95 backdrop-blur-md">
+    // Header berwarna gelap (cokelat tua di mode terang), supaya jelas terpisah dari isi halaman.
+    <header data-theme="dark" className="latar-bingkai sticky top-0 z-50 border-b border-emas/60 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.55)] backdrop-blur-md">
       <nav className="mx-auto flex h-[var(--tinggi-header)] max-w-6xl items-center justify-between gap-3 px-4 sm:gap-6 sm:px-6">
         <Link href="/" onClick={() => setOpen(false)} className="flex min-w-0 items-baseline gap-3 whitespace-nowrap text-perkamen">
           <span className="hidden font-jawa text-lg text-emas min-[420px]:inline" aria-hidden="true">
