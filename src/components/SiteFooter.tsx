@@ -3,11 +3,11 @@ import Link from "next/link";
 const IDENTITAS = {
   kelompok: "Kelompok 4",
   anggota: [
-    { nama: "Syifa Kaila Putri", nim: "L0125068" },
-    { nama: "Alice Restituta Cynthia Dewi", nim: "L0125032" },
-    { nama: "Muhammad Yoga Prakasa", nim: "L0125056" },
-    { nama: "Bintang Rizqika Ariyanto", nim: "L0125036" },
     { nama: "M. Enno Ramadhan Al Firdaus", nim: "L0125024" },
+    { nama: "Alice Restituta Cynthia Dewi", nim: "L0125032" },
+    { nama: "Bintang Rizqika Ariyanto", nim: "L0125036" },
+    { nama: "Muhammad Yoga Prakasa", nim: "L0125056" },
+    { nama: "Syifa Kaila Putri", nim: "L0125068" },
   ],
 };
 
