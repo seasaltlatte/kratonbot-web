@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { IkonLontar } from "@/components/Icons";
 import { LabelChip } from "@/components/LabelLegend";
 import { SourceList } from "@/components/SourceList";
@@ -26,12 +26,16 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
 
   // Tautan seperti /pustaka#id-kartu (dari linimasa dan galeri) langsung membuka kartunya.
   useEffect(() => {
-    const id = decodeURIComponent(window.location.hash.slice(1));
-    if (!id || !cards.some((c) => c.id === id)) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hash hanya bisa dibaca setelah mount
-    setOpenId(id);
-    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: "start" }));
+    const bukaDariHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (id && cards.some((c) => c.id === id)) setOpenId(id);
+    };
+    bukaDariHash();
+    window.addEventListener("hashchange", bukaDariHash);
+    return () => window.removeEventListener("hashchange", bukaDariHash);
   }, [cards]);
+
+  const openCard = openId ? cards.find((c) => c.id === openId) : undefined;
 
   const counts = useMemo(() => {
     const m: Record<string, number> = { semua: cards.length };
@@ -135,49 +139,115 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
           Tidak ada kartu yang cocok. Coba kata lain, atau pilih &ldquo;Semua tema&rdquo; dan &ldquo;Semua jenis&rdquo;.
         </p>
       ) : (
-        <div className="grid items-start gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((c) => {
-            const open = openId === c.id;
             const tone = c.sites.length === 2 ? SITE_BORDER.both : SITE_BORDER[c.sites[0] ?? "kasunanan"];
             return (
               <article
                 key={c.id}
                 id={c.id}
-                className={`flex scroll-mt-24 flex-col border border-t-4 border-garis bg-permukaan p-5 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.6)] ${tone} ${open ? "md:col-span-2 lg:col-span-3" : ""}`}
+                className={`flex scroll-mt-24 flex-col border border-t-4 border-garis bg-permukaan p-5 shadow-[0_18px_40px_-30px_rgba(0,0,0,0.6)] ${tone}`}
               >
                 <div className="flex flex-wrap items-center gap-2">
                   <LabelChip index={KATEGORI_INDEX[c.kategori]} />
                   <span className="text-xs text-abu-gelap">{c.tema}</span>
                 </div>
                 <h3 className="mt-3 font-display text-xl leading-snug font-medium text-perkamen">{c.judul}</h3>
-                <p className={`mt-2.5 font-sans text-[15px] leading-relaxed text-abu ${open ? "" : "line-clamp-3"}`}>{c.isi}</p>
-                {open && (
-                  <>
-                    <p className="mt-3 text-sm text-abu-gelap">{c.situs}</p>
-                    {c.dicek && <p className="mt-1 text-sm text-abu-gelap">Dicek tim: {c.dicek}</p>}
-                    <SourceList sumber={c.sumber} className="mt-4" />
-                    <Link
-                      href={`/chat?q=${encodeURIComponent(`Ceritakan tentang ${c.judul}`)}`}
-                      className="tombol-garis mt-5 self-start !min-h-0 !py-2.5"
-                    >
-                      Tanya KratonBot tentang ini
-                    </Link>
-                  </>
-                )}
+                <p className="mt-2.5 line-clamp-3 font-sans text-[15px] leading-relaxed text-abu">{c.isi}</p>
                 <button
                   type="button"
-                  onClick={() => setOpenId(open ? null : c.id)}
-                  aria-expanded={open}
-                  className="mt-4 inline-flex items-center gap-2 self-start text-sm text-emas hover:text-perkamen"
+                  onClick={() => setOpenId(c.id)}
+                  aria-haspopup="dialog"
+                  className="mt-auto inline-flex items-center gap-2 self-start pt-4 text-sm text-emas hover:text-perkamen"
                 >
                   <IkonLontar className="size-4" />
-                  {open ? "Tutup kartu" : `Baca selengkapnya (${c.sumber.length} sumber)`}
+                  Baca selengkapnya ({c.sumber.length} sumber)
                 </button>
               </article>
             );
           })}
         </div>
       )}
+
+      {openCard && <CardModal card={openCard} onClose={() => setOpenId(null)} />}
     </div>
+  );
+}
+
+const SITE_TOP = { kasunanan: "border-t-kasunanan", mangkunegaran: "border-t-pareanom", both: "border-t-emas" };
+
+// Kartu yang dibuka tampil sebagai jendela di tengah layar. Memakai <dialog> bawaan browser:
+// tombol Esc, klik di luar kartu, atau tombol × menutupnya, dan fokus kembali ke tombol semula.
+function CardModal({ card, onClose }: { card: Card; onClose: () => void }) {
+  const ref = useRef<HTMLDialogElement>(null);
+  const tone = card.sites.length === 2 ? SITE_TOP.both : SITE_TOP[card.sites[0] ?? "kasunanan"];
+
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!dialog) return;
+    // Jangan memanggil close() saat cleanup: event "close" akan ikut menutup kartu (terjadi di mode dev).
+    if (!dialog.open) dialog.showModal();
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = overflow;
+    };
+  }, []);
+
+  return (
+    <dialog
+      ref={ref}
+      onClose={onClose}
+      onClick={(e) => e.target === ref.current && ref.current.close()}
+      aria-labelledby="judul-kartu"
+      className="modal-kartu m-auto w-[min(42rem,calc(100vw-2rem))] max-h-[min(88vh,52rem)] overflow-visible bg-transparent p-0 text-teks backdrop:bg-black/70 backdrop:backdrop-blur-sm"
+    >
+      <article className={`relative flex max-h-[min(88vh,52rem)] flex-col border border-t-4 border-emas/40 bg-permukaan shadow-[0_40px_90px_-30px_rgba(0,0,0,0.85)] ${tone}`}>
+        <span className="absolute -bottom-px -left-px size-4 border-b-2 border-l-2 border-emas" aria-hidden="true" />
+        <span className="absolute -right-px -bottom-px size-4 border-r-2 border-b-2 border-emas" aria-hidden="true" />
+
+        <header className="flex items-start justify-between gap-4 border-b border-garis px-6 pt-5 pb-4 sm:px-8">
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <LabelChip index={KATEGORI_INDEX[card.kategori]} />
+            <span className="text-xs text-abu-gelap">
+              {card.tema} &middot; {card.situs}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => ref.current?.close()}
+            aria-label="Tutup kartu"
+            className="-mt-1 -mr-2 inline-flex size-9 shrink-0 items-center justify-center border border-garis text-perkamen hover:border-emas hover:text-emas"
+          >
+            <svg className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </header>
+
+        <div className="overflow-y-auto px-6 py-6 sm:px-8">
+          <h2 id="judul-kartu" className="font-display text-2xl leading-snug font-medium text-perkamen sm:text-3xl">
+            {card.judul}
+          </h2>
+          <p className="mt-4 font-sans text-base leading-relaxed text-teks">{card.isi}</p>
+          {card.dicek && <p className="mt-3 text-sm text-abu-gelap">Dicek tim: {card.dicek}</p>}
+
+          <h3 className="mt-7 flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-emas uppercase">
+            <IkonLontar className="size-4" />
+            Sumber ({card.sumber.length})
+          </h3>
+          <SourceList sumber={card.sumber} className="mt-3" />
+        </div>
+
+        <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-garis bg-malam/40 px-6 py-4 sm:px-8">
+          <button type="button" onClick={() => ref.current?.close()} className="text-sm text-abu underline underline-offset-4 hover:text-perkamen">
+            Tutup
+          </button>
+          <Link href={`/chat?q=${encodeURIComponent(`Ceritakan tentang ${card.judul}`)}`} className="tombol-emas !min-h-0 !py-2.5 text-sm">
+            Tanya KratonBot tentang ini
+          </Link>
+        </footer>
+      </article>
+    </dialog>
   );
 }

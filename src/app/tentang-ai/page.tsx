@@ -46,13 +46,26 @@ const DATA = [
   "Jangan menulis data pribadi lain seperti nomor identitas atau alamat rumah.",
 ];
 
+// Judul bagian: lebih besar, berwarna emas, diapit garis ornamen agar terpisah jelas dari isinya.
+function JudulBagian({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return (
+    <div className={`flex items-center justify-center gap-4 ${className}`}>
+      <span className="h-px w-10 bg-gradient-to-r from-transparent to-emas sm:w-20" aria-hidden="true" />
+      <span className="size-2 rotate-45 bg-emas" aria-hidden="true" />
+      <h2 className="text-center font-display text-2xl font-semibold tracking-[0.12em] text-emas-terang uppercase terang:text-emas sm:text-3xl">{children}</h2>
+      <span className="size-2 rotate-45 bg-emas" aria-hidden="true" />
+      <span className="h-px w-10 bg-gradient-to-l from-transparent to-emas sm:w-20" aria-hidden="true" />
+    </div>
+  );
+}
+
 function Panel({ icon, title, children }: { icon: ReactNode; title: string; children: ReactNode }) {
   return (
     <section className="relative border border-garis bg-permukaan p-6 sm:p-7">
       <span className="absolute -top-px -left-px size-3 border-t-2 border-l-2 border-emas" aria-hidden="true" />
-      <div className="flex items-center gap-3">
-        <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-emas/50 text-emas">{icon}</span>
-        <h2 className="text-lg font-normal tracking-[0.14em] uppercase">{title}</h2>
+      <div className="flex items-center gap-3 border-b border-emas/40 pb-4">
+        <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-emas/15 text-emas ring-1 ring-emas/60">{icon}</span>
+        <h2 className="font-display text-xl font-semibold tracking-[0.1em] text-emas-terang uppercase terang:text-emas sm:text-2xl">{title}</h2>
       </div>
       <div className="mt-5">{children}</div>
     </section>
@@ -83,8 +96,9 @@ export default function TentangAI() {
   const kategori = Object.keys(KATEGORI_INDEX) as Kategori[];
 
   return (
-    <article className="cahaya-emas px-4 py-24 sm:px-6">
+    <article className="batik overflow-hidden bg-malam-2 px-4 py-24 sm:px-6">
       <SectionTitle
+        panel
         as="h1"
         script="Di balik layar"
         title="Tentang AI ini"
@@ -92,7 +106,7 @@ export default function TentangAI() {
       />
 
       <div className="mx-auto mt-16 max-w-5xl">
-        <h2 className="text-center text-lg font-normal tracking-[0.14em] uppercase">Cara KratonBot menjawab</h2>
+        <JudulBagian>Cara KratonBot menjawab</JudulBagian>
         <ol className="relative mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <span className="absolute top-8 right-[12%] left-[12%] hidden h-px bg-emas/40 lg:block" aria-hidden="true" />
           {STEPS.map((s, i) => (
@@ -105,15 +119,16 @@ export default function TentangAI() {
                     {i + 1}
                   </span>
                 </span>
-                <h3 className="mt-4 text-base font-normal tracking-[0.12em] uppercase">{s.title}</h3>
-                <p className="mt-2 leading-relaxed text-abu">{s.text}</p>
+                <h3 className="mt-4 font-display text-lg font-semibold tracking-[0.08em] text-emas-terang uppercase terang:text-emas">{s.title}</h3>
+                <span className="mt-2 h-0.5 w-8 bg-emas/70" aria-hidden="true" />
+                <p className="mt-3 leading-relaxed text-abu">{s.text}</p>
               </div>
               </Reveal>
             </li>
           ))}
         </ol>
 
-        <h2 className="mt-20 text-center text-lg font-normal tracking-[0.14em] uppercase">Isi Pustaka saat ini</h2>
+        <JudulBagian className="mt-20">Isi Pustaka saat ini</JudulBagian>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-5">
           <div className="col-span-2 flex flex-col items-center justify-center border border-emas/40 bg-permukaan p-5 text-center sm:col-span-1">
             <p className="font-display text-4xl text-emas tabular-nums">{cards.length}</p>

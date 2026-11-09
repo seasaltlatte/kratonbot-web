@@ -169,11 +169,14 @@ legend {
   font-family: var(--font-jakarta), system-ui, sans-serif;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-bodoni), Didot, Georgia, serif;
-  color: var(--perkamen);
+/* Di dalam layer base supaya kelas warna Tailwind (mis. text-emas) pada judul tetap berlaku. */
+@layer base {
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-bodoni), Didot, Georgia, serif;
+    color: var(--perkamen);
+  }
 }
 
 :focus-visible {
@@ -453,4 +456,13 @@ h3 {
   color-scheme: light;
   color: var(--teks);
   background-color: #d9c49c;
+}
+
+/* Jendela kartu Pustaka muncul dengan sedikit membesar. */
+@keyframes modal-masuk {
+  from { opacity: 0; transform: translateY(12px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+.modal-kartu[open] {
+  animation: modal-masuk 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
