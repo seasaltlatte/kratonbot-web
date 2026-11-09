@@ -1,3 +1,27 @@
+Judul: Berdirinya Mataram Islam di Kotagede oleh Panembahan Senapati
+Situs: Kesultanan Mataram (pendahulu Keraton Kasunanan dan Pura Mangkunegaran)
+Kategori: FAKTA
+Sumber: Wikipedia bahasa Indonesia, "Panembahan Senopati", https://id.wikipedia.org/wiki/Panembahan_Senopati (diakses 09-11-2026) ; Wikipedia bahasa Indonesia, "Kesultanan Mataram", https://id.wikipedia.org/wiki/Kesultanan_Mataram (diakses 09-11-2026)
+Isi: Panembahan Senapati, bernama lahir Danang Sutawijaya, menjadi raja pertama Mataram sejak 1586 dan bertakhta sampai wafat pada 1601. Pusat pemerintahannya berada di Kotagede. Sebelumnya, sejak sekitar 1584, ia menjabat adipati Mataram di bawah Kerajaan Pajang, lalu memerdekakan diri. Sumber berbeda soal awal Kotagede: keterangan gambar di artikel Kesultanan Mataram menyebut Kotagede didirikan pada 1582. Senapati dimakamkan di kompleks Pasarean Mataram di Kotagede. Mataram inilah yang kelak terbagi menjadi Kasunanan Surakarta dan Kesultanan Yogyakarta, lalu melahirkan Mangkunegaran.
+
+---
+
+Judul: Sultan Agung dan puncak kejayaan Mataram (1613–1645)
+Situs: Kesultanan Mataram (pendahulu Keraton Kasunanan dan Pura Mangkunegaran)
+Kategori: FAKTA
+Sumber: Wikipedia bahasa Indonesia, "Sultan Agung dari Mataram", https://id.wikipedia.org/wiki/Sultan_Agung_dari_Mataram (diakses 09-11-2026) ; Wikipedia bahasa Indonesia, "Kesultanan Mataram", https://id.wikipedia.org/wiki/Kesultanan_Mataram (diakses 09-11-2026)
+Isi: Sultan Agung lahir pada 1593 di Kotagede dan bertakhta sebagai raja Mataram pada 1613–1645. Pada masanya Mataram mencapai puncak kejayaan dan wilayahnya meluas ke sebagian besar Pulau Jawa. Ia menyerang Batavia, pusat kekuasaan VOC, pada 1628 dan sekali lagi pada 1629; serangan pertama gagal. Gelar sultan baru ia pakai pada 1641–1645 setelah diterima dari Mekkah. Ia dikenal sebagai pendiri kalender Jawa. Sultan Agung dimakamkan di Astana Kasultanagungan, kompleks makam raja-raja di Imogiri, dan ditetapkan sebagai Pahlawan Nasional Indonesia melalui SK Presiden No. 106/TK/1975 tanggal 3 November 1975.
+
+---
+
+Judul: Pindahnya ibu kota Mataram ke Kartasura (1680)
+Situs: Keraton Kasunanan Surakarta
+Kategori: FAKTA
+Sumber: Wikipedia bahasa Indonesia, "Keraton Kartasura", https://id.wikipedia.org/wiki/Keraton_Kartasura (diakses 09-11-2026) ; Wikipedia bahasa Indonesia, "Kesultanan Mataram", https://id.wikipedia.org/wiki/Kesultanan_Mataram (diakses 09-11-2026)
+Isi: Sebelum Kartasura, ibu kota Mataram berada di Plered. Saat Pemberontakan Trunajaya, Keraton Plered diduduki Pangeran Puger, sehingga Amangkurat II mendirikan keraton baru di Kartasura. Menurut Wikipedia, keraton ini didirikan pada 1680 dan resmi ditempati pada 11 September 1680. Kartasura menjadi ibu kota Mataram sampai 1745, sebelum pusat kerajaan dipindahkan ke Surakarta setelah Geger Pacinan.
+
+---
+
 Judul: Geger Pacinan dan rusaknya Keraton Kartasura
 Situs: Keraton Kasunanan Surakarta
 Kategori: FAKTA

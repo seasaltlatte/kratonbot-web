@@ -1,11 +1,21 @@
+import { IkonLontar } from "@/components/Icons";
 import type { Sumber } from "@/lib/cards";
 
-export function SourceList({ sumber, className = "" }: { sumber: Sumber[]; className?: string }) {
-  return (
-    <ul className={`space-y-1 text-sm text-abu ${className}`}>
+// Daftar sumber dengan ikon lontar. `lipat` menampilkannya sebagai tombol "Sumber (n)" yang bisa dibuka.
+export function SourceList({
+  sumber,
+  className = "",
+  lipat = false,
+}: {
+  sumber: Sumber[];
+  className?: string;
+  lipat?: boolean;
+}) {
+  const list = (
+    <ul className={`space-y-1.5 text-sm text-abu ${lipat ? "mt-3" : className}`}>
       {sumber.map((s) => (
-        <li key={s.text + (s.url ?? "")} className="pl-5 -indent-5">
-          <span aria-hidden="true">📚 </span>
+        <li key={s.text + (s.url ?? "")} className="flex gap-2">
+          <IkonLontar className="mt-0.5 size-4 shrink-0 text-emas" />
           {s.url ? (
             <a
               href={s.url}
@@ -16,10 +26,23 @@ export function SourceList({ sumber, className = "" }: { sumber: Sumber[]; class
               {s.text}
             </a>
           ) : (
-            s.text
+            <span>{s.text}</span>
           )}
         </li>
       ))}
     </ul>
+  );
+  if (!lipat) return list;
+  return (
+    <details className={`group ${className}`}>
+      <summary className="inline-flex cursor-pointer list-none items-center gap-2 border border-garis px-3 py-1.5 text-sm text-emas hover:border-emas [&::-webkit-details-marker]:hidden">
+        <IkonLontar className="size-4" />
+        Sumber ({sumber.length})
+        <span className="transition-transform group-open:rotate-180" aria-hidden="true">
+          ▾
+        </span>
+      </summary>
+      {list}
+    </details>
   );
 }

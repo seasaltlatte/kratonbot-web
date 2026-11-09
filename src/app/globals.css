@@ -212,6 +212,20 @@ h3 {
   -webkit-mask-size: 72px 72px;
 }
 
+/* Pita motif tegas (penuh warna emas) untuk batas footer dan bingkai. */
+.pita-motif {
+  background-color: var(--emas);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18' viewBox='0 0 36 18'%3E%3Cpath d='M18 2 25 9 18 16 11 9z' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M18 6 21 9 18 12 15 9z'/%3E%3Ccircle cx='3' cy='9' r='1.3'/%3E%3Ccircle cx='33' cy='9' r='1.3'/%3E%3C/svg%3E");
+  mask-size: 36px 18px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18' viewBox='0 0 36 18'%3E%3Cpath d='M18 2 25 9 18 16 11 9z' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M18 6 21 9 18 12 15 9z'/%3E%3Ccircle cx='3' cy='9' r='1.3'/%3E%3Ccircle cx='33' cy='9' r='1.3'/%3E%3C/svg%3E");
+  -webkit-mask-size: 36px 18px;
+}
+
+/* Cahaya emas lembut di tengah bagian, agar latar tidak datar. */
+.cahaya-emas {
+  background-image: radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--emas) 14%, transparent), transparent 70%);
+}
+
 /* Foto arsip diberi nuansa lukisan cat minyak, seperti di portal tim. */
 .lukisan {
   filter: contrast(1.16) saturate(0.92) sepia(0.24) brightness(0.86);

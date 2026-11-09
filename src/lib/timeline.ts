@@ -1,5 +1,6 @@
-// Linimasa disusun tim dari kartu pengetahuan. Setiap peristiwa WAJIB merujuk kartu (awalan judulnya);
-// build akan gagal kalau kartunya tidak ada, jadi linimasa tidak bisa memuat klaim tanpa sumber.
+// Linimasa disusun tim dari kartu pengetahuan. Setiap peristiwa WAJIB merujuk kartu (awalan judulnya) dan foto
+// (id di src/lib/photos.ts); build akan gagal kalau salah satunya tidak ada, jadi linimasa tidak bisa memuat
+// klaim tanpa sumber atau foto tanpa lisensi. Hanya peristiwa yang mengubah arah sejarah kedua istana yang dimuat.
 import type { Site } from "@/lib/cards";
 
 export type TimelineEvent = {
@@ -9,10 +10,38 @@ export type TimelineEvent = {
   note?: string;
   sites: Site[];
   cards: string[];
-  photo?: string; // id item di GALLERY; foto ditampilkan dengan tahun pemotretannya sendiri
+  photo: string; // id di src/lib/photos.ts; foto ditampilkan dengan tahun pemotretannya sendiri
 };
 
 export const TIMELINE: TimelineEvent[] = [
+  {
+    year: "1586",
+    title: "Mataram Islam berdiri di Kotagede",
+    summary:
+      "Panembahan Senapati menjadi raja pertama Mataram dan memerintah dari Kotagede sampai 1601. Mataram inilah yang kelak melahirkan Kasunanan Surakarta dan Mangkunegaran.",
+    note: "Sumber berbeda soal awal Kotagede: ada yang menyebut 1582. Sejak sekitar 1584 Senapati sudah menjadi adipati di bawah Pajang.",
+    sites: ["kasunanan", "mangkunegaran"],
+    cards: ["Berdirinya Mataram Islam"],
+    photo: "kotagede",
+  },
+  {
+    year: "1613–1645",
+    title: "Sultan Agung dan puncak kejayaan Mataram",
+    summary:
+      "Wilayah Mataram meluas ke sebagian besar Jawa. Sultan Agung menyerang Batavia, pusat VOC, pada 1628 dan 1629, dan dikenal sebagai pendiri kalender Jawa.",
+    sites: ["kasunanan", "mangkunegaran"],
+    cards: ["Sultan Agung dan puncak"],
+    photo: "imogiri",
+  },
+  {
+    year: "1680",
+    title: "Ibu kota pindah ke Kartasura",
+    summary:
+      "Setelah Pemberontakan Trunajaya dan didudukinya Keraton Plered, Amangkurat II mendirikan keraton baru di Kartasura. Kartasura menjadi ibu kota Mataram sampai 1745.",
+    sites: ["kasunanan"],
+    cards: ["Pindahnya ibu kota Mataram ke Kartasura", "Situs Keraton Kartasura"],
+    photo: "kartasura",
+  },
   {
     year: "1742–1743",
     title: "Geger Pacinan merusak Keraton Kartasura",
@@ -20,8 +49,8 @@ export const TIMELINE: TimelineEvent[] = [
       "Pemberontakan yang melibatkan laskar Tionghoa merusak keraton Mataram di Kartasura. Pakubuwono II lalu memutuskan memindahkan pusat pemerintahan.",
     note: "Sumber berbeda soal tahun: 1742 untuk awal pemberontakan, 1743 untuk kerusakan keraton.",
     sites: ["kasunanan"],
-    cards: ["Geger Pacinan", "Situs Keraton Kartasura"],
-    photo: "kartasura",
+    cards: ["Geger Pacinan"],
+    photo: "kartasura-peta",
   },
   {
     year: "1744–1745",
@@ -39,6 +68,7 @@ export const TIMELINE: TimelineEvent[] = [
     summary: "Wilayah Mataram dibagi dua: Kasunanan Surakarta dan Kesultanan Yogyakarta.",
     sites: ["kasunanan", "mangkunegaran"],
     cards: ["Perjanjian Giyanti"],
+    photo: "giyanti",
   },
   {
     year: "1757",
@@ -50,28 +80,13 @@ export const TIMELINE: TimelineEvent[] = [
     photo: "pendhapa-mangkunegaran",
   },
   {
-    year: "1777 atau 1782",
-    title: "Panggung Sangga Buwana berdiri",
-    summary: "Menara di kompleks keraton ini dibangun pada masa Pakubuwono III.",
-    note: "Sumber berbeda: 1777 menurut Wikipedia, 1782 menurut sumber pariwisata Jawa Tengah.",
-    sites: ["kasunanan"],
-    cards: ["Panggung Sangga Buwana - menara"],
-    photo: "sangga-buwana",
-  },
-  {
-    year: "1795",
-    title: "Raden Mas Said wafat",
-    summary: "Mangkunegara I wafat pada 28 Desember 1795 dan dimakamkan di Astana Mangadeg, Karanganyar.",
-    sites: ["mangkunegaran"],
-    cards: ["Raden Mas Said - kelahiran"],
-  },
-  {
     year: "1861–1881",
     title: "Industri gula Mangkunegaran",
     summary:
       "Mangkunegara IV mendirikan industri gula, termasuk pabrik gula Colomadu dan Tasikmadu. Ia juga menulis Serat Wedhatama.",
     sites: ["mangkunegaran"],
     cards: ["Mangkunegara IV"],
+    photo: "colomadu",
   },
   {
     year: "1945–1950",
@@ -80,13 +95,7 @@ export const TIMELINE: TimelineEvent[] = [
       "Daerah Istimewa Surakarta dibubarkan pada 1946, dan Revolusi Sosial di Surakarta menghapus hak pemerintahan Mangkunegaran. Kedua istana berlanjut sebagai pusat adat dan budaya.",
     sites: ["kasunanan", "mangkunegaran"],
     cards: ["Status Kasunanan", "Status Mangkunegaran"],
-  },
-  {
-    year: "1954–1959",
-    title: "Sangga Buwana terbakar dan dibangun kembali",
-    summary: "Menara terbakar pada 18 November 1954 dan selesai dibangun kembali pada 30 September 1959.",
-    sites: ["kasunanan"],
-    cards: ["Panggung Sangga Buwana - menara"],
+    photo: "sangga-buwana",
   },
   {
     year: "2022",
@@ -95,5 +104,6 @@ export const TIMELINE: TimelineEvent[] = [
       "KGPAA Mangkunegara X dinobatkan pada 12 Maret 2022 di usia 24 tahun. Revitalisasi Pracima Tuin dimulai pada tahun yang sama, lalu taman itu dibuka sebagai ruang publik.",
     sites: ["mangkunegaran"],
     cards: ["Mangkunegara X", "Pracima Tuin"],
+    photo: "mangkunegara-x",
   },
 ];
