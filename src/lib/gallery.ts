@@ -38,7 +38,7 @@ export type GalleryItem = {
 };
 
 const PROMPT_RULES =
-  "Gaya ilustrasi cat air atau sketsa, BUKAN fotorealistik. Jangan menambahkan tokoh sejarah, raja, atau upacara. Tulis 'Ilustrasi AI' di pojok kanan bawah.";
+  "Foto arsip di sebelahnya dilampirkan sebagai acuan bentuk; ikuti bentuk yang terlihat di foto itu. Gaya ilustrasi cat air atau sketsa, BUKAN fotorealistik. Jangan menambahkan tokoh sejarah, raja, atau upacara. Tulis 'Ilustrasi AI' di pojok kanan bawah.";
 
 export const GALLERY: GalleryItem[] = [
   {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { HeroCursor } from "@/components/HeroCursor";
 import { IkonGaleri, IkonKalender, IkonLinimasa, IkonLontar } from "@/components/Icons";
 import { LabelChip, LabelLegend } from "@/components/LabelLegend";
 import { Reveal } from "@/components/Reveal";
@@ -85,6 +86,7 @@ export default function Home() {
               />
             ))}
           </div>
+          <HeroCursor />
         </div>
 
         <div className="bingkai-napas pointer-events-none absolute inset-3 border border-teks/20 sm:inset-6 md:inset-8" aria-hidden="true">

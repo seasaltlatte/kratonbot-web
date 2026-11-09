@@ -102,6 +102,13 @@ html {
   scroll-padding-top: calc(var(--tinggi-header) + 1rem);
 }
 
+/* Elemen Reveal yang masuk dari samping tidak boleh memunculkan scroll horizontal.
+   clip (bukan hidden) supaya header sticky tetap bekerja. */
+html,
+body {
+  overflow-x: clip;
+}
+
 /* Tombol utama (emas penuh) dan tombol kedua (garis). Di layer components agar utilitas tetap bisa menimpa. */
 @layer components {
   .tombol-emas,
@@ -224,6 +231,22 @@ h3 {
 /* Cahaya emas lembut di tengah bagian, agar latar tidak datar. */
 .cahaya-emas {
   background-image: radial-gradient(ellipse 60% 50% at 50% 0%, color-mix(in srgb, var(--emas) 14%, transparent), transparent 70%);
+}
+
+/* Cahaya kursor di hero (HeroCursor): lingkaran emas samar di posisi --kx/--ky. */
+.cahaya-kursor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    circle 22rem at var(--kx, 50%) var(--ky, 50%),
+    color-mix(in srgb, var(--emas) 20%, transparent),
+    color-mix(in srgb, var(--emas) 6%, transparent) 45%,
+    transparent 70%
+  );
 }
 
 /* Foto arsip diberi nuansa lukisan cat minyak, seperti di portal tim. */
