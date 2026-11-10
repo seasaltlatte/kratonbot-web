@@ -190,6 +190,7 @@ export default function Home() {
         {/* Linimasa singkat */}
         <section className="overflow-hidden px-4 pt-16 pb-28 sm:px-8 sm:pt-20">
           <SectionTitle
+            panel
             script="Jejak Perjalanan"
             title="Linimasa"
             intro="Dari runtuhnya Kartasura sampai lahirnya Pura Mangkunegaran"
@@ -199,12 +200,16 @@ export default function Home() {
             {teaser.map((e, i) => (
               <li
                 key={e.year}
-                className={`relative mb-16 pl-12 md:w-1/2 md:pl-0 ${i % 2 ? "md:ml-auto md:pl-14" : "md:pr-14 md:text-right"}`}
+                className={`relative mb-12 pl-12 md:w-1/2 md:pl-0 ${i % 2 ? "md:ml-auto md:pl-12" : "md:pr-12 md:text-right"}`}
               >
                 <Reveal from={i % 2 ? "kanan" : "kiri"}>
-                  <p className="font-display text-3xl text-emas tabular-nums">{e.year}</p>
-                  <h3 className="mt-2 font-display text-xl font-normal tracking-[0.12em] uppercase">{e.title}</h3>
-                  <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
+                  <article className="relative border border-garis bg-permukaan/95 p-6 shadow-[0_20px_50px_-30px_rgba(0,0,0,0.6)] backdrop-blur-sm">
+                    <span className="absolute -top-px -left-px size-3 border-t-2 border-l-2 border-emas" aria-hidden="true" />
+                    <span className="absolute -right-px -bottom-px size-3 border-r-2 border-b-2 border-emas" aria-hidden="true" />
+                    <p className="font-display text-3xl text-emas tabular-nums">{e.year}</p>
+                    <h3 className="mt-2 font-display text-xl font-normal tracking-[0.12em] uppercase">{e.title}</h3>
+                    <p className="mt-3 leading-[1.8] text-abu">{e.summary}</p>
+                  </article>
                 </Reveal>
               </li>
             ))}
