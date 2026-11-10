@@ -46,7 +46,7 @@ export function SiteFooter() {
           <h2 className="text-sm font-normal tracking-[0.16em] text-perkamen uppercase">{IDENTITAS.kelompok}</h2>
           <ul className="mt-4 space-y-2">
             {IDENTITAS.anggota.map((a) => (
-              <li key={a.nim} className="flex flex-wrap items-baseline justify-between gap-x-4 border-b border-garis/60 pb-1.5">
+              <li key={a.nim} className="flex flex-col border-b border-garis/60 pb-2">
                 <span className="text-teks">{a.nama}</span>
                 <span className="text-xs tracking-[0.12em] text-abu-gelap tabular-nums">{a.nim}</span>
               </li>

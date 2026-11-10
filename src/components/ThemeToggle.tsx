@@ -20,7 +20,7 @@ export function ThemeToggle() {
       onClick={toggle}
       aria-label="Ganti mode gelap atau terang"
       title="Ganti mode gelap atau terang"
-      className="inline-flex size-9 items-center justify-center border border-garis text-emas hover:border-emas"
+      className="inline-flex size-9 items-center justify-center rounded-full text-emas transition-colors hover:bg-emas/15"
     >
       {/* Matahari: tampil di mode gelap (klik untuk ke terang) */}
       <svg className="size-4 terang:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">

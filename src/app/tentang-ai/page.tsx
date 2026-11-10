@@ -143,9 +143,12 @@ export default function TentangAI() {
             </div>
           ))}
         </div>
-        <p className="mt-4 text-center">
-          <Link href="/pustaka" className="tombol-garis">
+        <p className="mt-8 text-center">
+          <Link href="/pustaka" className="tombol-emas group min-w-56">
             Buka Pustaka
+            <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+              →
+            </span>
           </Link>
         </p>
 

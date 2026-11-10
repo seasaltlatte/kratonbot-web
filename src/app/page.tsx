@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeroCursor } from "@/components/HeroCursor";
-import { IkonGaleri, IkonLinimasa, IkonLontar } from "@/components/Icons";
+import { IkonGaleri, IkonKalender, IkonLinimasa, IkonLontar, IkonPeta } from "@/components/Icons";
+import { LabelChip, TandaIkon } from "@/components/LabelLegend";
 import { Reveal } from "@/components/Reveal";
 import { ScrollSpine } from "@/components/ScrollSpine";
 import { SectionTitle } from "@/components/SectionTitle";
@@ -20,6 +21,8 @@ const HERO = {
 };
 
 const photo = (id: string) => GALLERY.find((g) => g.id === id)!.archive;
+const KUNJUNGAN = photo("kasunanan-1890");
+const gmaps = (q: string) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
 
 const SITES = [
   {
@@ -30,6 +33,7 @@ const SITES = [
     photo: photo("kasunanan-1890"),
     fact: "Perjanjian Giyanti tahun 1755 membagi wilayah Mataram menjadi dua: Kasunanan Surakarta dan Kesultanan Yogyakarta.",
     source: "Sumber: Wikipedia bahasa Indonesia, “Keraton Surakarta Hadiningrat”. Foto: fotografer tidak diketahui, 1890.",
+    maps: gmaps("Keraton Kasunanan Surakarta Hadiningrat, Baluwarti, Surakarta"),
   },
   {
     year: "1757",
@@ -39,6 +43,7 @@ const SITES = [
     photo: photo("pendhapa-mangkunegaran"),
     fact: "Perjanjian Salatiga, 17 Maret 1757, melahirkan Praja Mangkunegaran. Raden Mas Said menjadi Mangkunegara I.",
     source: "Sumber: Situs resmi Mangkunegaran, “Sejarah Singkat Mangkunegaran”. Foto: James Page, sekitar 1880.",
+    maps: gmaps("Pura Mangkunegaran, Keprabon, Surakarta"),
   },
 ];
 
@@ -54,28 +59,28 @@ const TEASER_YEARS = ["1744–1745", "1755", "1757", "2022"];
 const CLAIM_MARKS = [
   {
     name: "FAKTA TERCATAT",
+    jenis: "fakta" as const,
     desc: "Tertulis di sumber yang sudah diperiksa tim.",
-    color: "bg-[#2f6b45]",
   },
   {
     name: "TAFSIR",
+    jenis: "tafsir" as const,
     desc: "Pendapat atau interpretasi, bukan kepastian.",
-    color: "bg-[#b58129]",
   },
   {
     name: "LEGENDA",
+    jenis: "legenda" as const,
     desc: "Kisah yang dipercaya dan dituturkan turun-temurun.",
-    color: "bg-[#703da8]",
   },
   {
     name: "INFO PRAKTIS",
+    jenis: "praktis" as const,
     desc: "Jam buka, tiket, aturan. Bisa berubah, cek ulang.",
-    color: "bg-[#2b6cb0]",
   },
   {
     name: "BELUM ADA DATA",
+    jenis: "kosong" as const,
     desc: "Bot tidak menemukannya di sumber, jadi tidak menebak.",
-    color: "bg-[#71717a]",
   },
 ];
 
@@ -204,9 +209,12 @@ export default function Home() {
               </li>
             ))}
           </ol>
-          <p className="mt-6 text-center text-xs text-teks">
-            <Link href="/linimasa" className="tautan-kurung py-2">
-              [ Linimasa lengkap ]
+          <p className="mt-6 text-center">
+            <Link href="/linimasa" className="tombol-emas group min-w-64">
+              Lihat linimasa lengkap
+              <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+                →
+              </span>
             </Link>
           </p>
         </section>
@@ -225,7 +233,7 @@ export default function Home() {
           <div className="rounded-2xl border border-garis bg-permukaan p-6 shadow-sm sm:p-7 terang:border-[#e8dfd2] terang:bg-white">
             {/* Header Kartu */}
             <div className="flex items-center gap-2 border-b border-garis pb-4 text-xs font-display tracking-[0.2em] text-abu uppercase terang:border-[#eee7dc] terang:text-[#7d7164]">
-              <span className="size-2 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
+              <TandaIkon jenis="fakta" className="tanda-fakta" />
               <span>Contoh Jawaban</span>
             </div>
 
@@ -245,9 +253,8 @@ export default function Home() {
                 <p className="font-script text-2xl text-emas sm:text-3xl terang:text-[#8a6036]">
                   Kerajaan Mataram Islam Bot
                 </p>
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-pareanom/30 bg-pareanom-gelap/60 px-2.5 py-0.5 text-xs font-medium text-pareanom-terang terang:border-transparent terang:bg-[#dfead8] terang:text-[#2f6b45]">
-                  <span className="size-1.5 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
-                  Fakta tercatat
+                <span className="text-lg">
+                  <LabelChip index={0} />
                 </span>
               </div>
 
@@ -272,7 +279,7 @@ export default function Home() {
                 className={i < CLAIM_MARKS.length - 1 ? "border-b border-garis pb-5 terang:border-[#e5dcce]" : "pb-1"}
               >
                 <div className="flex items-center gap-2.5">
-                  <span className={`size-2 rounded-full ${mark.color}`} aria-hidden="true" />
+                  <TandaIkon jenis={mark.jenis} className={`tanda-${mark.jenis} size-3.5`} />
                   <h3 className="font-display text-xs font-medium tracking-[0.2em] text-perkamen uppercase sm:text-sm terang:text-[#2a1d14]">
                     {mark.name}
                   </h3>
@@ -331,19 +338,31 @@ export default function Home() {
                 </h3>
 
                 <div className="mt-4">
-                  <span className="inline-flex items-center gap-1.5 rounded-full border border-pareanom/30 bg-pareanom-gelap/60 px-2.5 py-0.5 text-xs font-medium text-pareanom-terang terang:border-transparent terang:bg-[#dfead8] terang:text-[#2f6b45]">
-                    <span className="size-1.5 rounded-full bg-pareanom terang:bg-[#2f6b45]" aria-hidden="true" />
-                    Fakta tercatat
-                  </span>
+                  <span className="text-lg">
+                  <LabelChip index={0} />
+                </span>
                 </div>
 
                 <p className="mt-4 font-arsip text-base sm:text-lg leading-relaxed text-perkamen terang:text-[#2a1d14]">
                   {s.fact}
                 </p>
 
-                <p className="mt-4 font-arsip text-xs sm:text-sm text-abu terang:text-[#827567] leading-normal">
+                <p className="mt-4 font-arsip text-xs sm:text-sm text-abu terang:text-[#827567] leading-normal pb-7">
                   {s.source}
                 </p>
+
+                <a
+                  href={s.maps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="tombol-emas group mt-auto w-full gap-2.5 sm:w-auto sm:self-start"
+                >
+                  <IkonPeta className="size-5" />
+                  Lihat lokasi di Google Maps
+                  <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">
+                    →
+                  </span>
+                </a>
               </div>
             </article>
           ))}
@@ -351,8 +370,8 @@ export default function Home() {
       </section>
 
       {/* Jelajahi */}
-      <section className="cahaya-emas border-t border-garis px-4 py-28 sm:px-8">
-        <SectionTitle script="Cari Tahu Lebih Banyak" title="Jelajahi" />
+      <section className="batik border-t border-garis bg-malam-2 px-4 py-28 sm:px-8">
+        <SectionTitle panel script="Cari Tahu Lebih Banyak" title="Jelajahi" />
         <div className="mx-auto mt-16 grid max-w-5xl gap-6 sm:grid-cols-3">
           {EXPLORE.map((x, i) => (
             <Reveal key={x.href} delay={i * 120}>
@@ -374,18 +393,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Berkunjung */}
-      <section className="border-t border-garis bg-malam-2 px-4 py-28 text-center sm:px-8">
-        <p className="font-script text-3xl text-emas sm:text-4xl">Mau Berkunjung Langsung?</p>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-[1.8] text-abu">
-          Sebutkan tanggal, jam, dan jumlah orang. Kerajaan Mataram Islam Bot merangkumnya dulu, dan baru setelah kamu menekan{" "}
-          <span className="text-perkamen">Buat jadwal</span>, undangan masuk ke Google Calendar-mu. Ini pengingat
-          pribadi, bukan tiket resmi, jadi tetap cek tiket dan aturan berkunjung ke pengelola.
+      {/* Berkunjung: selalu gelap karena teksnya di atas foto. */}
+      <section data-theme="dark" className="relative isolate overflow-hidden bg-malam px-4 py-32 text-center sm:px-8">
+        <div className="absolute inset-0 -z-10">
+          <Image src={KUNJUNGAN.src} alt="" fill unoptimized sizes="100vw" className="lukisan object-cover opacity-45" />
+          <div className="absolute inset-0 bg-gradient-to-b from-malam via-malam/60 to-malam" />
+        </div>
+        <span className="mx-auto flex size-14 items-center justify-center rounded-full border border-emas/60 text-emas" aria-hidden="true">
+          <IkonKalender className="size-6" />
+        </span>
+        <p className="mt-5 font-script text-3xl text-emas sm:text-4xl">Mau berkunjung langsung?</p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-[1.8] text-teks">
+          Sebutkan tanggal, jam, dan jumlah orang. Undangan masuk ke Google Calendar-mu setelah kamu menekan{" "}
+          <span className="text-perkamen">Buat jadwal</span>. Ini pengingat pribadi, bukan tiket resmi.
         </p>
-        <p className="mt-10 text-xs text-teks">
-          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tautan-kurung py-2">
-            [ Rencanakan kunjungan ]
+        <p className="mt-10">
+          <Link href={chatLink("Aku mau merencanakan kunjungan")} className="tombol-emas">
+            Rencanakan kunjungan
           </Link>
+        </p>
+        <p className="absolute right-4 bottom-3 max-w-[16rem] text-right text-[10px] leading-snug text-abu-gelap/80 sm:right-8 sm:bottom-5 sm:max-w-none">
+          Foto latar: {KUNJUNGAN.caption} {KUNJUNGAN.author}, {KUNJUNGAN.year}. {KUNJUNGAN.license}.
         </p>
       </section>
     </>
