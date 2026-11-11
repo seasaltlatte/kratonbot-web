@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { AiReconstruction } from "@/components/AiReconstruction";
 import { CopyButton } from "@/components/CopyButton";
 import { IkonGaleri, IkonLontar, IkonPena, IkonPerisai } from "@/components/Icons";
 import { LabelChip } from "@/components/LabelLegend";
@@ -73,7 +74,7 @@ function Frame({ label, tone, children }: { label: string; tone: "arsip" | "ai";
   return (
     <div className="border border-emas/30 bg-permukaan/80 p-2">
       {/* Tanpa overflow-hidden: kalau isi placeholder lebih tinggi dari 4:3 (di HP), bingkainya ikut memanjang. */}
-      <div className="batik relative aspect-[4/3] bg-malam">
+      <div className="relative aspect-[4/3] bg-malam">
         {children}
         <span
           className={`absolute top-2 left-2 px-2.5 py-1 text-xs font-semibold tracking-[0.12em] uppercase ${
@@ -138,85 +139,8 @@ function GalleryEntry({ item, index }: { item: GalleryItem; index: number }) {
             </figcaption>
           </figure>
 
-          <figure>
-            <Frame label="Rekonstruksi AI" tone="ai">
-              {ai ? (
-                <Image
-                  src={ai.src}
-                  alt={`Ilustrasi AI, bukan foto: ${item.title}`}
-                  fill
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                  className="object-cover"
-                />
-              ) : (
-                <div className="flex min-h-full flex-col items-center justify-center bg-malam/70 px-5 pt-12 pb-6 text-center">
-                  <span className="flex size-12 items-center justify-center rounded-full border border-dashed border-emas/70 text-emas">
-                    <IkonPena className="size-5" />
-                  </span>
-                  <p className="mt-3 font-semibold text-emas-terang">Ilustrasi sedang disiapkan tim</p>
-                  <p className="mt-1 max-w-xs text-sm text-abu">Sementara itu, minta KratonBot merekonstruksi suasananya dengan kata-kata.</p>
-                  <Link href={`/chat?q=${encodeURIComponent(item.askBot)}`} className="tombol-emas mt-4 !min-h-0 !px-4 !py-2 text-center text-sm">
-                    Coba rekonstruksi teks
-                  </Link>
-                </div>
-              )}
-            </Frame>
-            <figcaption className="mt-2 text-xs leading-relaxed text-abu-gelap">
-              {ai
-                ? `Ilustrasi AI, bukan foto. Dibuat dengan ${ai.model} oleh ${ai.madeBy}, ${ai.date}.`
-                : "Ilustrasi akan dibuat dari prompt di bawah, dengan foto arsip di sebelah kiri sebagai acuan."}
-            </figcaption>
-            <p className="mt-3 flex gap-2.5 border-l-2 border-emas bg-catatan px-3.5 py-2.5 text-sm leading-relaxed text-emas-terang">
-              <IkonPerisai className="mt-0.5 size-4 shrink-0" />
-              <span>
-                <strong className="font-semibold">Perkiraan, bukan kejadian sebenarnya.</strong> Ilustrasi ini dibayangkan AI dari
-                foto arsip dan prompt, sehingga tidak 100% sama dengan bentuk, warna, atau suasana aslinya.
-              </span>
-            </p>
-          </figure>
+          <AiReconstruction item={item} initialAi={ai} />
         </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <section className="border-l-2 border-pareanom/70 pl-4">
-            <h3 className="text-sm font-normal tracking-[0.14em] uppercase">Yang tercatat di sumber</h3>
-            <ul className="mt-3 space-y-2">
-              {cards.map((c) => (
-                <li key={c.id} className="flex flex-wrap items-baseline gap-2">
-                  <LabelChip index={KATEGORI_INDEX[c.kategori]} />
-                  <Link href={`/pustaka#${c.id}`} className="text-emas underline underline-offset-2 hover:text-perkamen">
-                    {c.judul}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="border-l-2 border-dashed border-emas/60 pl-4">
-            <h3 className="text-sm font-normal tracking-[0.14em] uppercase">Yang harus dibayangkan AI</h3>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5 text-abu">
-              {item.imagined.map((t) => (
-                <li key={t}>{t}</li>
-              ))}
-            </ul>
-          </section>
-        </div>
-
-        <details className="group mt-6 border border-garis bg-malam/60">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3 text-sm text-emas hover:text-perkamen [&::-webkit-details-marker]:hidden">
-            <span className="inline-flex items-center gap-2">
-              <IkonLontar className="size-4" />
-              Prompt untuk membuat ilustrasinya
-            </span>
-            <span className="transition-transform group-open:rotate-180" aria-hidden="true">
-              ▾
-            </span>
-          </summary>
-          <div className="border-t border-garis px-4 py-4">
-            <p className="leading-relaxed">{item.prompt}</p>
-            <div className="mt-3">
-              <CopyButton text={item.prompt} />
-            </div>
-          </div>
-        </details>
       </div>
     </article>
   );

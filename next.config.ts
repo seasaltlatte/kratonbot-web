@@ -16,8 +16,12 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
-    // Foto arsip di halaman Galeri diambil langsung dari Wikimedia Commons (lisensi dicantumkan per foto).
-    remotePatterns: [new URL("https://upload.wikimedia.org/**"), new URL("https://thumb.wikimedia.org/**")],
+    // Foto arsip dari Wikimedia Commons & ilustrasi rekonstruksi dari Pollinations AI.
+    remotePatterns: [
+      new URL("https://upload.wikimedia.org/**"),
+      new URL("https://thumb.wikimedia.org/**"),
+      new URL("https://image.pollinations.ai/**"),
+    ],
   },
   turbopack: {
     rules: {
