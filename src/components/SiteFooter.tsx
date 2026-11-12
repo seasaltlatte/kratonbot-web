@@ -36,7 +36,7 @@ export function SiteFooter() {
             <span className="font-display text-xl tracking-[0.18em] text-perkamen uppercase">Kerajaan Mataram Islam Bot</span>
           </p>
           <p className="mt-4 max-w-sm leading-relaxed text-abu">
-            Pemandu AI untuk sejarah Keraton Kasunanan Surakarta dan Pura Mangkunegaran, yang selalu menunjukkan
+            Pemandu AI untuk sejarah Kasunanan Surakarta dan Kadipaten Mangkunegaran, yang selalu menunjukkan
             sumbernya.
           </p>
           <p className="mt-6 font-script text-3xl text-emas">Matur nuwun</p>
