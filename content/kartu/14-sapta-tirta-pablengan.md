@@ -20,6 +20,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Profil Umum dan Lokasi Sapta Tirta Pablengan
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 **Sapta Tirta Pablengan** adalah kawasan wisata sejarah, religi, dan sumber mata air sakral peninggalan Kadipaten Mangkunegaran yang berlokasi di **Desa Pablengan, Kecamatan Matesih, Kabupaten Karanganyar, Jawa Tengah** ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/); [Solopos Espos.id](https://solopos.espos.id/mengulik-sejarah-sapta-tirta-karanganyar-mengulik-kisah-rm-said-1252932-1252932)). *(Catatan jarak: sumber Indonesia Kaya menyebut sekitar 3 km dari pusat Kota Karanganyar, sedangkan Solopos menyebut sekitar 20 km dari Kota Karanganyar)* ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/); [Solopos Espos.id](https://solopos.espos.id/mengulik-sejarah-sapta-tirta-karanganyar-mengulik-kisah-rm-said-1252932-1252932)).
 
 - **Tata Letak Kawasan:** Kawasan seluas kurang lebih **1 hektare** ini memiliki tujuh sumber mata air yang letaknya saling berdekatan dengan jarak antar-mata air berkisar antara **5 meter hingga 13 meter** ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/)).
@@ -29,6 +32,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 ---
 
 ## 2. Sejarah sebagai Markas Pasukan Mangkunegara I dan Warisan Keraton
+
+Kategori: LEGENDA
+Situs: Pura Mangkunegaran
 
 ### 2.1 Benteng Pertahanan dan Tempat Semedi (*Tatalan*) Raden Mas Said
 Pada masa perjuangan melawan VOC Belanda (rentang hidup **Raden Mas Said / Pangeran Sambernyawa / KGPAA Mangkunegara I**, 1725–1795), kawasan Sapta Tirta Pablengan berfungsi sebagai **benteng pertahanan dan tempat peristirahatan pasukan** Raden Mas Said ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/)). Di area ini terdapat situs peninggalan berupa tempat semedi beliau yang disebut **tatalan** ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/)).
@@ -42,6 +48,9 @@ Selain tujuh sumber mata air dan situs *tatalan*, di dalam kompleks Sapta Tirta 
 ---
 
 ## 3. Daftar Tujuh Sumber Mata Air di Sapta Tirta Pablengan
+
+Kategori: LEGENDA
+Situs: Pura Mangkunegaran
 
 Ketujuh mata air di Sapta Tirta Pablengan memiliki karakteristik rasa, kandungan, dan khasiat yang dipercaya berbeda-beda oleh masyarakat ([Indonesia Kaya](https://indonesiakaya.com/pustaka-indonesia/tujuh-mata-air-beda-rasa-di-sapta-tirta-pablengan/); [Solopos Espos.id](https://solopos.espos.id/mengulik-sejarah-sapta-tirta-karanganyar-mengulik-kisah-rm-said-1252932-1252932)):
 

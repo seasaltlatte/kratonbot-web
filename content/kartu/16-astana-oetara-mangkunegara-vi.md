@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Profil Umum, Lokasi, dan Status Cagar Budaya Astana Oetara
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 **Astana Oetara** (kerap disebut **Pesarean Nayu**, atau dahulu dikenal sebagai *Manyu Giriyoso Sekaran Nayu*) adalah kompleks pemakaman sekaligus museum hidup dan situs cagar budaya peninggalan **KGPAA Mangkunegara VI** ([astanaoetara.com](https://www.astanaoetara.com/); [Kompas.com](https://www.kompas.com/stori/read/2022/06/18/090000079/astana-oetara-kompleks-pemakaman-mangkunegara-vi); [detikNews](https://news.detik.com/berita-jawa-tengah/d-5681835/mengapa-kgpaa-mangkunegara-vi-tak-dimakamkan-di-mangadeg-atau-girilayu)).
 
 - **Etimologi dan Lokasi:** Kata *astana* berarti makam/kuburan dan *oetara* berarti utara, merujuk pada posisinya di sisi utara Kota Surakarta ([Kompas.com](https://www.kompas.com/stori/read/2022/06/18/090000079/astana-oetara-kompleks-pemakaman-mangkunegara-vi)). Kompleks seluas kurang lebih **1,4 hektare** (14.000 m²) ini beralamat di **Jl. Nayu, Kampung Nayu, Kelurahan Nusukan, Kecamatan Banjarsari, Kota Surakarta, Jawa Tengah** ([astanaoetara.com](https://www.astanaoetara.com/); [astanaoetara.com/info/sejarah-edukasi](https://www.astanaoetara.com/info/sejarah-edukasi)).
@@ -31,6 +34,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 2. Alasan Mangkunegara VI Dimakamkan di Astana Oetara, Bukan di Astana Girilayu
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 Berbeda dari penguasa Mangkunegaran lainnya yang dimakamkan di kawasan perbukitan Karanganyar (Mangkunegara I–III di Astana Mangadeg, serta Mangkunegara IV, V, VII, VIII, dan IX di Astana Girilayu), **KGPAA Mangkunegara VI** dimakamkan di dalam Kota Surakarta di Astana Oetara ([detikNews](https://news.detik.com/berita-jawa-tengah/d-5681835/mengapa-kgpaa-mangkunegara-vi-tak-dimakamkan-di-mangadeg-atau-girilayu); [Wikipedia: Mangkunegara VI](https://id.wikipedia.org/wiki/Mangkunegara_VI)):
 
 - **Keinginan untuk Dekat dengan Rakyat dan Pengikutnya:** Menurut penjelasan resmi pengelola dan keturunan MN VI, Mangkunegara VI memilih dan menyiapkan sendiri Astana Oetara sejak **1909** (lalu dibangun pada **1926**) dengan alasan utama **agar lebih dekat dengan rakyat**, keluarga, keturunan, serta para pegawai Mangkunegaran yang berjasa pada masa pemerintahannya ([astanaoetara.com/info/sejarah-edukasi](https://www.astanaoetara.com/info/sejarah-edukasi); [detikNews](https://news.detik.com/berita-jawa-tengah/d-5681835/mengapa-kgpaa-mangkunegara-vi-tak-dimakamkan-di-mangadeg-atau-girilayu)).
@@ -40,6 +46,9 @@ Berbeda dari penguasa Mangkunegaran lainnya yang dimakamkan di kawasan perbukita
 ---
 
 ## 3. Arsitektur Karya Ir. Soekarno dan Tokoh yang Dimakamkan di Astana Oetara
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 ### 3.1 Arsitektur Jawa–Eropa dan Empat Bangunan Utama
 Kompleks Astana Oetara dirancang oleh **Ir. Soekarno** (yang kelak menjadi Presiden pertama Republik Indonesia) dengan memadukan unsur arsitektur **Jawa dan Eropa (*Art Nouveau*)** ([astanaoetara.com/info/sejarah-edukasi](https://www.astanaoetara.com/info/sejarah-edukasi)). Empat bangunan utamanya meliputi ([astanaoetara.com/info/sejarah-edukasi](https://www.astanaoetara.com/info/sejarah-edukasi)):
@@ -58,6 +67,9 @@ Selain **KGPAA Mangkunegara VI**, permaisuri, selir, dan keturunannya, di area A
 ---
 
 ## 4. Profil Kepemimpinan KGPAA Mangkunegara VI (1896–1916)
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 **KGPAA Mangkunegara VI** (lahir di Surakarta pada **1 Maret 1857** dengan nama kecil **GRM Suyitno** / KPA Dayaningrat; wafat di Surabaya pada **25 Juni 1928**) adalah putra keempat Mangkunegara IV dan R.Ay. Dunuk yang memerintah Kadipaten Mangkunegaran selama 19 tahun (**1896–1916**) ([Wikipedia: Mangkunegara VI](https://id.wikipedia.org/wiki/Mangkunegara_VI); [astanaoetara.com/info/sejarah-edukasi](https://www.astanaoetara.com/info/sejarah-edukasi)).
 

@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Makam Raja-Raja Mataram di Kotagede (*Pasarean Mataram* / *Astana Kita Ageng*)
 
+Kategori: FAKTA
+Situs: Kotagede (Warisan Mataram Islam)
+
 **Kompleks Makam Raja Kotagede** (dikenal juga sebagai **Pasarean Mataram**, **Astana Kita Ageng**, atau **Hastana Kitha Ageng**) merupakan kompleks pemakaman tertua bagi para pendiri dan raja awal Kesultanan Mataram Islam sebelum masa Sultan Agung ([Wikipedia: Keraton Kotagede](https://id.wikipedia.org/wiki/Keraton_Kotagede); [Dinas Kebudayaan DIY](https://budaya.jogjaprov.go.id/berita/detail/1395-kompleks-makam-raja-raja-mataram-islam-destinasi-wisata-religi-di-kotagede)).
 
 ### 1.1 Sejarah, Lokasi, dan Arsitektur
@@ -42,6 +45,9 @@ Peziarah wajib melepas alas kaki, dilarang memotret di area makam, serta mengena
 ---
 
 ## 2. Makam Raja Imogiri (*Astana Pajimatan Himagiri*)
+
+Kategori: FAKTA
+Situs: Imogiri, makam raja Kasunanan dan Yogyakarta (Keraton Kasunanan)
 
 **Pasarean Dalem Para Nata Astana Pajimatan Himagiri** (populer disebut **Makam Raja Imogiri**) adalah kompleks pemakaman kerajaan berteras di Kalurahan Wukirsari, Kapanewon Imogiri, Kabupaten Bantul, Daerah Istimewa Yogyakarta, yang menjadi tempat peristirahatan terakhir **Sultan Agung** beserta raja-raja penerus Wangsa Mataram di Surakarta dan Yogyakarta ([Wikipedia: Astana Pajimatan Himagiri](https://id.wikipedia.org/wiki/Astana_Pajimatan_Himagiri)).
 

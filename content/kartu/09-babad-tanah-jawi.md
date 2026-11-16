@@ -24,6 +24,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Pengertian, Bentuk Sastra, dan Karakteristik Babad Tanah Jawi
 
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
+
 **Babad Tanah Jawi** (aksara Jawa: *ꦧꦧꦢ꧀ꦠꦤꦃꦗꦮꦶ*, berarti "Sejarah Tanah Jawa") adalah karya sastra sejarah berbahasa Jawa yang aslinya digubah dalam bentuk puisi tradisional tembang *macapat* ([Wikipedia: Babad Tanah Jawi](https://id.wikipedia.org/wiki/Babad_Tanah_Jawi)). Karya ini berpusat pada historiografi Dinasti Mataram Islam dan menjadi rujukan penting dalam menelaah tradisi penulisan sejarah Pulau Jawa ([Wikipedia: Babad Tanah Jawi](https://id.wikipedia.org/wiki/Babad_Tanah_Jawi)).
 
 - **Genealogi Lintas Peradaban:** Salah satu ciri khas Babad Tanah Jawi adalah penyusunan silsilah raja-raja Jawa yang ditarik jauh ke belakang hingga **Nabi Adam** dan nabi-nabi lainnya sebagai leluhur para penguasa era Hindu-Buddha hingga raja-raja Islam di Jawa ([Wikipedia: Babad Tanah Jawi](https://id.wikipedia.org/wiki/Babad_Tanah_Jawi); [Internet Archive: Serat Babad Tanah Jawi](https://archive.org/details/babad-tanah-jawi)).
@@ -33,6 +36,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 ---
 
 ## 2. Dua Kelompok Induk Naskah dan Edisi Penting Babad Tanah Jawi
+
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
 
 Beragam varian Babad Tanah Jawi yang beredar diklasifikasikan ke dalam dua kelompok induk utama, ditambah beberapa edisi cetak modern ([Wikipedia: Babad Tanah Jawi](https://id.wikipedia.org/wiki/Babad_Tanah_Jawi)):
 
@@ -48,6 +54,9 @@ Beragam varian Babad Tanah Jawi yang beredar diklasifikasikan ke dalam dua kelom
 ---
 
 ## 3. Periodisasi Penguasa Pulau Jawa menurut Babad Tanah Jawi
+
+Kategori: LEGENDA
+Situs: Warisan Mataram Islam
 
 Dalam rangkuman historiografi tradisional yang merujuk pada Babad Tanah Jawi dan kelanjutannya, urutan penguasa di Tanah Jawa dibagi ke dalam tiga era besar: **Era Jawa Kuno**, **Era Jawa Pertengahan**, dan **Era Jawa Baru** ([Wikipedia: Babad Tanah Jawi](https://id.wikipedia.org/wiki/Babad_Tanah_Jawi)).
 
@@ -77,6 +86,9 @@ Setelah **Perjanjian Giyanti (1755)** membagi Wangsa Mataram menjadi Surakarta d
 ---
 
 ## 4. Penilaian Sejarawan dan Panduan Konteks bagi AI Chatbot
+
+Kategori: TAFSIR
+Situs: Warisan Mataram Islam
 
 Agar AI *chatbot* dapat memberikan jawaban yang akurat secara historiografis ketika mengambil data dari dokumen ini, sistem perlu membedakan bobot keandalan tiap era dalam Babad Tanah Jawi:
 

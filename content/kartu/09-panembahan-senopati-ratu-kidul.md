@@ -23,6 +23,9 @@ Dokumen ini dirancang sebagai basis pengetahuan (*knowledge base*) untuk AI *cha
 
 ## 1. Profil Singkat Panembahan Senapati (Pendiri Mataram Islam)
 
+Kategori: FAKTA
+Situs: Kotagede (Warisan Mataram Islam)
+
 **Panembahan Senapati** (dikenal pula dengan nama kecil **Danang Sutawijaya**, **Risang Sutawijaya**, dan **Raden Ngabehi Saloring Pasar**) adalah pendiri sekaligus raja pertama Kesultanan Mataram Islam yang memerintah sekitar tahun 1586–1601 dengan pusat pemerintahan di Kotagede ([Wikipedia: Senapati dari Mataram](https://id.wikipedia.org/wiki/Senapati_dari_Mataram)).
 
 - **Silsilah dan Masa Muda:** Panembahan Senapati merupakan putra sulung **Ki Ageng Pamanahan** dan **Nyai Ageng Pamanahan** (adik dari penasihat utamanya, **Ki Juru Martani**), sekaligus putra angkat Sultan Adiwijaya (Jaka Tingkir) dari Kesultanan Pajang ([Wikipedia: Senapati dari Mataram](https://id.wikipedia.org/wiki/Senapati_dari_Mataram)). Atas keberhasilannya menumpas Arya Panangsang di dekat Bengawan Sore dengan siasat Ki Juru Martani, ayah Senapati memperoleh tanah perdikan di Alas Mentaok (kini wilayah Kotagede) ([Wikipedia: Senapati dari Mataram](https://id.wikipedia.org/wiki/Senapati_dari_Mataram)).
@@ -31,6 +34,9 @@ Dokumen ini dirancang sebagai basis pengetahuan (*knowledge base*) untuk AI *cha
 ---
 
 ## 2. Profil Gusti Kanjeng Ratu Kidul dan Perbedaannya dengan Nyi Roro Kidul
+
+Kategori: LEGENDA
+Situs: Warisan Mataram Islam
 
 ### 2.1 Sosok Gusti Kanjeng Ratu Kidul
 **Sri Gusti Kanjeng Ratu Kidul** (di Keraton Surakarta disebut **Kanjeng Ratu Ayu Kencana Sari** atau **Kanjeng Ratu Ayu Kencana Hadisari**) adalah tokoh legendaris penguasa alam spiritual Samudra Hindia (Laut Selatan) yang memegang peran sentral dalam kosmologi dan legitimasi Dinasti Mataram Islam ([Wikipedia: Kanjeng Ratu Kidul](https://id.wikipedia.org/wiki/Kanjeng_Ratu_Kidul)). Dalam kepercayaan keraton Jawa, beliau dipandang sebagai pasangan spiritual (*istri spiritual*) sekaligus pelindung gaib bagi raja-raja Mataram sejak Panembahan Senapati hingga keturunannya di Surakarta dan Yogyakarta ([Wikipedia: Kanjeng Ratu Kidul](https://id.wikipedia.org/wiki/Kanjeng_Ratu_Kidul); [LiraNews](https://liranews.com/kangjeng-ratu-kidul-istri-spiritual-raja-jawa/)). Di kalangan masyarakat Jawa, wujudnya konon dapat berubah—tampak muda dan jelita saat bulan purnama lalu menua menjelang bulan mati—dan kehadirannya sering dikaitkan dengan pancaran cahaya (*daru*) ([Wikipedia: Kanjeng Ratu Kidul](https://id.wikipedia.org/wiki/Kanjeng_Ratu_Kidul)).
@@ -50,6 +56,9 @@ Selain kedua tokoh tersebut, tutur spiritual di kawasan Parangkusumo juga menyeb
 
 ## 3. Legenda Hubungan Panembahan Senapati dengan Kanjeng Ratu Kidul dalam Pendirian Mataram
 
+Kategori: LEGENDA
+Situs: Warisan Mataram Islam
+
 ### 3.1 Pertapaan di Pantai Parangkusumo dan Perjanjian Spiritual
 Menurut catatan *Babad Tanah Jawi* dan tradisi lisan Yogyakarta, ketika **Panembahan Senapati** bertekad memerdekakan Mataram dari Kesultanan Pajang, ia melakukan laku tapa atau meditasi di Pantai Parangkusumo, sebelah selatan Kotagede ([Wikipedia: Kanjeng Ratu Kidul](https://id.wikipedia.org/wiki/Kanjeng_Ratu_Kidul); [DetikJogja](https://www.detik.com/jogja/berita/d-8326220/mitos-kisah-cinta-panembahan-senopati-dan-nyi-roro-kidul-di-cepuri-parangkusumo)).
 
@@ -67,6 +76,9 @@ Dari sudut pandang sejarawan, keyakinan mengenai perjanjian gaib antara Panembah
 
 ## 4. Ritual Rutin Kasunanan Surakarta dan Kesultanan Yogyakarta
 
+Kategori: FAKTA
+Situs: Keraton Kasunanan
+
 Setelah Perjanjian Giyanti (1755) membagi Mataram menjadi Kasunanan Surakarta dan Kesultanan Yogyakarta, kedua keraton tetap memelihara hubungan simbolis dan spiritual dengan Kanjeng Ratu Kidul melalui ritual tahunan yang berbeda namun berakar pada warisan yang sama ([Wikipedia: Kanjeng Ratu Kidul](https://id.wikipedia.org/wiki/Kanjeng_Ratu_Kidul); [Etnis.id](https://etnis.id/bedhaya-ketawang-bukan-sekadar-tarian-menghormati-ratu-kidul/)).
 
 ### 4.1 Ritual di Kasunanan Surakarta Hadiningrat
@@ -81,6 +93,9 @@ Setelah Perjanjian Giyanti (1755) membagi Mataram menjadi Kasunanan Surakarta da
 ---
 
 ## 5. Matriks Perbandingan Tradisi Ritual Surakarta vs. Yogyakarta
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan
 
 | Dimensi Tradisi | Kasunanan Surakarta Hadiningrat | Kesultanan Ngayogyakarta Hadiningrat | Sumber |
 | :--- | :--- | :--- | :--- |

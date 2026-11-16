@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Gambaran Umum Tanda Kehormatan Republik Indonesia dalam Konteks Tokoh Surakarta
 
+Kategori: FAKTA
+Situs: Keraton Kasunanan & Pura Mangkunegaran
+
 Pemerintah Republik Indonesia menganugerahkan berbagai tanda kehormatan kepada raja (*Susuhunan*) Kasunanan Surakarta dan adipati (*KGPAA*) Kadipaten Mangkunegaran secara anumerta atas jasa perjuangan, pembangunan sosial-ekonomi, maupun pelestarian kebudayaan nasional ([Wikipedia: Pakubuwana X](https://id.wikipedia.org/wiki/Pakubuwana_X); [Wikipedia: Mangkunegara VII](https://id.wikipedia.org/wiki/Mangkunegara_VII)). Tiga tanda kehormatan utama yang disematkan kepada para penguasa Surakarta tersebut adalah:
 
 1. **Bintang Mahaputera Adipurna:** Kelas pertama (tertinggi) dari tanda kehormatan Bintang Mahaputera, dikenakan dalam bentuk bintang pada pita selempang di pundak kanan disertai patra di dada kiri ([Wikipedia: Bintang Mahaputera](https://id.wikipedia.org/wiki/Bintang_Mahaputera)).
@@ -31,6 +34,9 @@ Pemerintah Republik Indonesia menganugerahkan berbagai tanda kehormatan kepada r
 
 ## 2. Penerima Bintang Mahaputera Adipurna: Pangeran Sambernyawa (Mangkunegara I)
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 **Kanjeng Gusti Pangeran Adipati Arya (KGPAA) Mangkunegara I** (lahir dengan nama **Raden Mas Said** pada 7 April 1725/1726 dan wafat 28 Desember 1795; dijuluki **Pangeran Sambernyawa**) merupakan pendiri sekaligus adipati pertama Kadipaten Mangkunegaran yang memerintah pada 1757–1795 ([Wikipedia: Mangkunegara I](https://id.wikipedia.org/wiki/Mangkunegara_I)).
 
 - **Tanda Kehormatan dan Status Pahlawan:** Pemerintah Republik Indonesia menganugerahkan **Bintang Mahaputera Adipurna** secara anumerta kepada Mangkunegara I serta mengukuhkannya sebagai **Pahlawan Nasional Indonesia** melalui SK Presiden No. 048/TK/1988 tanggal 17 Agustus 1988 ([Kategori: Penerima Bintang Mahaputera Adipurna](https://id.wikipedia.org/wiki/Kategori:Penerima_Bintang_Mahaputera_Adipurna); [Wikipedia: Mangkunegara I](https://id.wikipedia.org/wiki/Mangkunegara_I)).
@@ -39,6 +45,9 @@ Pemerintah Republik Indonesia menganugerahkan berbagai tanda kehormatan kepada r
 ---
 
 ## 3. Penerima Bintang Mahaputera Adipradana
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan & Pura Mangkunegaran
 
 ### 3.1 Sri Susuhunan Pakubuwana X (Kasunanan Surakarta)
 **Sri Susuhunan Pakubuwana X** (nama lahir **Gusti Raden Mas Sayyidin Malikul Kusna**, 29 November 1866 – Februari 1939) adalah Susuhunan Surakarta ke-9 yang memerintah selama 46 tahun pada periode 1893–1939 ([Wikipedia: Pakubuwana X](https://id.wikipedia.org/wiki/Pakubuwana_X)).
@@ -56,6 +65,9 @@ Pemerintah Republik Indonesia menganugerahkan berbagai tanda kehormatan kepada r
 
 ## 4. Penerima Bintang Budaya Parama Dharma: KGPAA Mangkunegara VII
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 **KGPAA Mangkunegara VII** (lahir dengan nama **B.R.M. Soerjo Soeparto**, 12 November 1885 – 19 Juli 1944) adalah Adipati ketujuh Mangkunegaran yang memerintah pada 1916–1944 dan sempat menempuh pendidikan di Universitas Leiden, Belanda ([Wikipedia: Mangkunegara VII](https://id.wikipedia.org/wiki/Mangkunegara_VII)).
 
 - **Tanda Kehormatan dan Dasar Hukum:** Atas jasa besarnya dalam memajukan dan memodernisasi kebudayaan Jawa, Mangkunegara VII dianugerahi **Bintang Budaya Parama Dharma** secara anumerta melalui **Keppres RI No. 66/TK/Tahun 2016** tanggal 10 Agustus 2016, yang diserahkan Presiden Joko Widodo kepada perwakilan kerabat (cucunya, Retno Satoeti Yamin) pada 15 Agustus 2016 ([Wikipedia: Mangkunegara VII](https://id.wikipedia.org/wiki/Mangkunegara_VII); [Wikipedia: Bintang Budaya Parama Dharma](https://id.wikipedia.org/wiki/Bintang_Budaya_Parama_Dharma)).
@@ -64,6 +76,9 @@ Pemerintah Republik Indonesia menganugerahkan berbagai tanda kehormatan kepada r
 ---
 
 ## 5. Tabel Ringkasan Bintang Kehormatan Raja dan Adipati Surakarta
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan & Pura Mangkunegaran
 
 | Nama Tokoh | Takhta & Masa Berkuasa | Tanda Kehormatan | Tahun & Dasar Hukum | Kontribusi Utama | Sumber |
 | :--- | :--- | :--- | :--- | :--- | :--- |

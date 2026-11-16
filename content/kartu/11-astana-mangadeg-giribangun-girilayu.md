@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Peta Konseptual Kawasan Pemakaman Trah Mangkunegaran di Matesih
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 Di kawasan perbukitan kaki Gunung Lawu, Kecamatan Matesih, Kabupaten Karanganyar, Jawa Tengah (sekitar 35–37 km di sebelah timur Kota Surakarta), terdapat tiga kompleks pemakaman yang saling berkaitan secara historis dan genealogis dengan **Praja Mangkunegaran** ([Wikipedia: Astana Giribangun](https://id.wikipedia.org/wiki/Astana_Giribangun); [detikNews](https://news.detik.com/berita-jawa-tengah/d-5682509/mengenal-astana-girilayu-peristirahatan-terakhir-kgpaa-mangkunegara-ix)):
 
 1. **Astana Mangadeg:** Peristirahatan terakhir penguasa awal Mangkunegaran (Mangkunegara I, II, dan III) di ketinggian sekitar 750 meter di atas permukaan laut (mdpl) ([Wikipedia: Astana Mangadeg](https://id.wikipedia.org/wiki/Astana_Mangadeg); [Wikipedia: Astana Giribangun](https://id.wikipedia.org/wiki/Astana_Giribangun)).
@@ -30,6 +33,9 @@ Di kawasan perbukitan kaki Gunung Lawu, Kecamatan Matesih, Kabupaten Karanganyar
 ---
 
 ## 2. Astana Mangadeg (Makam Mangkunegara I, II, dan III)
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 **Astana Mangadeg** (dari kata *mangadeg* yang berarti "berdiri") adalah kompleks pemakaman bagi para penguasa awal Kadipaten Mangkunegaran beserta kerabat dekat dan para pengikut setia perjuangannya ([Wikipedia: Astana Mangadeg](https://id.wikipedia.org/wiki/Astana_Mangadeg)).
 
@@ -41,6 +47,9 @@ Di kawasan perbukitan kaki Gunung Lawu, Kecamatan Matesih, Kabupaten Karanganyar
 ---
 
 ## 3. Astana Giribangun (Makam Keluarga Soeharto dan Keterkaitannya dengan Mangadeg)
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 **Astana Giribangun** adalah kompleks mausoleum seluas sekitar 4,3 hektare bagi keluarga Presiden ke-2 Republik Indonesia, **H. Muhammad Soeharto**, yang terletak di Desa Girilayu, Kecamatan Matesih, Kabupaten Karanganyar, pada ketinggian **660 mdpl** ([Wikipedia: Astana Giribangun](https://id.wikipedia.org/wiki/Astana_Giribangun)).
 
@@ -58,6 +67,9 @@ Kompleks Astana Giribangun terbagi menjadi tiga tingkatan bangunan makam (*cungk
 
 ## 4. Astana Girilayu (Makam Mangkunegara IV, V, VII, VIII, dan IX)
 
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
+
 **Astana Girilayu** (dari kata *giri* yang berarti gunung/bukit dan *layu* yang berarti mati/wafat) adalah kompleks pemakaman bagi para penguasa (*Pengageng* / *Mangkunagara*) Praja Mangkunegaran beserta putra-putrinya ([Wikipedia: Astana Girilayu](https://id.wikipedia.org/wiki/Astana_Girilayu); [detikNews](https://news.detik.com/berita-jawa-tengah/d-5682509/mengenal-astana-girilayu-peristirahatan-terakhir-kgpaa-mangkunegara-ix)).
 
 - **Lokasi dan Sejarah Pembangunan:** Terletak di puncak **Bukit Girilayu**, Desa Girilayu, Kecamatan Matesih, Kabupaten Karanganyar (ketinggian sekitar **750 mdpl**), berjarak sekitar 3 km dari kompleks Mangadeg–Giribangun ([detikNews](https://news.detik.com/berita-jawa-tengah/d-5682509/mengenal-astana-girilayu-peristirahatan-terakhir-kgpaa-mangkunegara-ix)). Menurut keterangan pihak Pura Mangkunegaran, kompleks ini mulai dibangun pada masa pemerintahan Mangkunegara IV karena lahan pemakaman di Astana Mangadeg sudah penuh ([detikNews](https://news.detik.com/berita-jawa-tengah/d-5682509/mengenal-astana-girilayu-peristirahatan-terakhir-kgpaa-mangkunegara-ix)).
@@ -67,6 +79,9 @@ Kompleks Astana Giribangun terbagi menjadi tiga tingkatan bangunan makam (*cungk
 ---
 
 ## 5. Matriks Perbandingan Astana Mangadeg, Giribangun, dan Girilayu
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 | Nama Kompleks | Lokasi & Ketinggian | Tokoh Utama yang Dimakamkan | Keterkaitan Sejarah / Pengelolaan | Sumber |
 | :--- | :--- | :--- | :--- | :--- |

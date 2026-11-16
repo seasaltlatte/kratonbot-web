@@ -100,13 +100,14 @@ function parseSumber(raw: string): Sumber[] {
 function cleanIsi(isi: string) {
   const paragraphs = isi
     .replace(/Catatan untuk tim:[\s\S]*$/i, "")
+    .replace(/\s*\(catatan RAG:[^)]*\)/gi, "")
     .replace(/,\s*jadi bot sebaiknya[^.]*\./gi, ".")
     .replace(/:\s*bot harus[^.]*\./gi, ".")
     .split(/\n\s*\n/)
     .map((par) =>
       par
         .split(/(?<=\.)\s+/)
-        .filter((s) => !/\b[Bb]ot (sebaiknya|harus)\b|^Sajikan\b/i.test(s))
+        .filter((s) => !/\b[Bb]ot (sebaiknya|harus)\b|^Sajikan\b|\bAI chatbot\b|\bdokumen ini\b/i.test(s))
         .join(" ")
         .trim()
     )
@@ -115,95 +116,114 @@ function cleanIsi(isi: string) {
   return paragraphs.join("\n\n");
 }
 
+const KATEGORI_VALID = ["FAKTA", "TAFSIR", "LEGENDA", "INFO PRAKTIS"];
+
+// Bagian artikel yang bukan pengetahuan: daftar pustaka, contoh tanya-jawab, ringkasan untuk mesin.
+const BAGIAN_DILEWATI =
+  /^(Catatan )?Sumber (Rujukan|Referensi)\b|Contoh Pasangan Pertanyaan|Catatan Sumber|Ringkasan (Kronologi|Data Kunci)/i;
+
+// Tabel markdown → satu baris teks per baris tabel, misalnya
+// "Air Bleng — Karakteristik: Berasa asin; Khasiat: Dipercaya membantu …".
+// Kolom nomor dan kolom sumber dibuang (sumbernya sudah dikumpulkan sebagai daftar sumber).
+function tabelKeTeks(lines: string[]): string[] {
+  const cells = (l: string) =>
+    l.replace(/^\s*\|/, "").replace(/\|\s*$/, "").split("|").map((c) => c.trim());
+  const rows = lines.filter((l) => !/^\s*\|?\s*:?-{2,}/.test(l)).map(cells);
+  if (rows.length < 2) return [];
+  const [head, ...body] = rows;
+  const pakai = head
+    .map((h, i) => ({ h, i }))
+    .filter(({ h }) => !/^(no\.?|nomor|sumber|rujukan|referensi)$/i.test(h));
+  if (pakai.length === 0) return [];
+  const [label, ...rest] = pakai;
+  return body
+    .map((r) => {
+      const nama = r[label.i] ?? "";
+      const detail = rest
+        .filter(({ i }) => r[i] && r[i] !== "-" && r[i] !== "—")
+        .map(({ h, i }) => `${h}: ${r[i]}`)
+        .join("; ");
+      return detail ? `${nama} — ${detail}.` : nama;
+    })
+    .filter(Boolean);
+}
+
 /**
- * Parser penyesuaian untuk file markdown artikel RAG (nomor 08-16) yang menggunakan
- * pemisah '---' dan subbab '## ...' alih-alih format kartu klasik.
+ * File artikel (08 dan seterusnya) memakai pemisah '---' dan subbab '## …', bukan format kartu klasik.
+ * Setiap subbab menjadi satu kartu. Label dan situs dibaca dari baris "Kategori:" dan "Situs:"
+ * tepat di bawah judul subbab; kalau tidak ada, dipakai nilai aman (FAKTA, warisan Mataram)
+ * alih-alih menebak dari kata kunci.
  */
-function parseMarkdownSection(file: string, block: string): string | null {
-  const match = block.match(/^##\s+(?:(?:\d+\.?\s*)*)(.*)$/m);
+function parseMarkdownSection(block: string): string | null {
+  const match = block.match(/^##\s+(?:\d+\.?\s*)*(.*)$/m);
   if (!match) return null;
   const rawTitle = match[1].trim();
-  if (/^(Catatan )?Sumber (Rujukan|Referensi)$/i.test(rawTitle)) return null;
-  if (/Contoh Pasangan Pertanyaan|Catatan Sumber|Ringkasan (Kronologi|Data Kunci)/i.test(rawTitle)) return null;
+  if (BAGIAN_DILEWATI.test(rawTitle)) return null;
 
-  const title = rawTitle.replace(/^\d+[\.\)]\s*/, "").trim();
-  let body = block.replace(/^##\s+.*$/m, "").trim();
-  if (body.length < 20) return null;
+  const title = rawTitle
+    .replace(/\s*(dan|&)\s*Panduan Konteks bagi AI Chatbot\s*$/i, "")
+    .replace(/[*_]/g, "")
+    .trim();
+  let body = block.slice(block.indexOf(match[0]) + match[0].length).trim();
 
-  let kategori = "FAKTA";
-  if (/mitologi|legenda|ratu kidul|mistik|gaib|ghaib/i.test(title + " " + body)) {
-    kategori = "LEGENDA";
-  } else if (/interpretasi|analisis|tafsir|pendapat|panduan konteks/i.test(title + " " + body)) {
-    kategori = "TAFSIR";
-  } else if (/jam buka|tiket|kunjungan|rute|lokasi|etika/i.test(title + " " + body)) {
-    kategori = "INFO PRAKTIS";
-  }
+  // Baris metadata opsional di bawah judul subbab.
+  const meta = (name: string) => {
+    const m = body.match(new RegExp(`^${name}:\\s*(.+)$`, "m"));
+    if (m) body = body.replace(m[0], "").trim();
+    return m?.[1].trim();
+  };
+  const kategoriTulis = meta("Kategori")?.toUpperCase();
+  const kategori = kategoriTulis && KATEGORI_VALID.includes(kategoriTulis) ? kategoriTulis : "FAKTA";
+  const situs = meta("Situs") ?? "Warisan Mataram Islam";
 
-  let situs = "Mataram Islam Surakarta";
-  if (/mangkunegar|sambernyawa|mangadeg|girilayu|pablengan|astana oetara/i.test(title + " " + body + " " + file)) {
-    situs = "Pura Mangkunegaran";
-  }
-  if (/kasunanan|surakarta|pakubuwon|sangga buwana|langenharjo/i.test(title + " " + body + " " + file)) {
-    situs = situs === "Pura Mangkunegaran" ? "Kasunanan & Mangkunegaran" : "Keraton Kasunanan";
-  }
-  if (/kotagede|imogiri/i.test(file)) {
-    situs = "Kotagede & Imogiri";
-  } else if (/tegalarum|amangkurat/i.test(file)) {
-    situs = "Pasarean Tegalarum";
-  }
-
-  // 1. Ekstrak semua sumber [label](url)
+  // 1. Kumpulkan semua sumber [label](url), termasuk yang ada di dalam tabel.
   const links: { text: string; url: string }[] = [];
-  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
-  let lm;
-  while ((lm = linkRegex.exec(body)) !== null) {
+  for (const lm of body.matchAll(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g)) {
     const text = lm[1].replace(/^(Wikipedia:\s*|Website:\s*)/i, "").trim();
     const url = lm[2].trim();
-    if (!links.some((l) => l.url === url)) {
-      links.push({ text, url });
-    }
+    if (!links.some((l) => l.url === url)) links.push({ text: text || url, url });
   }
 
-  // 2. Hapus referensi sitasi dalam tanda kurung, misal: ([sumber.com](url); [lain.com](url))
-  body = body.replace(/\(\s*\[[^\]]+\]\([^\)]+\)(?:[\s;,]*\[[^\]]+\]\([^\)]+\))*\s*\)/g, "");
+  // 2. Hapus sitasi dalam kurung, misal ([sumber.com](url); [lain.com](url)), lalu sisa link jadi teks biasa.
+  body = body.replace(/\(\s*\[[^\]]+\]\([^)]+\)(?:[\s;,]*\[[^\]]+\]\([^)]+\))*\s*\)/g, "");
+  body = body.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
 
-  // 3. Jika ada link tersisa dalam kalimat, ganti [Nama](url) menjadi Nama
-  body = body.replace(/\[([^\]]+)\]\([^\)]+\)/g, "$1");
-
-  // 4. Ubah heading h3/h4 seperti "### 3.1 Judul Subbab" menjadi "Judul Subbab:"
+  // 3. Format markdown → teks: subjudul, butir, tebal/miring.
   body = body.replace(/^#{3,}\s*(?:\d+\.?\s*)*(.*)$/gm, "$1:");
+  body = body.replace(/^\s*[-*]\s+\*\*([^*]+):\*\*\s*/gm, "$1: ");
+  body = body.replace(/^\s*[-*]\s+/gm, "");
+  // Tebal/miring bisa bersarang (**Air Kesakten (*Kasekten*)**), jadi semua tanda bintang dibuang.
+  body = body.replace(/\*+/g, "");
+  body = body.replace(/(^|[\s(])_([^_]+)_(?=[\s).,;:]|$)/g, "$1$2");
 
-  // 5. Ubah format bullet "- **Label:** teks" menjadi "Label: teks"
-  body = body.replace(/^[-*]\s+\*\*([^*]+):\*\*\s*/gm, "$1: ");
-  body = body.replace(/^[-*]\s+/gm, "");
+  // 4. Susun paragraf; tabel diubah menjadi baris teks, bukan dibuang.
+  const paragraphs: string[] = [];
+  let tabel: string[] = [];
+  const tutupTabel = () => {
+    if (tabel.length) paragraphs.push(...tabelKeTeks(tabel));
+    tabel = [];
+  };
+  for (const raw of body.split("\n")) {
+    const line = raw.trim();
+    if (line.startsWith("|")) {
+      tabel.push(line);
+      continue;
+    }
+    tutupTabel();
+    if (line && !/^-{3,}$/.test(line)) paragraphs.push(line);
+  }
+  tutupTabel();
 
-  // 6. Bersihkan format bold (**teks**) dan italic (*teks* / _teks_)
-  body = body.replace(/\*\*([^*]+)\*\*/g, "$1");
-  body = body.replace(/\*([^*]+)\*/g, "$1");
-  body = body.replace(/_([^_]+)_/g, "$1");
-
-  // 7. Hapus baris tabel markdown (|---|---|)
-  body = body.replace(/^\|.*\|$/gm, "");
-
-  // 8. Susun paragraf yang rapi
-  const paragraphs = body
-    .split(/\n+/)
-    .map((p) => p.trim())
-    .filter((p) => p.length > 0 && !/^(\||\+|-{3,})/.test(p))
-    .map((p) => p.replace(/\s{2,}/g, " ").replace(/\s+([.,;:])/g, "$1"));
-
-  const cleanedBody = paragraphs.join("\n\n");
-
-  const sumber = links.length > 0
-    ? links.slice(0, 4).map((l) => `${l.text}, ${l.url}`).join(" ; ")
-    : "Dokumentasi sejarah tim";
+  const cleanedBody = paragraphs
+    .map((p) => p.replace(/\s{2,}/g, " ").replace(/\s+([.,;:])/g, "$1"))
+    .join("\n\n");
+  if (cleanedBody.length < 20) return null;
 
   return [
     `Judul: ${title}`,
     `Situs: ${situs}`,
     `Kategori: ${kategori}`,
-    `Sumber: ${sumber}`,
-    `Dicek: 16-11-2026`,
+    `Sumber: ${links.map((l) => `${l.text}, ${l.url}`).join(" ; ")}`,
     `Isi: ${cleanedBody}`,
   ].join("\n");
 }
@@ -222,7 +242,7 @@ function readBlocks(): { file: string; block: string }[] {
       if (field(trimmed, "Judul")) {
         out.push({ file, block: trimmed });
       } else {
-        const parsed = parseMarkdownSection(file, trimmed);
+        const parsed = parseMarkdownSection(trimmed);
         if (parsed) out.push({ file, block: parsed });
       }
     }

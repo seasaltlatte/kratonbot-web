@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Profil Umum, Lokasi, dan Status Cagar Budaya
 
+Kategori: FAKTA
+Situs: Keraton Kasunanan
+
 **Pesanggrahan Langenharjo** adalah kompleks bangunan bersejarah peninggalan **Keraton Kasunanan Surakarta Hadiningrat** yang terletak di tepi utara Sungai **Bengawan Solo** (berjarak sekitar 50 meter dari sungai), tepatnya di **Dusun Langenharjan, Desa Langenharjo, Kecamatan Grogol, Kabupaten Sukoharjo, Jawa Tengah**, sekitar 10 kilometer dari pusat Kota Surakarta ([Portal Pemkab Sukoharjo](https://portal.sukoharjokab.go.id/blog/berita/pesanggrahan-langenharjo-jejak-kejayaan-keraton-kasunanan-di-sukoharjo/); [Kompas.com](https://www.kompas.com/jawa-tengah/read/2025/11/02/184500988/abdi-dalem-gelar-doa-untuk-pakubuwono-xiii-di-pesanggrahan?page=all)).
 
 - **Status Cagar Budaya:** Pesanggrahan Langenharjo telah ditetapkan sebagai **Cagar Budaya** melalui **Keputusan Menteri Kebudayaan dan Pariwisata Nomor PM.24/PW.007/MKP/2007** dan berada dalam upaya pelestarian Pemerintah Kabupaten Sukoharjo melalui Dinas Pendidikan dan Kebudayaan ([Portal Pemkab Sukoharjo](https://portal.sukoharjokab.go.id/blog/berita/pesanggrahan-langenharjo-jejak-kejayaan-keraton-kasunanan-di-sukoharjo/)).
@@ -28,6 +31,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 ---
 
 ## 2. Sejarah Pembangunan dan Kesinambungan Raja-Raja Kasunanan Surakarta (PB IX–PB XIII)
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan
 
 ### 2.1 Pendirian pada Masa Pakubuwana IX hingga Peresmian Masa Pakubuwana X
 - **Prakarsa Pakubuwana IX (1870):** Setelah ditemukannya sumber mata air panas alami di kawasan tersebut, **Sri Susuhunan Pakubuwana IX** (memerintah 1861–1893) memprakarsai pembangunan Pesanggrahan Langenharjo pada tahun **1870** sebagai tempat peristirahatan, semedi, sekaligus pemandian keluarga kerajaan ([Portal Pemkab Sukoharjo](https://portal.sukoharjokab.go.id/blog/berita/pesanggrahan-langenharjo-jejak-kejayaan-keraton-kasunanan-di-sukoharjo/); [Jejak Bocah Hilang](https://jejakbocahilang.wordpress.com/2014/06/01/pesanggrahan-langenharjo/); [Kompas.com](https://www.kompas.com/jawa-tengah/read/2025/11/02/184500988/abdi-dalem-gelar-doa-untuk-pakubuwono-xiii-di-pesanggrahan?page=all)).
@@ -40,6 +46,9 @@ Pesanggrahan Langenharjo juga menjadi saksi sejarah terciptanya busana adat **Be
 ---
 
 ## 3. Arsitektur, Tata Ruang, dan Pemandian Air Hangat Belerang
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan
 
 Kompleks bangunan dua lantai Pesanggrahan Langenharjo memadukan arsitektur tradisional Jawa dengan unsur kolonial Eropa, dilengkapi *gandhok kiwo* dan *gandhok tengen* bagi putra-putri raja ([Portal Pemkab Sukoharjo](https://portal.sukoharjokab.go.id/blog/berita/pesanggrahan-langenharjo-jejak-kejayaan-keraton-kasunanan-di-sukoharjo/); [Jejak Bocah Hilang](https://jejakbocahilang.wordpress.com/2014/06/01/pesanggrahan-langenharjo/); [Kompas.com](https://www.kompas.com/jawa-tengah/read/2025/11/02/184500988/abdi-dalem-gelar-doa-untuk-pakubuwono-xiii-di-pesanggrahan?page=all)).
 
@@ -54,6 +63,9 @@ Kompleks bangunan dua lantai Pesanggrahan Langenharjo memadukan arsitektur tradi
 ---
 
 ## 4. Dimensi Spiritual dan Keterkaitan Kosmologis Masyarakat
+
+Kategori: LEGENDA
+Situs: Keraton Kasunanan
 
 - **Pusat Spiritualitas dan Pertanda Alam:** Selain menjadi tempat rekreasi dan pertemuan keluarga istana, Pesanggrahan Langenharjo dipandang masyarakat sebagai ruang sakral yang sarat nilai spiritual Jawa, termasuk kepercayaan terhadap pertanda alam (*sasmita*) sebelum peristiwa besar di Keraton Surakarta ([Kompas.com](https://www.kompas.com/jawa-tengah/read/2025/11/02/194500388/gusti-neno-ungkap-tanda-alam-sebelum-wafatnya-pb-xiii-pohon-tua?page=all)).
 - **Catatan Mengenai Cerita Garis Imajiner Gunung Lawu dan Gunung Merapi:** Dalam tradisi tutur masyarakat setempat, lokasi Pesanggrahan Langenharjo juga sering dikaitkan dengan cerita pertemuan garis imajiner antara Gunung Lawu dan Gunung Merapi *(catatan RAG: detail narasi mengenai garis imajiner Lawu–Merapi belum ditemukan dalam teks sumber daring yang dapat diakses pada penyusunan dokumen ini, sehingga dapat dilengkapi apabila naskah rujukan tambahan tersedia)*.

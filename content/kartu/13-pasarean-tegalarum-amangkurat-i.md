@@ -21,6 +21,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 1. Profil dan Lokasi Pasarean Tegalarum
 
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
+
 **Pasarean Tegalarum** (dikenal pula sebagai **Pemakaman Tegalarum** atau **Tegalwangi**) adalah kompleks pemakaman bersejarah yang terletak di **Dusun Pakuncen, Desa Pasarean, Kecamatan Adiwerna, Kabupaten Tegal, Jawa Tengah** ([Wikipedia: Pasarean Tegalarum](https://id.wikipedia.org/wiki/Pasarean_Tegalarum); [Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)).
 
 - **Tokoh Utama yang Dimakamkan:** Kompleks ini merupakan tempat peristirahatan terakhir **Susuhunan Amangkurat I**—raja keempat Kesultanan Mataram sekaligus putra Sultan Agung Anyakrakusuma—beserta kerabatnya ([Wikipedia: Pasarean Tegalarum](https://id.wikipedia.org/wiki/Pasarean_Tegalarum)).
@@ -29,6 +32,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 ---
 
 ## 2. Riwayat Singkat Susuhunan Amangkurat I (1618/1619–1677)
+
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
 
 **Susuhunan Amangkurat I** lahir di Kotagede sekitar tahun **1618/1619** dengan nama kecil **Raden Mas Sayyidin**, sebagai putra dari **Sultan Agung Anyakrakusuma** dan **Ratu Batang** (Ratu Wetan), sekaligus cicit dari Panembahan Senapati ([Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)).
 
@@ -39,6 +45,9 @@ Dokumen ini disusun sebagai basis pengetahuan (*knowledge base*) untuk AI *chatb
 
 ## 3. Dinamika Pemerintahan, Hubungan dengan VOC, dan Pemberontakan Trunajaya
 
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
+
 Masa pemerintahan Amangkurat I diwarnai perubahan haluan politik luar negeri serta gejolak internal yang berujung pada jatuhnya Keraton Plered ([Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)):
 
 1. **Perjanjian Damai dengan VOC (24 September 1646):** Berbeda dari Sultan Agung yang memerangi Belanda, Amangkurat I pada tahun pertamanya menandatangani perjanjian enam pasal dengan VOC yang memberi izin pembukaan pos dagang VOC di wilayah Mataram, pertukaran utusan tahunan, serta kebebasan dagang Mataram di wilayah kekuasaan VOC ([Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)). Meski memandang VOC sebagai pihak yang tunduk dengan upeti tahunan, hubungan diplomatik Mataram dengan Kesultanan Banten dan Kesultanan Gowa justru merenggang ([Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)).
@@ -48,6 +57,9 @@ Masa pemerintahan Amangkurat I diwarnai perubahan haluan politik luar negeri ser
 ---
 
 ## 4. Mengapa Amangkurat I Dimakamkan di Pasarean Tegalarum (Bukan di Imogiri)
+
+Kategori: FAKTA
+Situs: Warisan Mataram Islam
 
 Meskipun ayahandanya (Sultan Agung) telah membangun kompleks pemakaman raja-raja Mataram di **Astana Pajimatan Himagiri (Imogiri)** sejak 1632, Amangkurat I merupakan satu-satunya raja Mataram pasca-Sultan Agung yang tidak dimakamkan di sana ([Wikipedia: Amangkurat I](https://id.wikipedia.org/wiki/Amangkurat_I)):
 

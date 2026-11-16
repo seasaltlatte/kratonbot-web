@@ -23,6 +23,9 @@ Dokumen ini disusun khusus sebagai konteks basis pengetahuan (*knowledge base*) 
 
 ## 1. Makna Gelar Pangeran Mangkubumi dan Biografi Singkat Hamengkubuwana I
 
+Kategori: FAKTA
+Situs: Kesultanan Yogyakarta (Warisan Mataram Islam)
+
 ### 1.1 Pengertian Gelar Pangeran Mangkubumi dalam Tradisi Pemerintahan
 Dalam tradisi ketatanegaraan kerajaan-kerajaan di Jawa maupun Kalimantan (seperti Kesultanan Banjar), istilah **Pangeran Mangkubumi** merujuk pada jabatan rangkap: seorang pangeran keluarga raja yang sekaligus mengemban tugas sebagai *Mangkubumi* atau kepala administrasi pemerintahan (*Rijksbestierder* / *Raja Bicara*) ([Wikipedia: Pangeran Mangkubumi](https://id.wikipedia.org/wiki/Pangeran_Mangkubumi)). Posisi ini lazimnya dipercayakan kepada adik atau saudara raja yang sedang berkuasa untuk menjaga kesinambungan birokrasi dan stabilitas internal istana ([Wikipedia: Pangeran Mangkubumi](https://id.wikipedia.org/wiki/Pangeran_Mangkubumi)).
 
@@ -38,6 +41,9 @@ Tokoh sentral yang paling dikenal menyandang gelar tersebut di Jawa adalah **Ben
 
 ## 2. Akar Konflik di Mataram dan Awal Perlawanan (1740–1746)
 
+Kategori: FAKTA
+Situs: Keraton Kasunanan
+
 Ketegangan yang memicu Perang Takhta Jawa Ketiga berakar pada melemahnya otoritas Kesultanan Mataram akibat konflik suksesi internal dan intervensi kongsi dagang Belanda (VOC) ([Wikipedia: Perang Takhta Jawa Ketiga](https://id.wikipedia.org/wiki/Perang_Takhta_Jawa_Ketiga); [Tirto.id](https://tirto.id/isi-perjanjian-salatiga-sejarah-latar-belakang-dan-dampaknya-haLd)).
 
 1. **Dampak Pemberontakan 1740–1742 dan Perpindahan Keraton:** Pada 1740 pecah pemberontakan etnis Tionghoa di Batavia yang meluas ke Jawa. Pakubuwana II sempat berpihak kepada pemberontak sebelum berbalik mendukung VOC, yang berujung pada serbuan ke Keraton Kartasura pada 1742 dan pembangunan keraton baru di Surakarta pada 1745 ([Wikipedia: Hamengkubuwana I](https://id.wikipedia.org/wiki/Hamengkubuwana_I); [Wikipedia: Perang Takhta Jawa Ketiga](https://id.wikipedia.org/wiki/Perang_Takhta_Jawa_Ketiga)).
@@ -47,6 +53,9 @@ Ketegangan yang memicu Perang Takhta Jawa Ketiga berakar pada melemahnya otorita
 ---
 
 ## 3. Aliansi Mangkubumi–Sambernyawa dalam Perang Takhta Jawa Ketiga (1746–1752)
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan & Pura Mangkunegaran
 
 Setelah keluar dari Surakarta pada Mei 1746, Pangeran Mangkubumi dan Raden Mas Said (Pangeran Sambernyawa) membentuk front perlawanan bersama melawan Pakubuwana II dan VOC ([Wikipedia: Perang Takhta Jawa Ketiga](https://id.wikipedia.org/wiki/Perang_Takhta_Jawa_Ketiga); [Scribd: Makalah Perlawanan Pangeran Mangkubumi dan Mas Said](https://id.scribd.com/document/604204332/Makalah-PERLAWANAN-Pangeran-Mangkubumi-dan-Mas-Said)).
 
@@ -58,6 +67,9 @@ Setelah keluar dari Surakarta pada Mei 1746, Pangeran Mangkubumi dan Raden Mas S
 ---
 
 ## 4. Perpecahan Aliansi dan Lahirnya Perjanjian Giyanti (1752–1755)
+
+Kategori: FAKTA
+Situs: Keraton Kasunanan
 
 Persatuan antara Pangeran Mangkubumi dan Pangeran Sambernyawa tidak bertahan hingga akhir perang karena perbedaan ambisi politik atas takhta Mataram ([Wikipedia: Hamengkubuwana I](https://id.wikipedia.org/wiki/Hamengkubuwana_I); [Wikipedia: Perang Takhta Jawa Ketiga](https://id.wikipedia.org/wiki/Perang_Takhta_Jawa_Ketiga)).
 
@@ -71,6 +83,9 @@ Persatuan antara Pangeran Mangkubumi dan Pangeran Sambernyawa tidak bertahan hin
 ---
 
 ## 5. Konflik Lanjutan dengan Pangeran Sambernyawa hingga Perjanjian Salatiga (1755–1757)
+
+Kategori: FAKTA
+Situs: Pura Mangkunegaran
 
 Keputusan Pangeran Mangkubumi berdamai dengan VOC dan Pakubuwana III melalui Perjanjian Giyanti memicu fase akhir Perang Takhta Jawa Ketiga yang menjadi jalan langsung berdirinya Kadipaten Mangkunegaran ([Wikipedia: Perjanjian Salatiga](https://id.wikipedia.org/wiki/Perjanjian_Salatiga); [Detikcom](https://www.detik.com/jateng/berita/d-8202833/sejarah-perjanjian-salatiga-1757-ini-isi-latar-belakang-dan-dampaknya)).
 
@@ -90,6 +105,9 @@ Dengan ditandatanganinya Perjanjian Salatiga, wilayah eks-Kesultanan Mataram res
 ---
 
 ## 6. Pendirian Yogyakarta, Dinamika Pasca-Perjanjian, dan Warisan Hamengkubuwana I (1755–1792)
+
+Kategori: FAKTA
+Situs: Kesultanan Yogyakarta (Warisan Mataram Islam)
 
 ### 6.1 Pembangunan Keraton Yogyakarta
 Pada April 1755, Sultan Hamengkubuwana I membuka Hutan Pabringan (bekas pesanggrahan Dalem Garjiwati/Ayogya) untuk membangun ibu kota baru bernama **Ngayogyakarta Hadiningrat** ([Wikipedia: Hamengkubuwana I](https://id.wikipedia.org/wiki/Hamengkubuwana_I)). Setelah pembangunan tahap awal selesai, Hamengkubuwana I resmi memindahkan pusat pemerintahan dari Kabanaran ke Keraton Yogyakarta pada **7 Oktober 1756** ([Wikipedia: Hamengkubuwana I](https://id.wikipedia.org/wiki/Hamengkubuwana_I)).
