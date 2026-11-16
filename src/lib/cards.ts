@@ -21,7 +21,8 @@ export type Card = {
 
 const DIR = path.join(process.cwd(), "content", "kartu");
 
-// Awalan nama file → tema. File 07 (tentang KratonBot sendiri) tidak ditampilkan sebagai pengetahuan.
+// Awalan nama file → tema untuk filter Pustaka.
+// File 07 (tentang KratonBot sendiri) sengaja tidak didaftarkan agar tidak tampil sebagai pengetahuan umum.
 export const TEMA: Record<string, string> = {
   "01": "Sejarah",
   "02": "Keraton Kasunanan",
@@ -29,7 +30,25 @@ export const TEMA: Record<string, string> = {
   "04": "Tradisi dan legenda",
   "05": "Info kunjungan",
   "06": "Nilai Pancasila",
+  "08": "Mangkubumi & Sambernyawa",
+  "09-babad-tanah-jawi": "Babad Tanah Jawi",
+  "09-panembahan-senopati-ratu-kidul": "Panembahan Senopati & Ratu Kidul",
+  "10": "Bintang Kehormatan",
+  "11": "Astana Mangadeg & Girilayu",
+  "12": "Makam Kotagede & Imogiri",
+  "13": "Pasarean Tegalarum",
+  "14": "Sapta Tirta Pablengan",
+  "15": "Pesanggrahan Langenharjo",
+  "16": "Astana Oetara",
 };
+
+export function getTemaForFile(file: string): string | undefined {
+  const base = file.replace(/\.md$/, "");
+  if (TEMA[base]) return TEMA[base];
+  const p2 = file.slice(0, 2);
+  if (TEMA[p2]) return TEMA[p2];
+  return undefined;
+}
 
 const field = (block: string, name: string) =>
   block.match(new RegExp(`^${name}:\\s*(.*)$`, "m"))?.[1].trim();
@@ -70,6 +89,60 @@ function cleanIsi(isi: string) {
     .trim();
 }
 
+/**
+ * Parser penyesuaian untuk file markdown artikel RAG (nomor 08-16) yang menggunakan
+ * pemisah '---' dan subbab '## ...' alih-alih format kartu klasik.
+ */
+function parseMarkdownSection(file: string, block: string): string | null {
+  const match = block.match(/^##\s+(?:(?:\d+\.?\s*)*)(.*)$/m);
+  if (!match) return null;
+  const rawTitle = match[1].trim();
+  if (/^(Catatan )?Sumber (Rujukan|Referensi)$/i.test(rawTitle)) return null;
+
+  const title = rawTitle.replace(/^\d+[\.\)]\s*/, "").trim();
+  const body = block.replace(/^##\s+.*$/m, "").trim();
+  if (body.length < 20) return null;
+
+  let kategori = "FAKTA";
+  if (/mitologi|legenda|ratu kidul|mistik|gaib|ghaib/i.test(title + " " + body)) {
+    kategori = "LEGENDA";
+  } else if (/interpretasi|analisis|tafsir|pendapat|panduan konteks/i.test(title + " " + body)) {
+    kategori = "TAFSIR";
+  } else if (/jam buka|tiket|kunjungan|rute|lokasi|etika/i.test(title + " " + body)) {
+    kategori = "INFO PRAKTIS";
+  }
+
+  let situs = "Mataram Islam Surakarta";
+  if (/mangkunegar|sambernyawa|mangadeg|girilayu|pablengan|astana oetara/i.test(title + " " + body + " " + file)) {
+    situs = "Pura Mangkunegaran";
+  }
+  if (/kasunanan|surakarta|pakubuwon|sangga buwana|langenharjo/i.test(title + " " + body + " " + file)) {
+    situs = situs === "Pura Mangkunegaran" ? "Kasunanan & Mangkunegaran" : "Keraton Kasunanan";
+  }
+  if (/kotagede|imogiri/i.test(file)) {
+    situs = "Kotagede & Imogiri";
+  } else if (/tegalarum|amangkurat/i.test(file)) {
+    situs = "Pasarean Tegalarum";
+  }
+
+  const links: string[] = [];
+  const linkRegex = /\[([^\]]+)\]\((https?:\/\/[^\)]+)\)/g;
+  let lm;
+  while ((lm = linkRegex.exec(body)) !== null) {
+    links.push(`${lm[1]} (${lm[2]})`);
+  }
+  const sumber = links.length > 0 ? links.slice(0, 3).join(" ; ") : "Dokumentasi sejarah tim";
+
+  return [
+    `Judul: ${title}`,
+    `Situs: ${situs}`,
+    `Kategori: ${kategori}`,
+    `Sumber: ${sumber}`,
+    `Dicek: 16-11-2026`,
+    `Isi: ${body}`,
+  ].join("\n");
+}
+
 // Semua blok kartu per file, dengan baris CRLF dinormalkan (sebagian file diedit di Windows).
 function readBlocks(): { file: string; block: string }[] {
   const out: { file: string; block: string }[] = [];
@@ -78,8 +151,15 @@ function readBlocks(): { file: string; block: string }[] {
       .readFileSync(path.join(DIR, file), "utf8")
       .replace(/\r\n?/g, "\n")
       .replace(/<!--[\s\S]*?-->/g, "");
-    for (const block of text.split(/\n-{3,}\n/)) {
-      if (field(block, "Judul")) out.push({ file, block: block.trim() });
+    for (const rawBlock of text.split(/\n-{3,}\n/)) {
+      const trimmed = rawBlock.trim();
+      if (!trimmed) continue;
+      if (field(trimmed, "Judul")) {
+        out.push({ file, block: trimmed });
+      } else {
+        const parsed = parseMarkdownSection(file, trimmed);
+        if (parsed) out.push({ file, block: parsed });
+      }
     }
   }
   return out;
@@ -91,7 +171,7 @@ export function getCards(): Card[] {
   if (cache) return cache;
   const cards: Card[] = [];
   for (const { file, block } of readBlocks()) {
-    const tema = TEMA[file.slice(0, 2)];
+    const tema = getTemaForFile(file);
     if (!tema) continue;
     const judul = field(block, "Judul")!;
     const situs = field(block, "Situs") ?? "";
