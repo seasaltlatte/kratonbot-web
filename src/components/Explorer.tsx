@@ -9,7 +9,7 @@ import type { Card, Kategori, Site } from "@/lib/cards";
 import { CLAIM_LABELS, KATEGORI_INDEX } from "@/lib/labels";
 
 const SITE_OPTIONS: { value: Site | "semua"; label: string }[] = [
-  { value: "semua", label: "Kedua istana" },
+  { value: "semua", label: "Semua istana" },
   { value: "kasunanan", label: "Keraton Kasunanan" },
   { value: "mangkunegaran", label: "Pura Mangkunegaran" },
 ];
@@ -141,9 +141,21 @@ export function Explorer({ cards, temas }: { cards: Card[]; temas: string[] }) {
       </p>
 
       {visible.length === 0 ? (
-        <p className="border border-dashed border-garis p-8 text-center text-abu">
-          Tidak ada kartu yang cocok. Coba kata lain, atau pilih &ldquo;Semua tema&rdquo; dan &ldquo;Semua jenis&rdquo;.
-        </p>
+        <div className="border border-dashed border-garis p-8 text-center text-abu">
+          <p>Tidak ada kartu yang cocok dengan kombinasi filter yang dipilih.</p>
+          <button
+            type="button"
+            onClick={() => {
+              setTema("semua");
+              setSite("semua");
+              setKategori("semua");
+              setQuery("");
+            }}
+            className="mt-4 inline-flex items-center gap-2 rounded border border-emas px-4 py-2 font-display text-sm text-emas transition-colors hover:bg-emas/10"
+          >
+            Reset Semua Filter
+          </button>
+        </div>
       ) : (
         <div className="grid items-stretch gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((c) => {
@@ -235,7 +247,11 @@ function CardModal({ card, onClose }: { card: Card; onClose: () => void }) {
           <h2 id="judul-kartu" className="font-display text-2xl leading-snug font-medium text-perkamen sm:text-3xl">
             {card.judul}
           </h2>
-          <p className="mt-4 font-sans text-base leading-relaxed text-teks">{card.isi}</p>
+          <div className="mt-4 space-y-3 font-sans text-base leading-relaxed text-teks">
+            {card.isi.split(/\n\s*\n/).map((par, idx) => (
+              <p key={idx}>{par.trim()}</p>
+            ))}
+          </div>
           {card.dicek && <p className="mt-3 text-sm text-abu-gelap">Dicek tim: {card.dicek}</p>}
 
           <h3 className="mt-7 flex items-center gap-2 text-xs font-semibold tracking-[0.16em] text-emas uppercase">

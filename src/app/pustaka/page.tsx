@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Explorer } from "@/components/Explorer";
-import { getCards, TEMA } from "@/lib/cards";
+import { getCards, TEMA_LIST } from "@/lib/cards";
 
 export const metadata: Metadata = {
   title: "Pustaka | Kerajaan Mataram Islam Bot",
@@ -19,7 +19,7 @@ export default function PustakaPage() {
           intro="Semua yang diketahui Kerajaan Mataram Islam Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
         />
         <div className="mt-10" />
-        <Explorer cards={getCards()} temas={Object.values(TEMA)} />
+        <Explorer cards={getCards()} temas={TEMA_LIST} />
       </div>
     </div>
   );
