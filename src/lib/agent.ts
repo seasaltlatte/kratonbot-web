@@ -1,4 +1,4 @@
-// Otak KratonBot yang berjalan langsung di server Vercel (menggantikan flow Langflow).
+// Otak Antara Bot yang berjalan langsung di server Vercel (menggantikan flow Langflow).
 // Gemini + function calling dengan tiga alat: pencarian kartu, tanggal WIB, dan pembuatan jadwal.
 // Konfirmasi booking dijaga di server, tidak hanya bergantung pada kepatuhan model.
 import fs from "node:fs";

@@ -18,7 +18,7 @@ import { getCards, type Kategori } from "@/lib/cards";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 export const metadata: Metadata = {
-  title: "Tentang AI ini | Kerajaan Mataram Islam Bot",
+  title: "Tentang AI ini | Surantara",
 };
 
 const SOURCES = [
@@ -36,11 +36,11 @@ const BATASAN = [
   "Pengetahuannya terbatas pada kartu di Pustaka. Pertanyaan di luar itu dijawab “belum ada data”, bukan ditebak.",
   "Mode rekonstruksi (“bayangkan suasana…”) adalah cerita imajinatif. Bagian yang berdasar sumber diberi tanda fakta tercatat, sisanya rekaan.",
   "Info praktis seperti jam buka dan harga tiket bisa berubah. Cek ulang ke pengelola sebelum berangkat.",
-  "Kerajaan Mataram Islam Bot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
+  "Antara Bot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
 ];
 
 const DATA = [
-  "Riwayat percakapan disimpan di browser-mu sendiri, lalu dikirim bersama setiap pertanyaan. Server Kerajaan Mataram Islam Bot tidak menyimpannya.",
+  "Riwayat percakapan disimpan di browser-mu sendiri, lalu dikirim bersama setiap pertanyaan. Server Surantara tidak menyimpannya.",
   "Email hanya diminta saat membuat jadwal, dan hanya dipakai untuk mengirim undangan kalender.",
   "Laporan “jawaban keliru” dikirim ke tim berisi pertanyaan, jawaban, dan catatanmu.",
   "Jangan menulis data pribadi lain seperti nomor identitas atau alamat rumah.",
@@ -80,7 +80,7 @@ export default function TentangAI() {
     {
       icon: <IkonCari />,
       title: "Mencari di Pustaka",
-      text: `KratonBot mencari kartu yang relevan di antara ${cards.length} kartu pengetahuan yang ditulis tim.`,
+      text: `Antara Bot mencari kartu yang relevan di antara ${cards.length} kartu pengetahuan yang ditulis tim.`,
     },
     {
       icon: <IkonPena />,
@@ -90,7 +90,7 @@ export default function TentangAI() {
     {
       icon: <IkonKalender />,
       title: "Jadwal bila diminta",
-      text: "Untuk kunjungan, KratonBot merangkum datamu dan menunggu jawaban “ya” sebelum membuat undangan.",
+      text: "Untuk kunjungan, Antara Bot merangkum datamu dan menunggu jawaban “ya” sebelum membuat undangan.",
     },
   ];
   const kategori = Object.keys(KATEGORI_INDEX) as Kategori[];
@@ -102,11 +102,65 @@ export default function TentangAI() {
         as="h1"
         script="Di balik layar"
         title="Tentang AI ini"
-        intro="KratonBot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah."
+        intro="Antara Bot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah."
       />
 
       <div className="mx-auto mt-16 max-w-5xl">
-        <JudulBagian>Cara KratonBot menjawab</JudulBagian>
+        {/* Filosofi nama: Surakarta + Antara. */}
+        <section id="filosofi" className="scroll-mt-28">
+          <JudulBagian>Mengapa Surantara?</JudulBagian>
+          <div className="relative mt-8 border border-emas/40 bg-permukaan px-5 py-10 text-center shadow-[0_30px_80px_-40px_rgba(0,0,0,0.7)] sm:px-12">
+            <span className="absolute -top-px -left-px size-4 border-t-2 border-l-2 border-emas" aria-hidden="true" />
+            <span className="absolute -right-px -bottom-px size-4 border-r-2 border-b-2 border-emas" aria-hidden="true" />
+
+            <p className="font-jawa text-3xl text-emas" aria-hidden="true">
+              ꦱꦸꦫꦤ꧀ꦠꦫ
+            </p>
+            <p className="mt-4 flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1 font-display text-xl tracking-[0.1em] text-perkamen uppercase sm:text-2xl">
+              <span>
+                <span className="text-emas">Sura</span>karta
+              </span>
+              <span className="text-emas" aria-hidden="true">+</span>
+              <span className="text-emas">Antara</span>
+              <span className="text-emas" aria-hidden="true">=</span>
+              <span className="font-semibold">
+                <span className="text-emas">Sur</span>antara
+              </span>
+            </p>
+
+            {/* Jembatan: masa lalu ke masa kini. */}
+            <div className="mx-auto mt-9 grid max-w-3xl items-center gap-4 sm:grid-cols-[1fr_auto_1fr]">
+              <div className="border border-garis bg-malam/40 px-4 py-4">
+                <p className="text-[11px] tracking-[0.16em] text-abu-gelap uppercase">Masa lalu</p>
+                <p className="mt-1 font-display text-lg leading-snug text-perkamen">Masa keemasan sejarah Surakarta</p>
+              </div>
+              <div className="flex flex-col items-center gap-1 text-emas">
+                <svg className="h-8 w-24 rotate-90 sm:rotate-0" viewBox="0 0 96 32" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+                  <path d="M2 26h92M2 26C20 6 76 6 94 26M24 26V15M48 26V11M72 26V15" />
+                </svg>
+                <span className="font-script text-2xl leading-none">antara</span>
+              </div>
+              <div className="border border-garis bg-malam/40 px-4 py-4">
+                <p className="text-[11px] tracking-[0.16em] text-abu-gelap uppercase">Masa kini</p>
+                <p className="mt-1 font-display text-lg leading-snug text-perkamen">Generasi digital</p>
+              </div>
+            </div>
+
+            <div className="mx-auto mt-9 max-w-2xl space-y-4 text-left text-lg leading-[1.8] text-teks sm:text-center">
+              <p>
+                Kata <em className="text-emas">antara</em> bermakna jembatan atau penghubung. Surantara ingin menjadi
+                jembatan antara masa keemasan sejarah Surakarta di masa lalu dan generasi digital masa kini.
+              </p>
+              <p className="text-abu">
+                Chatbot di dalamnya bernama <span className="text-perkamen">Antara Bot</span>. Sebagai penghubung, ia
+                tidak menggantikan keraton, pemandu, atau sumber sejarah. Ia mengantarmu ke kartu pengetahuan beserta
+                sumbernya, supaya kamu bisa memeriksanya sendiri.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <JudulBagian className="mt-20">Cara Antara Bot menjawab</JudulBagian>
         <ol className="relative mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <span className="absolute top-8 right-[12%] left-[12%] hidden h-px bg-emas/40 lg:block" aria-hidden="true" />
           {STEPS.map((s, i) => (

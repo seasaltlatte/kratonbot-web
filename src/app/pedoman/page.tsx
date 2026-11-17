@@ -4,7 +4,7 @@ import type { ReactNode } from "react";
 import { SectionTitle } from "@/components/SectionTitle";
 
 export const metadata: Metadata = {
-  title: "Pedoman penggunaan AI untuk heritage | Kerajaan Mataram Islam Bot",
+  title: "Pedoman penggunaan AI untuk heritage | Surantara",
 };
 
 // Draf pedoman (luaran kedua tema 7). Tim wajib meninjau dan menyesuaikan isinya.
@@ -92,7 +92,7 @@ export default function Pedoman() {
           as="h1"
           script="Agar AI tetap jujur"
           title="Pedoman penggunaan AI"
-          intro="AI bisa membuat sejarah terasa dekat, tapi juga bisa membuat cerita rekaan terdengar seperti fakta. Pedoman ini disusun agar teknologi seperti KratonBot dipakai secara transparan dan bertanggung jawab."
+          intro="AI bisa membuat sejarah terasa dekat, tapi juga bisa membuat cerita rekaan terdengar seperti fakta. Pedoman ini disusun agar teknologi seperti Antara Bot dipakai secara transparan dan bertanggung jawab."
         />
 
         {/* Lembar naskah: bingkai ganda dan ornamen sudut. */}
@@ -137,7 +137,7 @@ export default function Pedoman() {
 
         <p className="mt-12 text-center">
           <Link href="/chat" className="tombol-emas">
-            Coba KratonBot
+            Coba Antara Bot
           </Link>
         </p>
       </div>

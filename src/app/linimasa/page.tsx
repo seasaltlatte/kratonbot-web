@@ -13,7 +13,7 @@ import { getPhoto } from "@/lib/photos";
 import { TIMELINE } from "@/lib/timeline";
 
 export const metadata: Metadata = {
-  title: "Linimasa | Kerajaan Mataram Islam Bot",
+  title: "Linimasa | Surantara",
 };
 
 const SITE_NAME = { kasunanan: "Kasunanan", mangkunegaran: "Mangkunegaran" };

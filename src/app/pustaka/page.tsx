@@ -4,7 +4,7 @@ import { Explorer } from "@/components/Explorer";
 import { getCards, TEMA_LIST } from "@/lib/cards";
 
 export const metadata: Metadata = {
-  title: "Pustaka | Kerajaan Mataram Islam Bot",
+  title: "Pustaka | Surantara",
 };
 
 export default function PustakaPage() {
@@ -16,7 +16,7 @@ export default function PustakaPage() {
           as="h1"
           script="Semua yang diketahui bot"
           title="Pustaka Pengetahuan"
-          intro="Semua yang diketahui Kerajaan Mataram Islam Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
+          intro="Semua yang diketahui Antara Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
         />
         <div className="mt-10" />
         <Explorer cards={getCards()} temas={TEMA_LIST} />

@@ -1,6 +1,6 @@
-# KratonBot
+# Surantara: Antara Bot
 
-Chatbot AI tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran yang selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda. Dibuat untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage).
+**Surantara** (Surakarta + Antara) adalah situs, dan **Antara Bot** adalah chatbot AI di dalamnya, tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran. "Antara" bermakna jembatan atau penghubung: Surantara menghubungkan masa keemasan sejarah Surakarta dengan generasi digital masa kini. Antara Bot selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda. Dibuat untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage).
 
 **Situs:** https://kratonbot-web.vercel.app
 
@@ -11,7 +11,7 @@ Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composi
 | Halaman | Isi |
 |---|---|
 | `/` | Landing: hero, linimasa singkat, contoh jawaban, dua istana, ajakan berkunjung |
-| `/chat` | Chat dengan KratonBot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
+| `/chat` | Chat dengan Antara Bot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
 | `/linimasa` | Linimasa 1742–2022; setiap peristiwa merujuk kartu, versi tahun yang berbeda ditampilkan |
 | `/pustaka` | Semua kartu pengetahuan, dengan filter dan pencarian |
 | `/galeri` | Foto arsip berdampingan dengan rekonstruksi AI |
@@ -21,7 +21,7 @@ Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composi
 ## Cara kerja
 
 ```
-Browser ──▶ /api/chat ──▶ agen KratonBot (src/lib/agent.ts) ◀──▶ Gemini
+Browser ──▶ /api/chat ──▶ agen Antara Bot (src/lib/agent.ts) ◀──▶ Gemini
                             ├─ cari_pengetahuan_keraton → content/kartu (pencarian BM25)
                             ├─ tanggal_sekarang         → jam WIB
                             └─ buat_jadwal_kunjungan    → Composio → Google Calendar
@@ -39,7 +39,7 @@ Browser ──▶ /api/report ──▶ Google Sheets (opsional)
 ```
 content/
   kartu/*.md            kartu pengetahuan (dipakai bot dan halaman situs)
-  system-prompt.md      aturan perilaku KratonBot
+  system-prompt.md      aturan perilaku Antara Bot
 src/
   app/                  halaman (front-end); nama folder = alamat halaman
   app/api/chat/         API chat (back-end)

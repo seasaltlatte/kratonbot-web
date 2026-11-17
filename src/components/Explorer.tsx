@@ -266,7 +266,7 @@ function CardModal({ card, onClose }: { card: Card; onClose: () => void }) {
             Tutup
           </button>
           <Link href={`/chat?q=${encodeURIComponent(`Ceritakan tentang ${card.judul}`)}`} className="tombol-emas !min-h-0 !py-2.5 text-sm">
-            Tanya KratonBot tentang ini
+            Tanya Antara Bot tentang ini
           </Link>
         </footer>
       </article>

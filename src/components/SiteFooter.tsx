@@ -31,13 +31,13 @@ export function SiteFooter() {
         <div>
           <p className="flex items-baseline gap-3 whitespace-nowrap">
             <span className="font-jawa text-2xl text-emas" aria-hidden="true">
-              ꦏꦿꦠꦺꦴꦤ꧀
+              ꦱꦸꦫꦤ꧀ꦠꦫ
             </span>
-            <span className="font-display text-xl tracking-[0.18em] text-perkamen uppercase">Kerajaan Mataram Islam Bot</span>
+            <span className="font-display text-xl tracking-[0.18em] text-perkamen uppercase">Surantara</span>
           </p>
           <p className="mt-4 max-w-sm leading-relaxed text-abu">
-            Pemandu AI untuk sejarah Kasunanan Surakarta dan Kadipaten Mangkunegaran, yang selalu menunjukkan
-            sumbernya.
+            Surakarta + Antara: jembatan antara masa keemasan sejarah Surakarta dan generasi digital masa kini.
+            Antara Bot menjawab tentang Kasunanan dan Mangkunegaran, selalu dengan sumbernya.
           </p>
           <p className="mt-6 font-script text-3xl text-emas">Matur nuwun</p>
         </div>
@@ -70,7 +70,7 @@ export function SiteFooter() {
 
       <div className="border-t border-garis">
         <p className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-abu-gelap sm:px-6">
-          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. Kerajaan Mataram Islam Bot adalah program AI dan bisa keliru.
+          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. Antara Bot adalah program AI dan bisa keliru.
         </p>
       </div>
     </footer>

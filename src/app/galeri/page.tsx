@@ -15,7 +15,7 @@ import { GALLERY, type AiIllustration, type GalleryItem } from "@/lib/gallery";
 import { KATEGORI_INDEX } from "@/lib/labels";
 
 export const metadata: Metadata = {
-  title: "Galeri rekonstruksi AI vs arsip | Kerajaan Mataram Islam Bot",
+  title: "Galeri rekonstruksi AI vs arsip | Surantara",
 };
 
 const RULES: { icon: ReactNode; text: string }[] = [

@@ -33,7 +33,7 @@ export type GalleryItem = {
   cards: string[]; // awalan judul kartu pengetahuan yang menjadi dasar
   imagined: string[]; // bagian yang terpaksa dibayangkan AI
   prompt: string;
-  askBot: string; // pertanyaan mode rekonstruksi untuk KratonBot
+  askBot: string; // pertanyaan mode rekonstruksi untuk Antara Bot
   ai?: AiIllustration;
 };
 

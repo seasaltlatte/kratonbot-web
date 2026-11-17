@@ -100,7 +100,7 @@ export default function Home() {
       big: `${cards.length}`,
       Icon: IkonLontar,
       title: "Pengetahuan",
-      text: "Semua yang diketahui Kerajaan Mataram Islam Bot, lengkap dengan sumber.",
+      text: "Semua yang diketahui Antara Bot, lengkap dengan sumber.",
     },
     {
       href: "/galeri",
@@ -156,6 +156,14 @@ export default function Home() {
                   <p className="mt-4 max-w-2xl text-base leading-relaxed text-perkamen/90 italic drop-shadow-[0_1px_4px_rgba(0,0,0,1)] sm:text-lg">
                     Tanya sejarah Keraton Kasunanan dan Pura Mangkunegaran. Setiap jawaban menunjukkan sumbernya.
                   </p>
+                  <Link
+                    href="/tentang-ai#filosofi"
+                    className="mt-4 inline-flex flex-wrap items-baseline gap-x-2 text-sm text-perkamen/80 drop-shadow-[0_1px_4px_rgba(0,0,0,1)] hover:text-emas"
+                  >
+                    <span className="font-display tracking-[0.18em] text-emas uppercase">Surantara</span>
+                    <span>jembatan antara masa keemasan Surakarta dan generasi digital</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
                   <div className="mt-8 flex flex-wrap items-center gap-4">
                     <Link href="/chat" className="tombol-emas group min-w-48">
                       Tanya Sejarah
@@ -225,7 +233,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Kerajaan Mataram Islam Bot: Lima Tanda (Inspo 1 - Kompatibel Mode Terang & Gelap) */}
+      {/* Antara Bot: Lima Tanda (Inspo 1 - Kompatibel Mode Terang & Gelap) */}
       <section className="border-t border-garis px-4 py-24 sm:px-8 sm:py-28">
         <SectionTitle
           script="Lima Tanda di Setiap Jawaban"
@@ -256,7 +264,7 @@ export default function Home() {
             <div className="mt-4 rounded-xl border border-garis/80 bg-catatan/40 p-5 sm:p-6 terang:border-[#e8dfd2] terang:bg-[#f4eee4]">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-script text-2xl text-emas sm:text-3xl terang:text-[#8a6036]">
-                  Kerajaan Mataram Islam Bot
+                  Antara Bot
                 </p>
                 <span className="text-lg">
                   <LabelChip index={0} />

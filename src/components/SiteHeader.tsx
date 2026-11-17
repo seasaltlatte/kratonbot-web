@@ -46,7 +46,7 @@ export function SiteHeader({ inHero = false }: { inHero?: boolean }) {
           {/* Logo Brand Kiri */}
           <Link href="/" className="group flex items-center gap-3 text-perkamen transition hover:opacity-90">
             <span className="font-display text-sm tracking-[0.16em] uppercase text-perkamen sm:text-base md:text-lg sm:tracking-[0.2em]">
-              KERAJAAN MATARAM ISLAM BOT
+              SURANTARA
             </span>
           </Link>
 
@@ -157,7 +157,7 @@ export function SiteHeader({ inHero = false }: { inHero?: boolean }) {
         {/* Logo Brand Kiri */}
         <Link href="/" className="group flex items-center gap-3 text-perkamen transition hover:opacity-90 terang:text-[#2a1d14]">
           <span className="font-display text-sm tracking-[0.16em] uppercase sm:text-base md:text-lg sm:tracking-[0.2em]">
-            KERAJAAN MATARAM ISLAM BOT
+            SURANTARA
           </span>
         </Link>
 
