@@ -1,4 +1,4 @@
-// Menerima pesan pengunjung dan menjawabnya dengan agen Antara Bot (src/lib/agent.ts).
+// Menerima pesan pengunjung dan menjawabnya dengan agen Surantara Bot (src/lib/agent.ts).
 // API key hanya ada di server (env Vercel), tidak pernah dikirim ke browser.
 import { AgentError, runAgent, type Turn } from "@/lib/agent";
 
@@ -43,8 +43,8 @@ export async function POST(request: Request) {
     if (e instanceof AgentError) {
       console.error(`[chat] ${e.kind}: ${e.message}`);
       if (e.kind === "konfigurasi") return fail(500, "Server salah konfigurasi. Hubungi tim pengembang.");
-      if (e.kind === "sibuk") return fail(503, "Antara Bot sedang ramai. Coba kirim ulang sebentar lagi.");
-      return fail(502, "Antara Bot gagal menyusun jawaban. Coba kirim ulang pertanyaanmu.");
+      if (e.kind === "sibuk") return fail(503, "Surantara Bot sedang ramai. Coba kirim ulang sebentar lagi.");
+      return fail(502, "Surantara Bot gagal menyusun jawaban. Coba kirim ulang pertanyaanmu.");
     }
     console.error("[chat] error tak terduga:", e);
     return fail(500, "Terjadi kesalahan di server. Coba lagi sebentar lagi.");

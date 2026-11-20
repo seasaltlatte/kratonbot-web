@@ -61,9 +61,9 @@ Isi: Area yang dapat dikunjungi dalam tur Pura Mangkunegaran antara lain Pendhap
 
 ---
 
-Judul: Jadwal dari Antara Bot bukan tiket resmi
+Judul: Jadwal dari Surantara Bot bukan tiket resmi
 Situs: Keraton Kasunanan Surakarta dan Pura Mangkunegaran
 Kategori: INFO PRAKTIS
 Sumber: Tim Surantara (ketentuan layanan chatbot) ; IDN Times, "Reservasi Tiket Pura Mangkunegaran Solo: Cara dan Aturan" (7 Oktober 2026), https://www.idntimes.com/travel/destination/cara-reservasi-tiket-masuk-pura-mangkunegaran-solo-00-mk1yf-73rkky (diakses 02-11-2026)
 Dicek: 02-11-2026
-Isi: Jadwal yang dibuat Antara Bot hanyalah pengingat pribadi berupa undangan Google Calendar, bukan tiket atau reservasi resmi. Untuk Pura Mangkunegaran, pengunjung tetap harus memesan tiket sesi tur sendiri di mangkunegaran.id, karena kunjungan memakai sistem sesi dan tiket bisa hangus bila terlambat. Untuk Museum Keraton Kasunanan, cara pembelian tiket belum dicek tim, jadi sarankan pengunjung menghubungi pengelola. Sebaiknya jam di kalender disamakan dengan jam sesi tur yang dipesan.
+Isi: Jadwal yang dibuat Surantara Bot hanyalah pengingat pribadi berupa undangan Google Calendar, bukan tiket atau reservasi resmi. Untuk Pura Mangkunegaran, pengunjung tetap harus memesan tiket sesi tur sendiri di mangkunegaran.id, karena kunjungan memakai sistem sesi dan tiket bisa hangus bila terlambat. Untuk Museum Keraton Kasunanan, cara pembelian tiket belum dicek tim, jadi sarankan pengunjung menghubungi pengelola. Sebaiknya jam di kalender disamakan dengan jam sesi tur yang dipesan.

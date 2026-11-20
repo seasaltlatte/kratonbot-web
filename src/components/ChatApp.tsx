@@ -83,7 +83,7 @@ export function ChatApp() {
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || typeof data.reply !== "string") {
-        throw new Error(data.error || "Antara Bot tidak bisa dihubungi. Coba kirim ulang.");
+        throw new Error(data.error || "Surantara Bot tidak bisa dihubungi. Coba kirim ulang.");
       }
       bot = { id: newId(), role: "bot", text: data.reply, question: q };
     } catch (e) {
@@ -173,7 +173,7 @@ export function ChatApp() {
         </h2>
         <LabelLegend compact />
         <p className="mt-6 border-l-2 border-emas/60 bg-catatan p-3 text-sm text-emas-terang">
-          Jadwal kunjungan dari Antara Bot berupa undangan Google Calendar untuk pengingat, bukan tiket atau
+          Jadwal kunjungan dari Surantara Bot berupa undangan Google Calendar untuk pengingat, bukan tiket atau
           reservasi resmi dari pengelola.
         </p>
       </aside>
@@ -204,7 +204,7 @@ export function ChatApp() {
           {ready && messages.length === 0 && (
             <div className="max-w-2xl">
               <p className="text-lg leading-relaxed">
-                Sugeng rawuh. Aku Antara Bot, pemandu AI untuk Keraton Kasunanan Surakarta dan Pura
+                Sugeng rawuh. Aku Surantara Bot, pemandu AI untuk Keraton Kasunanan Surakarta dan Pura
                 Mangkunegaran. Setiap jawabanku menyebut sumbernya, dan aku menandai mana fakta, tafsir, atau
                 legenda.
               </p>
@@ -233,7 +233,7 @@ export function ChatApp() {
               </div>
             ) : (
               <article key={m.id} className="max-w-3xl">
-                <p className="mb-1 font-script text-2xl text-emas">Antara Bot</p>
+                <p className="mb-1 font-script text-2xl text-emas">Surantara Bot</p>
                 {m.error ? (
                   <div className="border border-galat-garis bg-galat-latar p-3 text-galat">
                     <p>{m.text}</p>
@@ -285,7 +285,7 @@ export function ChatApp() {
                 <span className="size-1.5 animate-bounce rounded-full bg-emas [animation-delay:-0.15s]" />
                 <span className="size-1.5 animate-bounce rounded-full bg-emas" />
               </span>
-              Antara Bot sedang mencari di sumber…
+              Surantara Bot sedang mencari di sumber…
             </p>
           )}
           <div ref={endRef} />
@@ -299,7 +299,7 @@ export function ChatApp() {
           }}
         >
           <label htmlFor="pesan" className="sr-only">
-            Pertanyaan untuk Antara Bot
+            Pertanyaan untuk Surantara Bot
           </label>
           <div className="flex items-end gap-2">
             <textarea
@@ -327,7 +327,7 @@ export function ChatApp() {
             </button>
           </div>
           <p className="mt-2 text-xs text-abu-gelap">
-            Antara Bot bisa keliru. Periksa sumber di setiap jawaban.
+            Surantara Bot bisa keliru. Periksa sumber di setiap jawaban.
           </p>
         </form>
       </div>
@@ -359,7 +359,11 @@ function ReportButton({ message, getSessionId }: { message: Msg; getSessionId: (
   }
 
   if (state === "sent") {
-    return <p className="mt-2 text-sm text-pareanom-terang">Laporan terkirim. Terima kasih, tim akan memeriksanya.</p>;
+    return (
+      <p className="mt-2 text-sm text-pareanom-terang">
+        Terima kasih, laporanmu sudah dikirim ke tim Surantara untuk diperiksa.
+      </p>
+    );
   }
   if (state === "idle") {
     return (

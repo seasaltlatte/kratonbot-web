@@ -22,7 +22,7 @@ const DURASI_JAM = 2;
 function detail(k: Kunjungan) {
   return [
     `Jumlah orang: ${k.jumlah_orang}.`,
-    "Dibuat oleh Antara Bot (AI) sebagai pengingat, bukan tiket resmi. Cek jam buka, harga tiket, dan aturan berpakaian ke pengelola sebelum berangkat.",
+    "Dibuat oleh Surantara Bot (AI) sebagai pengingat, bukan tiket resmi. Cek jam buka, harga tiket, dan aturan berpakaian ke pengelola sebelum berangkat.",
   ].join("\n");
 }
 

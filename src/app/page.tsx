@@ -100,7 +100,7 @@ export default function Home() {
       big: `${cards.length}`,
       Icon: IkonLontar,
       title: "Pengetahuan",
-      text: "Semua yang diketahui Antara Bot, lengkap dengan sumber.",
+      text: "Semua yang diketahui Surantara Bot, lengkap dengan sumber.",
     },
     {
       href: "/galeri",
@@ -233,7 +233,7 @@ export default function Home() {
         </section>
       </div>
 
-      {/* Antara Bot: Lima Tanda (Inspo 1 - Kompatibel Mode Terang & Gelap) */}
+      {/* Surantara Bot: Lima Tanda (Inspo 1 - Kompatibel Mode Terang & Gelap) */}
       <section className="border-t border-garis px-4 py-24 sm:px-8 sm:py-28">
         <SectionTitle
           script="Lima Tanda di Setiap Jawaban"
@@ -264,7 +264,7 @@ export default function Home() {
             <div className="mt-4 rounded-xl border border-garis/80 bg-catatan/40 p-5 sm:p-6 terang:border-[#e8dfd2] terang:bg-[#f4eee4]">
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <p className="font-script text-2xl text-emas sm:text-3xl terang:text-[#8a6036]">
-                  Antara Bot
+                  Surantara Bot
                 </p>
                 <span className="text-lg">
                   <LabelChip index={0} />

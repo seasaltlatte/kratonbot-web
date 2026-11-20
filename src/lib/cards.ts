@@ -22,7 +22,7 @@ export type Card = {
 const DIR = path.join(process.cwd(), "content", "kartu");
 
 // Awalan nama file → tema untuk filter Pustaka.
-// File 07 (tentang Antara Bot sendiri) sengaja tidak didaftarkan agar tidak tampil sebagai pengetahuan umum.
+// File 07 (tentang Surantara Bot sendiri) sengaja tidak didaftarkan agar tidak tampil sebagai pengetahuan umum.
 export const TEMA: Record<string, string> = {
   "01": "Sejarah",
   "02": "Keraton Kasunanan",
@@ -81,7 +81,7 @@ const slug = (s: string) =>
     .replace(/^-|-$/g, "")
     .slice(0, 80);
 
-function parseSumber(raw: string): Sumber[] {
+export function parseSumber(raw: string): Sumber[] {
   return raw
     .split(/\s;\s/)
     .map((s) => {
@@ -289,7 +289,7 @@ export function getCards(): Card[] {
   return cards;
 }
 
-// Untuk bot: semua kartu, termasuk file 07 (tentang Antara Bot) dan instruksi untuk bot di dalam isi,
+// Untuk bot: semua kartu, termasuk file 07 (tentang Surantara Bot) dan instruksi untuk bot di dalam isi,
 // dalam format teks asli (Judul/Situs/Kategori/Sumber/Isi) yang dirujuk system prompt.
 export type BotCard = { judul: string; situs: string; isi: string; block: string };
 let botCache: BotCard[] | null = null;

@@ -1,4 +1,4 @@
-// Lima tanda yang dipakai Antara Bot di setiap jawaban (sama dengan system prompt Agent).
+// Lima tanda yang dipakai Surantara Bot di setiap jawaban (sama dengan system prompt Agent).
 export const CLAIM_LABELS = [
   {
     emoji: "🟢",
@@ -27,7 +27,7 @@ export const CLAIM_LABELS = [
   {
     emoji: "⚪",
     name: "Belum ada data",
-    meaning: "Antara Bot tidak menemukannya di sumber, jadi tidak menebak.",
+    meaning: "Surantara Bot tidak menemukannya di sumber, jadi tidak menebak.",
     jenis: "kosong",
   },
 ] as const;

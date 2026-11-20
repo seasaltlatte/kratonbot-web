@@ -16,7 +16,7 @@ export default function PustakaPage() {
           as="h1"
           script="Semua yang diketahui bot"
           title="Pustaka Pengetahuan"
-          intro="Semua yang diketahui Antara Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
+          intro="Semua yang diketahui Surantara Bot ada di sini, lengkap dengan sumbernya. Kalau sebuah hal tidak ada di kartu, bot juga tidak tahu."
         />
         <div className="mt-10" />
         <Explorer cards={getCards()} temas={TEMA_LIST} />

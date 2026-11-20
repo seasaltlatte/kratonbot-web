@@ -1,6 +1,6 @@
-# Surantara: Antara Bot
+# Surantara
 
-**Surantara** (Surakarta + Antara) adalah situs, dan **Antara Bot** adalah chatbot AI di dalamnya, tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran. "Antara" bermakna jembatan atau penghubung: Surantara menghubungkan masa keemasan sejarah Surakarta dengan generasi digital masa kini. Antara Bot selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda. Dibuat untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage).
+**Surantara** (Surakarta + Antara) adalah situs, dan **Surantara Bot** adalah chatbot AI di dalamnya, tentang Keraton Kasunanan Surakarta dan Pura Mangkunegaran. "Antara" bermakna jembatan atau penghubung: Surantara menghubungkan masa keemasan sejarah Surakarta dengan generasi digital masa kini. Surantara Bot selalu menunjukkan sumber dan membedakan fakta, tafsir, dan legenda. Dibuat untuk tugas Pendidikan Pancasila (tema 7: AI dan rekonstruksi heritage).
 
 **Situs:** https://kratonbot-web.vercel.app
 
@@ -11,7 +11,7 @@ Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composi
 | Halaman | Isi |
 |---|---|
 | `/` | Landing: hero, linimasa singkat, contoh jawaban, dua istana, ajakan berkunjung |
-| `/chat` | Chat dengan Antara Bot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
+| `/chat` | Chat dengan Surantara Bot, tombol **Buat jadwal**, dan **Laporkan jawaban keliru** |
 | `/linimasa` | Linimasa 1742–2022; setiap peristiwa merujuk kartu, versi tahun yang berbeda ditampilkan |
 | `/pustaka` | Semua kartu pengetahuan, dengan filter dan pencarian |
 | `/galeri` | Foto arsip berdampingan dengan rekonstruksi AI |
@@ -21,7 +21,7 @@ Dibuat dengan Next.js 16, Tailwind CSS 4, TypeScript, Google Gemini, dan Composi
 ## Cara kerja
 
 ```
-Browser ──▶ /api/chat ──▶ agen Antara Bot (src/lib/agent.ts) ◀──▶ Gemini
+Browser ──▶ /api/chat ──▶ agen Surantara Bot (src/lib/agent.ts) ◀──▶ Gemini
                             ├─ cari_pengetahuan_keraton → content/kartu (pencarian BM25)
                             ├─ tanggal_sekarang         → jam WIB
                             └─ buat_jadwal_kunjungan    → Composio → Google Calendar
@@ -39,7 +39,7 @@ Browser ──▶ /api/report ──▶ Google Sheets (opsional)
 ```
 content/
   kartu/*.md            kartu pengetahuan (dipakai bot dan halaman situs)
-  system-prompt.md      aturan perilaku Antara Bot
+  system-prompt.md      aturan perilaku Surantara Bot
 src/
   app/                  halaman (front-end); nama folder = alamat halaman
   app/api/chat/         API chat (back-end)
@@ -108,19 +108,15 @@ Proyek ini terhubung ke Vercel lewat GitHub:
 - Jika build gagal, situs lama tetap tampil.
 - Setelah mengubah Environment Variables di Vercel (Settings → Environment Variables), lakukan **Deployments → ⋯ → Redeploy** agar nilainya terpakai.
 
-## Laporan ke Google Sheets (opsional)
+## Laporan jawaban keliru (Google Sheets + email)
 
-1. Buat Google Sheet, lalu buka **Extensions → Apps Script** dan tempel:
-   ```js
-   function doPost(e) {
-     const d = JSON.parse(e.postData.contents);
-     SpreadsheetApp.getActiveSpreadsheet().getSheets()[0]
-       .appendRow([d.waktu, d.pertanyaan, d.jawaban, d.catatan, d.sesi]);
-     return ContentService.createTextOutput(JSON.stringify({ ok: true }))
-       .setMimeType(ContentService.MimeType.JSON);
-   }
-   ```
-2. **Deploy → New deployment → Web app**, atur *Execute as*: Me dan *Who has access*: Anyone.
-3. Isi URL Web App sebagai `REPORT_WEBHOOK_URL`.
+Tombol **Laporkan jawaban keliru** di chat mengirim laporan ke `/api/report`. Agar tim menerimanya:
 
-Tanpa `REPORT_WEBHOOK_URL`, laporan hanya tercatat di log Vercel.
+1. Di akun Gmail kelompok, buat Google Sheet baru (misalnya "Laporan Surantara").
+2. Buka **Extensions → Apps Script**, hapus isinya, lalu tempel seluruh isi [`docs/apps-script-laporan.gs`](docs/apps-script-laporan.gs). Ganti `EMAIL_TIM` dengan alamat Gmail kelompok, lalu simpan.
+3. **Deploy → New deployment → Web app**, atur *Execute as*: **Me** dan *Who has access*: **Anyone**, lalu izinkan aksesnya (pilih *Advanced → Go to …* jika muncul peringatan).
+4. Salin URL Web App (`https://script.google.com/macros/s/…/exec`), lalu isi sebagai `REPORT_WEBHOOK_URL` di Vercel (**Settings → Environment Variables**) dan **Redeploy**. Untuk mencoba di laptop, isi juga di `.env.local`.
+
+Setiap laporan menjadi satu baris di Sheet (waktu WIB, pertanyaan, jawaban bot, catatan, sesi, status) dan dikirim sebagai email ke tim. Kolom **Status** bisa diubah tim menjadi "Sudah diperbaiki" setelah kartu dikoreksi.
+
+Jangan membagikan URL Web App di tempat umum: siapa pun yang memilikinya bisa menulis ke Sheet. Tanpa `REPORT_WEBHOOK_URL`, laporan hanya tercatat di log Vercel, yang tersimpan sebentar saja.

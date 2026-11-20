@@ -10,7 +10,7 @@ Judul: Mulat sarira hangrasa wani dan Sila ke-4 (musyawarah dan kebijaksanaan)
 Situs: Pura Mangkunegaran
 Kategori: TAFSIR
 Sumber: Analisis Tim Surantara, Pendidikan Pancasila 2026 (draf disusun dengan bantuan AI, wajib ditinjau kelompok) ; dasar fakta: Wikipedia bahasa Inggris, "Mangkunegara VIII", https://en.wikipedia.org/wiki/Mangkunegara_VIII (diakses 02-11-2026)
-Isi: Butir ketiga Tri Dharma, mulat sarira hangrasa wani (berani mawas diri), dapat dikaitkan dengan Sila ke-4. Musyawarah yang dipimpin hikmat kebijaksanaan membutuhkan orang yang berani mengakui kekurangan dan mempertimbangkan pendapat lain. Dalam proyek ini, sikap mawas diri juga diterapkan pada AI: Antara Bot harus berani berkata "belum ada data" atau "sumber berbeda pendapat" alih-alih berpura-pura tahu. Ini tafsir tim.
+Isi: Butir ketiga Tri Dharma, mulat sarira hangrasa wani (berani mawas diri), dapat dikaitkan dengan Sila ke-4. Musyawarah yang dipimpin hikmat kebijaksanaan membutuhkan orang yang berani mengakui kekurangan dan mempertimbangkan pendapat lain. Dalam proyek ini, sikap mawas diri juga diterapkan pada AI: Surantara Bot harus berani berkata "belum ada data" atau "sumber berbeda pendapat" alih-alih berpura-pura tahu. Ini tafsir tim.
 
 ---
 
@@ -34,7 +34,7 @@ Judul: Menghormati legenda dan keyakinan (Sila ke-1 dan ke-2)
 Situs: Keraton Kasunanan Surakarta dan Pura Mangkunegaran
 Kategori: TAFSIR
 Sumber: Analisis Tim Surantara, Pendidikan Pancasila 2026 (draf disusun dengan bantuan AI, wajib ditinjau kelompok)
-Isi: Kisah seperti Kanjeng Ratu Kidul dalam Bedhaya Ketawang atau kerbau bule Kyai Slamet adalah keyakinan yang hidup di masyarakat. Antara Bot memberi label LEGENDA agar pengguna tahu bahwa kisah itu tidak bisa dibuktikan secara sejarah. Namun bot tetap menyampaikannya dengan hormat, tanpa mengejek atau membantah. Sikap ini sejalan dengan Sila ke-1 (menghormati kebebasan berkeyakinan) dan Sila ke-2 (adab dan saling menghargai). Ini tafsir tim.
+Isi: Kisah seperti Kanjeng Ratu Kidul dalam Bedhaya Ketawang atau kerbau bule Kyai Slamet adalah keyakinan yang hidup di masyarakat. Surantara Bot memberi label LEGENDA agar pengguna tahu bahwa kisah itu tidak bisa dibuktikan secara sejarah. Namun bot tetap menyampaikannya dengan hormat, tanpa mengejek atau membantah. Sikap ini sejalan dengan Sila ke-1 (menghormati kebebasan berkeyakinan) dan Sila ke-2 (adab dan saling menghargai). Ini tafsir tim.
 
 ---
 
@@ -42,7 +42,7 @@ Judul: Akses budaya yang terbuka untuk semua (Sila ke-5)
 Situs: Pura Mangkunegaran dan Keraton Kasunanan Surakarta
 Kategori: TAFSIR
 Sumber: Analisis Tim Surantara, Pendidikan Pancasila 2026 (draf disusun dengan bantuan AI, wajib ditinjau kelompok) ; dasar fakta: Good News From Indonesia, "Pracima Tuin Mangkunegaran, Ruang Publik Baru di Surakarta yang Kini Sudah Dibuka" (24 Januari 2023), https://www.goodnewsfromindonesia.id/2023/01/24/pracima-tuin-mangkunegaran-ruang-publik-baru-di-surakarta-yang-kini-sudah-dibuka (diakses 02-11-2026)
-Isi: Pembukaan Pracima Tuin sebagai ruang publik dan tur museum yang terbuka untuk umum memperluas akses masyarakat terhadap budaya istana. Tim menafsirkan hal ini sejalan dengan Sila ke-5: pengetahuan budaya tidak hanya milik kalangan tertentu. Antara Bot mengikuti semangat yang sama, karena bisa dipakai siapa saja tanpa login dan gratis. Ini tafsir tim.
+Isi: Pembukaan Pracima Tuin sebagai ruang publik dan tur museum yang terbuka untuk umum memperluas akses masyarakat terhadap budaya istana. Tim menafsirkan hal ini sejalan dengan Sila ke-5: pengetahuan budaya tidak hanya milik kalangan tertentu. Surantara Bot mengikuti semangat yang sama, karena bisa dipakai siapa saja tanpa login dan gratis. Ini tafsir tim.
 
 ---
 
@@ -50,7 +50,7 @@ Judul: Jujur terhadap perbedaan sumber dan transparansi AI (Sila ke-2 dan ke-4)
 Situs: Keraton Kasunanan Surakarta dan Pura Mangkunegaran
 Kategori: TAFSIR
 Sumber: Analisis Tim Surantara, Pendidikan Pancasila 2026 (draf disusun dengan bantuan AI, wajib ditinjau kelompok)
-Isi: Banyak fakta heritage Solo yang dicatat berbeda antar sumber, misalnya tahun pendirian keraton (1744 atau 1745) atau tahun pembangunan Panggung Sangga Buwana (1777 atau 1782). Antara Bot dirancang untuk menampilkan semua versi beserta sumbernya, bukan memilih salah satu diam-diam. Tim memandang sikap ini sebagai wujud kejujuran dan adab (Sila ke-2), serta menghargai proses menimbang bukti secara bijaksana (Sila ke-4). AI yang menyamarkan dugaan sebagai fakta dapat menyesatkan memori kolektif bangsa. Ini tafsir tim.
+Isi: Banyak fakta heritage Solo yang dicatat berbeda antar sumber, misalnya tahun pendirian keraton (1744 atau 1745) atau tahun pembangunan Panggung Sangga Buwana (1777 atau 1782). Surantara Bot dirancang untuk menampilkan semua versi beserta sumbernya, bukan memilih salah satu diam-diam. Tim memandang sikap ini sebagai wujud kejujuran dan adab (Sila ke-2), serta menghargai proses menimbang bukti secara bijaksana (Sila ke-4). AI yang menyamarkan dugaan sebagai fakta dapat menyesatkan memori kolektif bangsa. Ini tafsir tim.
 
 ---
 

@@ -1,12 +1,14 @@
-// Otak Antara Bot yang berjalan langsung di server Vercel (menggantikan flow Langflow).
+// Otak Surantara Bot yang berjalan langsung di server Vercel (menggantikan flow Langflow).
 // Gemini + function calling dengan tiga alat: pencarian kartu, tanggal WIB, dan pembuatan jadwal.
 // Konfirmasi booking dijaga di server, tidak hanya bergantung pada kepatuhan model.
 import fs from "node:fs";
 import path from "node:path";
 import { GoogleGenAI, type Content, type FunctionCall, type FunctionDeclaration, type Part } from "@google/genai";
 import { buatJadwal, SITUS, type Kunjungan, type Situs } from "@/lib/calendar";
+import { parseSumber, type Sumber } from "@/lib/cards";
 import { BOOKING_PROMPT } from "@/lib/labels";
 import { searchCards } from "@/lib/search";
+import { lengkapiLinkSumber } from "@/lib/sources";
 
 export type Turn = { role: "user" | "bot"; text: string };
 
@@ -91,12 +93,14 @@ function izinBooking(history: Turn[], message: string) {
 async function jalankanAlat(
   call: FunctionCall,
   izin: ReturnType<typeof izinBooking>,
-  state: { sudahBooking: boolean },
+  state: { sudahBooking: boolean; sumber: Sumber[] },
 ): Promise<Record<string, unknown>> {
   const args = (call.args ?? {}) as Record<string, unknown>;
   switch (call.name) {
     case "cari_pengetahuan_keraton": {
       const hasil = searchCards(String(args.kueri ?? ""), 5);
+      // Simpan sumber kartu yang diambil, untuk melengkapi link di bagian "📚 Sumber" jawaban.
+      for (const c of hasil) state.sumber.push(...parseSumber(c.block.match(/^Sumber:\s*(.*)$/m)?.[1] ?? ""));
       return hasil.length
         ? { hasil: hasil.map((c) => c.block).join("\n\n---\n\n") }
         : { hasil: "", catatan: "Tidak ada kartu yang cocok. Coba kata kunci lain, atau katakan belum ada data." };
@@ -167,7 +171,7 @@ export async function runAgent(history: Turn[], message: string): Promise<string
     { role: "user", parts: [{ text: message }] },
   ];
   const izin = izinBooking(history, message);
-  const state = { sudahBooking: false };
+  const state = { sudahBooking: false, sumber: [] as Sumber[] };
 
   for (let langkah = 0; langkah < MAX_LANGKAH; langkah++) {
     const res = await generate(ai, contents);
@@ -175,7 +179,7 @@ export async function runAgent(history: Turn[], message: string): Promise<string
     if (calls.length === 0) {
       const text = res.text?.trim();
       if (!text) throw new AgentError("gagal", "Model tidak mengirim jawaban.");
-      return text;
+      return lengkapiLinkSumber(text, state.sumber);
     }
     // Kirim balik konten model apa adanya (termasuk thought signature), lalu hasil setiap alat.
     contents.push(res.candidates?.[0]?.content ?? { role: "model", parts: calls.map((c) => ({ functionCall: c })) });

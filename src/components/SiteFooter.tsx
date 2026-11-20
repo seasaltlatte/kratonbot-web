@@ -37,7 +37,7 @@ export function SiteFooter() {
           </p>
           <p className="mt-4 max-w-sm leading-relaxed text-abu">
             Surakarta + Antara: jembatan antara masa keemasan sejarah Surakarta dan generasi digital masa kini.
-            Antara Bot menjawab tentang Kasunanan dan Mangkunegaran, selalu dengan sumbernya.
+            Surantara Bot menjawab tentang Kasunanan dan Mangkunegaran, selalu dengan sumbernya.
           </p>
           <p className="mt-6 font-script text-3xl text-emas">Matur nuwun</p>
         </div>
@@ -70,7 +70,7 @@ export function SiteFooter() {
 
       <div className="border-t border-garis">
         <p className="mx-auto max-w-6xl px-4 py-5 text-center text-xs text-abu-gelap sm:px-6">
-          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. Antara Bot adalah program AI dan bisa keliru.
+          Tugas Pendidikan Pancasila, tema 7: AI dan rekonstruksi heritage. Surantara Bot adalah program AI dan bisa keliru.
         </p>
       </div>
     </footer>

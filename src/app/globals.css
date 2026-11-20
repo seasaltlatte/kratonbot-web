@@ -381,7 +381,7 @@ legend {
   transform: none;
 }
 
-/* Isi jawaban Antara Bot (Markdown) */
+/* Isi jawaban Surantara Bot (Markdown) */
 .md {
   line-height: 1.75;
   overflow-wrap: anywhere;
@@ -413,6 +413,14 @@ legend {
   color: var(--emas);
   text-decoration: underline;
   text-underline-offset: 3px;
+  overflow-wrap: anywhere; /* URL panjang tidak melebar keluar gelembung di HP */
+}
+/* Tanda ↗: link sumber membuka tab baru. */
+.md a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+  text-decoration: none;
+  display: inline-block;
 }
 .md a:hover {
   color: var(--perkamen);

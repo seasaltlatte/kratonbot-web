@@ -1,6 +1,6 @@
 // Menerima laporan "jawaban keliru" dari pengunjung.
-// Jika REPORT_WEBHOOK_URL diisi (Google Apps Script), laporan dikirim ke Google Sheets;
-// jika tidak, laporan hanya dicatat di log server.
+// Jika REPORT_WEBHOOK_URL diisi (Google Apps Script, lihat README), laporan ditambahkan ke Google Sheet
+// kelompok dan dikirim sebagai email ke tim. Jika tidak, laporan hanya dicatat di log server Vercel.
 
 const clip = (v: unknown, max: number) => (typeof v === "string" ? v.slice(0, max) : "");
 
@@ -10,8 +10,11 @@ export async function POST(request: Request) {
     return Response.json({ error: "Laporan tidak lengkap." }, { status: 400 });
   }
 
+  const now = new Date();
   const report = {
-    waktu: new Date().toISOString(),
+    waktu: now.toISOString(),
+    waktu_wib: `${new Intl.DateTimeFormat("id-ID", { timeZone: "Asia/Jakarta", dateStyle: "long", timeStyle: "short" }).format(now)} WIB`,
+    halaman: request.headers.get("origin") ?? new URL(request.url).origin,
     pertanyaan: clip(body.question, 2000),
     jawaban: clip(body.answer, 8000),
     catatan: clip(body.note, 1000),

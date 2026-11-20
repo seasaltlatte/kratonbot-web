@@ -36,7 +36,7 @@ const BATASAN = [
   "Pengetahuannya terbatas pada kartu di Pustaka. Pertanyaan di luar itu dijawab “belum ada data”, bukan ditebak.",
   "Mode rekonstruksi (“bayangkan suasana…”) adalah cerita imajinatif. Bagian yang berdasar sumber diberi tanda fakta tercatat, sisanya rekaan.",
   "Info praktis seperti jam buka dan harga tiket bisa berubah. Cek ulang ke pengelola sebelum berangkat.",
-  "Antara Bot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
+  "Surantara Bot bukan perwakilan resmi Keraton Kasunanan maupun Pura Mangkunegaran, dan tidak menggantikan pemandu atau abdi dalem.",
 ];
 
 const DATA = [
@@ -80,7 +80,7 @@ export default function TentangAI() {
     {
       icon: <IkonCari />,
       title: "Mencari di Pustaka",
-      text: `Antara Bot mencari kartu yang relevan di antara ${cards.length} kartu pengetahuan yang ditulis tim.`,
+      text: `Surantara Bot mencari kartu yang relevan di antara ${cards.length} kartu pengetahuan yang ditulis tim.`,
     },
     {
       icon: <IkonPena />,
@@ -90,7 +90,7 @@ export default function TentangAI() {
     {
       icon: <IkonKalender />,
       title: "Jadwal bila diminta",
-      text: "Untuk kunjungan, Antara Bot merangkum datamu dan menunggu jawaban “ya” sebelum membuat undangan.",
+      text: "Untuk kunjungan, Surantara Bot merangkum datamu dan menunggu jawaban “ya” sebelum membuat undangan.",
     },
   ];
   const kategori = Object.keys(KATEGORI_INDEX) as Kategori[];
@@ -102,7 +102,7 @@ export default function TentangAI() {
         as="h1"
         script="Di balik layar"
         title="Tentang AI ini"
-        intro="Antara Bot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah."
+        intro="Surantara Bot adalah chatbot AI buatan mahasiswa untuk tugas Pendidikan Pancasila, tema AI dan rekonstruksi heritage. Halaman ini menjelaskan apa yang ia lakukan, dari mana pengetahuannya, dan di mana ia bisa salah."
       />
 
       <div className="mx-auto mt-16 max-w-5xl">
@@ -152,7 +152,7 @@ export default function TentangAI() {
                 jembatan antara masa keemasan sejarah Surakarta di masa lalu dan generasi digital masa kini.
               </p>
               <p className="text-abu">
-                Chatbot di dalamnya bernama <span className="text-perkamen">Antara Bot</span>. Sebagai penghubung, ia
+                Chatbot di dalamnya bernama <span className="text-perkamen">Surantara Bot</span>. Sebagai penghubung, ia
                 tidak menggantikan keraton, pemandu, atau sumber sejarah. Ia mengantarmu ke kartu pengetahuan beserta
                 sumbernya, supaya kamu bisa memeriksanya sendiri.
               </p>
@@ -160,7 +160,7 @@ export default function TentangAI() {
           </div>
         </section>
 
-        <JudulBagian className="mt-20">Cara Antara Bot menjawab</JudulBagian>
+        <JudulBagian className="mt-20">Cara Surantara Bot menjawab</JudulBagian>
         <ol className="relative mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <span className="absolute top-8 right-[12%] left-[12%] hidden h-px bg-emas/40 lg:block" aria-hidden="true" />
           {STEPS.map((s, i) => (
